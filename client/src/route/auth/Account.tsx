@@ -11,14 +11,14 @@ import AccountTabs from './AccountTabs';
 
 const mdTheme = createTheme();
 
-function DTContent() {
+const DTContent: React.FC = () => {
   return (
     /* jshint ignore:start */
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <DTaaSMenu />
         <Box
-          component="main"
+          component='main'
           sx={{
             flexGrow: 1,
             height: '100vh',
@@ -26,23 +26,22 @@ function DTContent() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Grid container spacing={3}>
-            {/* Components */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper
-                sx={{
-                  p: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 240,
-                }}
-              >
-                <AccountTabs />
-              </Paper>
+          <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+              {/* Components */}
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <AccountTabs />
+                </Paper>
+              </Grid>
             </Grid>
-            </Grid>
-
             <Footer />
           </Container>
         </Box>
@@ -50,8 +49,10 @@ function DTContent() {
     </ThemeProvider>
     /* jshint ignore:end */
   );
-}
+};
 
-export default function DigitalTwins() {
+const DigitalTwins: React.FC = () => {
   return <DTContent />; /* jshint ignore:line */
-}
+};
+
+export default DigitalTwins;

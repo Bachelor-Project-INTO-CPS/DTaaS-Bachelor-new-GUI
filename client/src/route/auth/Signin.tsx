@@ -45,8 +45,8 @@ import Footer from '../../page/Footer';
 
 const theme = createTheme();
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
+const SignIn: React.FC = () => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     window.location.href = '/dashboard';
   };
@@ -54,7 +54,7 @@ export default function SignIn() {
   return (
     /* jshint ignore:start */
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <Box
           sx={{
@@ -64,71 +64,75 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <AppBar position="absolute">
+          <AppBar position='absolute'>
             <Toolbar
-                sx={{
-                  pr: '24px', // keep right padding when drawer closed
-                }}
+              sx={{
+                pr: '24px', // keep right padding when drawer closed
+              }}
             >
-                <Typography
-                component="h1"
-                variant="h6"
-                color="inherit"
+              <Typography
+                component='h1'
+                variant='h6'
+                color='inherit'
                 noWrap
                 sx={{ flexGrow: 1 }}
-                >
+              >
                 The Digital Twin as a Service
-                </Typography>
+              </Typography>
             </Toolbar>
           </AppBar>
-
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component='form'
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
-              margin="normal"
+              margin='normal'
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id='email'
+              label='Email Address'
+              name='email'
+              autoComplete='email'
               autoFocus
             />
             <TextField
-              margin="normal"
+              margin='normal'
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              autoComplete='current-password'
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              control={<Checkbox value='remember' color='primary' />}
+              label='Remember me'
             />
             <Button
-              type="submit"
+              type='submit'
               fullWidth
-              variant="contained"
+              variant='contained'
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href='#' variant='body2'>
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href='#' variant='body2'>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -140,4 +144,6 @@ export default function SignIn() {
     </ThemeProvider>
     /* jshint ignore:end */
   );
-}
+};
+
+export default SignIn;
