@@ -27,12 +27,11 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
+function Chart() {
   const theme: Theme = useTheme();
 
   return (
-    /* jshint ignore:start */
-    <React.Fragment>
+    <>
       <Title>Observed Output</Title>
       <ResponsiveContainer>
         <LineChart
@@ -74,7 +73,8 @@ export default function Chart() {
           />
         </LineChart>
       </ResponsiveContainer>
-    </React.Fragment>
-    /* jshint ignore:end */
+    </>
   );
 }
+
+export default Chart;

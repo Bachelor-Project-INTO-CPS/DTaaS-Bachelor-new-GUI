@@ -7,7 +7,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import TabPanel, { a11yProps } from 'components/TabPanel';
 
-export default function LibComponents() {
+function LibComponents() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event:React.SyntheticEvent<Element, Event>, newValue:number) => {
@@ -15,7 +15,6 @@ export default function LibComponents() {
   };
 
   return (
-    /* jshint ignore:start */
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
@@ -47,6 +46,7 @@ export default function LibComponents() {
         Ready to use digital twins
       </TabPanel>
     </Box>
-    /* jshint ignore:end */
   );
 }
+
+export default LibComponents;
