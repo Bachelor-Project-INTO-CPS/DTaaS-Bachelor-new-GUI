@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
+import { Theme, useTheme } from '@mui/material/styles';
 import {
   LineChart,
   Line,
@@ -28,7 +28,7 @@ const data = [
 ];
 
 export default function Chart() {
-  const theme = useTheme();
+  const theme: Theme = useTheme();
 
   return (
     /* jshint ignore:start */

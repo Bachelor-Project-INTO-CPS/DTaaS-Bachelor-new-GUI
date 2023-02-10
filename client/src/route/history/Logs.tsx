@@ -3,7 +3,7 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Title from '../../page/Title';
 
-function preventDefault(event) {
+function preventDefault(event:React.MouseEvent<HTMLAnchorElement> & React.MouseEvent<HTMLSpanElement>) {
   event.preventDefault();
 }
 

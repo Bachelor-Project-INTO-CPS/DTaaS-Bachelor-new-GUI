@@ -30,7 +30,7 @@ const rows = [
   ),
 ];
 
-function preventDefault(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+function preventDefault(event: React.MouseEvent<HTMLAnchorElement> & React.MouseEvent<HTMLSpanElement>) {
   event.preventDefault();
 }
 
