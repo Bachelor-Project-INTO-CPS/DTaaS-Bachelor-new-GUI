@@ -2,10 +2,9 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import TabPanel,{a11yProps} from 'components/TabPanel';
+import TabPanel, { a11yProps } from 'components/TabPanel';
 
-
-export default function Workflows() {
+function Workflows() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent<Element, Event>, newValue: number) => {
@@ -38,3 +37,5 @@ export default function Workflows() {
     </Box>
   );
 }
+
+export default Workflows;

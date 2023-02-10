@@ -4,13 +4,12 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { SxProps, Theme } from '@mui/material/styles';
 
-interface Props {
+interface OwnProps {
   sx: SxProps<Theme>;
 }
 
-const Copyright = (props: Props) => {
+function Copyright(props: OwnProps) {
   return (
-    /* jshint ignore:start */
     <Typography
       variant='body2'
       color='text.secondary'
@@ -29,24 +28,21 @@ const Copyright = (props: Props) => {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-    /* jshint ignore:end */
   );
-};
+}
 
-const RenderFooter = () => {
+function RenderFooter() {
   return (
-    /* jshint ignore:start */
-    <React.Fragment>
+    <>
       <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
         <Copyright sx={{ pt: 4 }} />
       </Container>
-    </React.Fragment>
-    /* jshint ignore:end */
+    </>
   );
-};
+}
 
-const Footer = () => {
-  return <RenderFooter />; /* jshint ignore:line */
-};
+function Footer() {
+  return <RenderFooter />;
+}
 
 export default Footer;
