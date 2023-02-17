@@ -27,9 +27,15 @@ function Workflows() {
           <Tab label="Analyze" {...a11yProps(2)} />
         </Tabs>
       </Box>
+      {/*Make TabPanel adjust size to iframe.*/}
       <TabPanel value={value} index={0}>
         Create digital twins from available library components. The text and
         graphical configuration of digital twins happen here.
+        <iframe
+          src="https://jupyterlite.github.io/demo/repl/index.html?kernel=python&toolbar=1"
+          width="100%"
+          height="500px"
+        ></iframe>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Execute the digital twins with the DTaaS performing the automated
