@@ -1,37 +1,15 @@
-# Introduction
+# Setting up the build
 
-Client (frontend) for Digital Twin as a Service (DTaaS) software. This software shall be used for creating a Digital Twin support platform.
+To implement the build on your server, follow these steps:
 
-This is a mono repo containing code for the client (web browser).
+-   Locate the build folder `../client/build`. This folder contains all the optimized static files that are ready for deployment.
 
----
+-   Copy the entire contents of the build folder to the root directory of your server where you want to deploy the app. You can use FTP, SFTP, or any other file transfer protocol to transfer the files.
 
-## Setup the Environment and Build
+-   Make sure your server is configured to serve static files. This can vary depending on the server technology you are using, but typically you will need to configure your server to serve files from a specific directory.
 
-```bash
-cd client
-yarn install    #install the nodejs dependencies
-yarn syntax     #perform linting and static analysis
-yarn build      #build the react app into build/ directory
+-   Once the files are on your server, you should be able to access your app by visiting your server's IP address or domain name in a web browser.
 
-#specify the environment; specify only one
-yarn configapp #prod | dev | test
-
-yarn start      #start the application
-yarn test       #UI testing of the application
-yarn clean      #clean the directory of temporary files
-```
-
----
-
-## Configuration
-
-To customize the configuration of endpoints to your preference, it is recommended that you configure the environment file of your choice located in the `'./config'` directory.
-
-Once the configuration file has been updated, please rerun the configuration bash to apply the changes.
-
-```bash
-yarn configapp #prod | dev | test
-```
+Note: If you are using a serverless architecture, such as AWS Lambda or Google Cloud Functions, you will need to follow the specific deployment instructions provided by your cloud provider.
 
 ---
