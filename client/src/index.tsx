@@ -1,7 +1,6 @@
 import '@fontsource/roboto';
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from 'page/Layout';
 import ReactDOM from 'react-dom/client';
 import WorkBench from 'route/workbench/Workbench';
 import Dashboard from './route/dashboard/Dashboard';
@@ -19,67 +18,31 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: (
-      <Layout>
-        <Dashboard />
-      </Layout>
-    ),
+    element: <Dashboard />,
   },
   {
     path: 'library',
-    element: (
-      <Layout>
-        <Library />
-      </Layout>
-    ),
+    element: <Library />,
   },
   {
     path: 'digitaltwins',
-    element: (
-      <Layout>
-        <DigitalTwins />
-      </Layout>
-    ),
+    element: <DigitalTwins />,
   },
   {
     path: 'sanalysis',
-    element: (
-      <Layout>
-        <ScenarioAnalysis />
-      </Layout>
-    ),
+    element: <ScenarioAnalysis />,
   },
   {
     path: 'history',
-    element: (
-      <Layout>
-        <DTHistory />
-      </Layout>
-    ),
+    element: <DTHistory />,
   },
   {
     path: 'account',
-    element: (
-      <Layout>
-        <Account />
-      </Layout>
-    ),
+    element: <Account />,
   },
   {
     path: 'workbench',
-    element: (
-      <Layout>
-        <WorkBench />
-      </Layout>
-    ),
-  },
-  {
-    path: '*',
-    element: (
-      <Layout>
-        <h1>404 - Page not found...</h1>
-      </Layout>
-    ),
+    element: <WorkBench />,
   },
 ]);
 
