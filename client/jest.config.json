@@ -27,5 +27,8 @@
   "verbose": true,
   "testRegex": "/test/.*\\.[jt]sx?$",
   "modulePaths": ["<rootDir>/src/"],
-  "setupFilesAfterEnv": ["<rootDir>/config/test.js"]
+  "setupFilesAfterEnv": [
+    "<rootDir>/config/test.js",
+    "<rootDir>/test/config/importJestDom.ts"
+  ]
 }
