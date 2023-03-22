@@ -28,7 +28,6 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "parser": "@babel/eslint-parser",
     "requireConfigFile": false,
     "ecmaFeatures": {
       "jsx": true
