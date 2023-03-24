@@ -19,34 +19,25 @@ jest.mock('../src/page/Menu', () => ({
 }));
 
 describe('Layout component with one element', () => {
-  it('renders without crashing', () => {
+  beforeEach(() => {
     render(
       <Layout>
         <div />
       </Layout>,
       { wrapper: BrowserRouter }
     );
+  });
+
+  it('renders without crashing', () => {
     expect(true);
   });
 
   it('has a main', () => {
-    render(
-      <Layout>
-        <div />
-      </Layout>,
-      { wrapper: BrowserRouter }
-    );
     const container = screen.getByRole('main');
     expect(container).toBeInTheDocument();
   });
 
   it('has menu and toolbar for spacing', () => {
-    render(
-      <Layout>
-        <div />
-      </Layout>,
-      { wrapper: BrowserRouter }
-    );
     const menu = screen.getByTestId('menu');
     const toolbar = screen.getByTestId('toolbar');
     expect(menu).toBeInTheDocument();
@@ -54,12 +45,6 @@ describe('Layout component with one element', () => {
   });
 
   it('has footer', () => {
-    render(
-      <Layout>
-        <div />
-      </Layout>,
-      { wrapper: BrowserRouter }
-    );
     const footer = screen.getByTestId('footer');
     expect(footer).toBeInTheDocument();
   });
