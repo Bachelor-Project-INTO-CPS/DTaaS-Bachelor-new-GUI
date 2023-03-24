@@ -6,6 +6,7 @@ import Workflows from './Workflows';
 function SAnalysisContent() {
   return (
     <Layout>
+      {/** Should move grid item to layout parent and be configurable */}
       <Grid item xs={12} md={12} lg={12}>
         <Workflows />
       </Grid>
