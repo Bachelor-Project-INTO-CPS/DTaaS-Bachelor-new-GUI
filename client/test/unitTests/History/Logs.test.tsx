@@ -7,19 +7,19 @@ describe('Logs', () => {
   test('renders title', () => {
     render(<Logs />);
     const titleElement = screen.getByText(/Logs/i);
-    expect(titleElement);
+    expect(titleElement).toBeInTheDocument();
   });
 
   test('renders body text', () => {
     render(<Logs />);
     const bodyElement = screen.getByText(/Lorem ipsum dolor sit amet/i);
-    expect(bodyElement);
+    expect(bodyElement).toBeInTheDocument();
   });
 
   test('renders "See more" link', () => {
     render(<Logs />);
     const linkElement = screen.getByText(/See more/i);
-    expect(linkElement);
+    expect(linkElement).toBeInTheDocument();
   });
 
   test('prevents default action when "See more" link is clicked', () => {

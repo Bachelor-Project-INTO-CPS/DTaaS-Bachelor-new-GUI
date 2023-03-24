@@ -1,8 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
-import { describe, expect, it } from '@jest/globals';
 import '@testing-library/jest-dom/extend-expect'
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
@@ -16,7 +11,7 @@ describe('Chart', () => {
     ResizeObserverMock as unknown as typeof ResizeObserver;
     render(<Chart />);
     const titleElement = screen.getByText('Observed Output');
-    expect(titleElement);
+    expect(titleElement).toBeInTheDocument();
   });
 
 });

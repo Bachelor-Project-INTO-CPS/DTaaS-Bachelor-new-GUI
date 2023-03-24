@@ -6,14 +6,14 @@ describe('RecentRuns component', () => {
   test('renders table with rows', () => {
     render(<RecentRuns />);
     // Check if table headers exist
-    expect(screen.getByText('Date'));
-    expect(screen.getByText('Name'));
+    expect(screen.getByText('Date')).toBeInTheDocument();
+    expect(screen.getByText('Name')).toBeInTheDocument();
   });
 
   test('renders see more link', () => {
     render(<RecentRuns />);
     // Check if see more link exists
-    expect(screen.getByRole('link'));
+    expect(screen.getByRole('link')).toBeInTheDocument();
   });
 
   test('prevents default action when see more link is clicked', () => {

@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { describe, expect, it } from '@jest/globals';
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react';
