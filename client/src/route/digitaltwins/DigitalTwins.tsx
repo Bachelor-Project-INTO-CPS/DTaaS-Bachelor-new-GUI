@@ -4,11 +4,9 @@ import Workflows from './Workflows';
 
 function DTContent() {
   return (
-    <>
-      <Layout>
-        <Workflows />
-      </Layout>
-    </>
+    <Layout>
+      <Workflows />
+    </Layout>
   );
 }
 
