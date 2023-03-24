@@ -29,7 +29,11 @@ function Layout(props: { children: React.ReactNode }) {
           className="content"
         >
           <Grid container spacing={3} sx={{ minHeight: '100%' }}>
-            {props.children}
+            {React.Children.map(props.children, (child) => (
+              <Grid item xs={12} md={12} lg={12}>
+                {child}
+              </Grid>
+            ))}
           </Grid>
         </Container>
         <Footer />

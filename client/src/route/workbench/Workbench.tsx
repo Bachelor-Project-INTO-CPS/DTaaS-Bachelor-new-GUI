@@ -1,4 +1,4 @@
-import { Grid, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import Iframe from 'components/Iframe';
 import Layout from 'page/Layout';
 import * as React from 'react';
@@ -12,16 +12,14 @@ function WorkBenchContent() {
 
   return (
     <Layout>
-      <Grid item xs={12} md={12} lg={12}>
-        <Paper
-          sx={{
-            p: 2,
-            height: '100%',
-          }}
-        >
-          <Iframe title="workbench-sandbox" url={UrlWorkbench} />
-        </Paper>
-      </Grid>
+      <Paper
+        sx={{
+          p: 2,
+          height: '100%',
+        }}
+      >
+        <Iframe title="workbench-sandbox" url={UrlWorkbench} />
+      </Paper>
     </Layout>
   );
 }
