@@ -5,12 +5,14 @@ import Workflows from './Workflows';
 
 function DTContent() {
   return (
-    <Layout>
+    <>
       {/** items goes here */}
-      <Grid item xs={12} md={12} lg={12}>
-        <Workflows />
-      </Grid>
-    </Layout>
+      <Layout>
+        <Grid item xs={12} md={12} lg={12}>
+          <Workflows />
+        </Grid>
+      </Layout>
+    </>
   );
 }
 
