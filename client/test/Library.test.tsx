@@ -6,18 +6,17 @@ jest.mock('../src/route/library/Components', () => ({
   default: () => <div>LibComponents-mock</div>,
 }));
 
-describe('Library', () => {
+describe('Library with no props', () => {
   beforeEach(() => {
     jest.resetAllMocks();
+    render(<Library />);
   });
 
   it('renders Library', () => {
-    render(<Library />);
     expect(true);
   });
 
   it('renders LibComponents', () => {
-    render(<Library />);
     expect(screen.queryByText('LibComponents-mock')).toBeInTheDocument();
   });
 });
