@@ -16,9 +16,7 @@ function createData(id: number, date: string, name: string) {
   };
 }
 
-function preventDefault(
-  event: React.MouseEvent<HTMLAnchorElement> & React.MouseEvent<HTMLSpanElement>
-) {
+function preventDefault(event: React.MouseEvent) {
   event.preventDefault();
 }
 

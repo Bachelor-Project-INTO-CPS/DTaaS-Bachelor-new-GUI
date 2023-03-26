@@ -1,24 +1,27 @@
-import { describe, expect, it } from '@jest/globals';
-import '@testing-library/jest-dom/extend-expect'
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as React from 'react';
-import 'resize-observer-polyfill';
-import RecentRuns from 'route/history/RecentRuns';
-import Logs from 'route/history/Logs';
 import DTHistory from 'route/history/History';
 
-jest.mock( 'route/history/RecentRuns');
-jest.mock('route/history/Logs');
+jest.mock('route/history/RecentRuns', () => ({
+  default: () => <div>RecentRuns-mock</div>,
+}));
+jest.mock('route/history/Logs', () => ({
+  default: () => <div>Logs-mock</div>,
+}));
+jest.mock('page/Layout', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div>{children}</div>
+  ),
+}));
 
 describe('DTHistory', () => {
-
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
   it('renders RecentRuns and Logs components', () => {
     render(<DTHistory />);
-    expect(RecentRuns).toHaveBeenCalled();
-    expect(Logs).toHaveBeenCalled();
+    expect(screen.queryByText('RecentRuns-mock')).toBeInTheDocument();
+    expect(screen.queryByText('Logs-mock')).toBeInTheDocument();
   });
 });
