@@ -3,8 +3,15 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Header Contents and Navigation Links', () => {
-  test('Navigation Links on the dashboard page', async ({ page }) => {
+  test('Navigation Links on the dashboard page', async ({
+    page,
+    browserName,
+  }) => {
     await page.goto('/dashboard');
+    // Only run if chrome is used
+    if (browserName === 'chromium') {
+      await page.coverage.startJSCoverage();
+    }
     await page.locator('div[role="button"]:has-text("Dashboard")').click();
     await expect(page).toHaveURL('/dashboard');
 
@@ -25,10 +32,17 @@ test.describe('Header Contents and Navigation Links', () => {
     await page.goto('/dashboard');
     await page.locator('div[role="button"]:has-text("History")').click();
     await expect(page).toHaveURL('/history');
+    if (browserName === 'chromium') {
+      await page.coverage?.stopJSCoverage();
+    }
   });
 
-  test('Navigation Links on the Library page', async ({ page }) => {
+  test('Navigation Links on the Library page', async ({
+    page,
+    browserName,
+  }) => {
     await page.goto('/library');
+    if (browserName === 'chromium') await page.coverage.startJSCoverage();
     await page.locator('div[role="button"]:has-text("Dashboard")').click();
     await expect(page).toHaveURL('/dashboard');
 
@@ -49,10 +63,15 @@ test.describe('Header Contents and Navigation Links', () => {
     await page.goto('/library');
     await page.locator('div[role="button"]:has-text("History")').click();
     await expect(page).toHaveURL('/history');
+    if (browserName === 'chromium') await page.coverage.stopJSCoverage();
   });
 
-  test('Navigation Links on the Digital Twins page', async ({ page }) => {
+  test('Navigation Links on the Digital Twins page', async ({
+    page,
+    browserName,
+  }) => {
     await page.goto('/digitaltwins');
+    if (browserName === 'chromium') await page.coverage.startJSCoverage();
     await page.locator('div[role="button"]:has-text("Dashboard")').click();
     await expect(page).toHaveURL('/dashboard');
 
@@ -73,10 +92,15 @@ test.describe('Header Contents and Navigation Links', () => {
     await page.goto('/digitaltwins');
     await page.locator('div[role="button"]:has-text("History")').click();
     await expect(page).toHaveURL('/history');
+    if (browserName === 'chromium') await page.coverage.stopJSCoverage();
   });
 
-  test('Navigation Links on the Scenario Analysis page', async ({ page }) => {
+  test('Navigation Links on the Scenario Analysis page', async ({
+    page,
+    browserName,
+  }) => {
     await page.goto('/sanalysis');
+    if (browserName === 'chromium') await page.coverage.startJSCoverage();
     await page.locator('div[role="button"]:has-text("Dashboard")').click();
     await expect(page).toHaveURL('/dashboard');
 
@@ -97,5 +121,6 @@ test.describe('Header Contents and Navigation Links', () => {
     await page.goto('/sanalysis');
     await page.locator('div[role="button"]:has-text("History")').click();
     await expect(page).toHaveURL('/history');
+    if (browserName === 'chromium') await page.coverage.stopJSCoverage();
   });
 });
