@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+if [ "$1" = "-y" ]; then
+    echo "Skipping pre-push hook"
+    exit 0
+fi
+
+if git git diff --name-only origin...HEAD | grep "^client/" >/dev/null; then
+    cd client
+    set +e # Disable 'errexit' option
+    exitCode=$(
+        yarn jest . --coverage=false >unittest.log 2>&1
+        echo $?
+    )
+    set -e # Enable 'errexit' option again
+
+    # Check if pre-commit commands failed
+    if [ $exitCode -ne 0 ]; then
+        echo "WARNING! Some tests failed, check the log for info."
+        exec </dev/tty # Open file descriptor
+        read -p 'Do you want to continue with the commit? [y/n]: ' response
+        exec <&- # Close file descriptor
+        if [ "$response" != "y" ] && [ "$response" != "Y" ]; then
+            echo "Aborting commit."
+            exit 1 # Exit with non-zero status code
+        else
+            echo "Continuing with the commit."
+        fi
+    fi
+else
+    echo "No changes in the client directory. Skipping pre-commit hook."
+fi
+
+echo "Finished pre-commit hook"
