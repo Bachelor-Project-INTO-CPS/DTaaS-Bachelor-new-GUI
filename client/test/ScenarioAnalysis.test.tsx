@@ -6,6 +6,12 @@ jest.mock('route/scenarioAnalysis/Workflows', () => ({
   default: () => <div>workflows-mock</div>,
 }));
 
+jest.mock('page/Layout', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div>{children}</div>
+  ),
+}));
+
 describe('ScenarioAnalysis', () => {
   beforeEach(() => {
     jest.resetAllMocks();
