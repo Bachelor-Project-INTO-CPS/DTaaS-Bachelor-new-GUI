@@ -9,17 +9,17 @@ import tabs from './WorkflowsData';
 
 const DTs: DTControl[] = [
   {
-    id: '1',
+    id: 1,
     name: 'DT1',
     status: 'on',
   },
   {
-    id: '2',
+    id: 2,
     name: 'DT2',
     status: 'off',
   },
   {
-    id: '3',
+    id: 3,
     name: 'DT3',
     status: 'on',
   },

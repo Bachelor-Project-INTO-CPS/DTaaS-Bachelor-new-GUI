@@ -9,10 +9,9 @@ export interface DTControl {
 function DTSwitch(props: { DT: DTControl }) {
   return (
     <div>
-      <h1>DTSwitch</h1>
-      <p>
-        {props.DT.name} + {props.DT.status}
-      </p>
+      <h1>DTSwitch{props.DT.id}</h1>
+      <p>{props.DT.name}</p>
+      <p>{props.DT.status}</p>
     </div>
   );
 }
