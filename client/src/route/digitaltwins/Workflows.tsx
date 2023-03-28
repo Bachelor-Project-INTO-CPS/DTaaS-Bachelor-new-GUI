@@ -11,17 +11,17 @@ const DTs: DTControl[] = [
   {
     id: 1,
     name: 'DT1',
-    status: 'on',
+    running: true,
   },
   {
     id: 2,
     name: 'DT2',
-    status: 'off',
+    running: false,
   },
   {
     id: 3,
     name: 'DT3',
-    status: 'on',
+    running: true,
   },
 ];
 
