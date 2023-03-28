@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface DTControl {
-  id: string;
+  id: number;
   name: string;
   status: string;
 }
