@@ -1,9 +1,6 @@
+import { Box, Typography } from '@mui/material';
 import * as React from 'react';
 import DTSwitch, { DTControl } from './DTSwitch';
-
-// Could use a local state to store the DTs, but I think it's better to use
-// the props to store the DTs. This way, the DTs can be passed in from the
-// parent component.
 
 function DTboard(props: { DTs?: DTControl[] }) {
   let DTOverview = <></>;
@@ -20,10 +17,28 @@ function DTboard(props: { DTs?: DTControl[] }) {
   }
 
   return (
-    <div>
-      <h1>DTboard</h1>
-      {DTOverview}
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: 1,
+        alignContent: 'stretch',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Typography variant="h4" sx={{ textAlign: 'center' }}>
+        Digital Twins
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+        }}
+      >
+        {DTOverview}
+      </Box>
+    </Box>
   );
 }
 
