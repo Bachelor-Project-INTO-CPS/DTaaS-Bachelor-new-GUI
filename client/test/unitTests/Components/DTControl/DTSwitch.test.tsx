@@ -4,23 +4,39 @@ import DTSwitch from 'components/DTControl/DTSwitch';
 
 describe('DTSwitch', () => {
   it('renders', () => {
-    render(<DTSwitch DT={{ id: 0, name: 'DT1', status: 'on' }} />);
+    render(<DTSwitch DT={{ id: 0, name: 'DT1', running: true }} />);
     expect(true);
   });
 
-  it('renders the content of the DT on', () => {
-    render(<DTSwitch DT={{ id: 0, name: 'DT1', status: 'on' }} />);
-    const name = screen.getByText('DT1');
-    const status = screen.getByText('on');
+  it('renders the content of the DT running', () => {
+    const testDT = { id: 0, name: 'DT1', running: true };
+    render(<DTSwitch DT={testDT} />);
+    const name = screen.getByText(testDT.name);
+    const DT1switch = screen.getByRole('switch', { name: `DT${testDT.id}` });
     expect(name).toBeInTheDocument();
-    expect(status).toBeInTheDocument();
+    expect(DT1switch).toBeInTheDocument();
   });
 
-  it('renders the content of the DT off', () => {
-    render(<DTSwitch DT={{ id: 0, name: 'DT1', status: 'off' }} />);
-    const name = screen.getByText('DT1');
-    const status = screen.getByText('off');
+  it('has the switch checked', () => {
+    const testDT = { id: 0, name: 'DT1', running: true };
+    render(<DTSwitch DT={testDT} />);
+    const DT1switch = screen.getByRole('switch', { name: `DT${testDT.id}` });
+    expect(DT1switch).toBeChecked();
+  });
+
+  it('renders the content of the DT stopped', () => {
+    const testDT = { id: 0, name: 'DT1', running: false };
+    render(<DTSwitch DT={testDT} />);
+    const name = screen.getByText(testDT.name);
+    const DT1switch = screen.getByRole('switch', { name: `DT${testDT.id}` });
     expect(name).toBeInTheDocument();
-    expect(status).toBeInTheDocument();
+    expect(DT1switch).toBeInTheDocument();
+  });
+
+  it('has the switch checked', () => {
+    const testDT = { id: 0, name: 'DT1', running: false };
+    render(<DTSwitch DT={testDT} />);
+    const DT1switch = screen.getByRole('switch', { name: `DT${testDT.id}` });
+    expect(DT1switch).not.toBeChecked();
   });
 });

@@ -40,6 +40,9 @@ function DTSwitch(props: { DT: DTControl }) {
       >
         <Typography variant="h5">{props.DT.name}</Typography>
         <Switch
+          role={'switch'}
+          name={`DT${props.DT.id}`}
+          aria-checked={props.DT.running}
           aria-label={`DT${props.DT.id}`}
           checked={props.DT.running}
           onChange={handleChange}

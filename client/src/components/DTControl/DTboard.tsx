@@ -21,13 +21,13 @@ function DTboard(props: { DTs?: DTControl[] }) {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        flexGrow: 1,
+        // flexGrow: 1,
         alignContent: 'stretch',
         flexWrap: 'wrap',
       }}
     >
       <Typography variant="h4" sx={{ textAlign: 'center' }}>
-        Digital Twins
+        Your Digital Twins
       </Typography>
       <Box
         sx={{

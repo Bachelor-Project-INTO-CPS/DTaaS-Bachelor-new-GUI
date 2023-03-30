@@ -1,41 +1,64 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import DTboard, { DTControl } from 'components/DTControl/DTboard';
 
 jest.mock('components/DTControl/DTSwitch', () => ({
   default: ({ DT }: { DT: DTControl }) => (
-    <>
-      <div>DT: {DT.name}</div>
-      <div>Status: {DT.running}</div>
-    </>
+    <div data-testid={DT.id}>
+      <div>{DT.name}</div>
+      <div>Running: {DT.running ? 'true' : 'false'}</div>
+    </div>
   ),
 }));
 
 describe('DTboard', () => {
   it('renders with no DTs', () => {
     render(<DTboard />);
-    const DTboardElement = screen.getByText('DTboard');
+
+    const DTboardElement = screen.getByText('Your Digital Twins', {
+      exact: false,
+      selector: 'h4',
+    });
+    const noDTsElement = screen.getByText('No DTs');
+
     expect(DTboardElement).toBeInTheDocument();
+    expect(noDTsElement).toBeInTheDocument();
   });
 
   it('renders with 1 DT', () => {
-    render(<DTboard />);
-    const DTboardElement = screen.getByText('DTboard');
+    render(<DTboard DTs={[{ id: 0, name: 'DT1', running: true }]} />);
+
+    const DTboardElement = screen.getByText('Your Digital Twins', {
+      exact: false,
+      selector: 'h4',
+    });
+    const noDTsElement = screen.queryByText('No DTs');
+
     expect(DTboardElement).toBeInTheDocument();
+    expect(noDTsElement).not.toBeInTheDocument();
   });
 
   it('renders the content of 1 DT', () => {
     const DTs: DTControl[] = [{ id: 0, name: 'DT1', running: true }];
     render(<DTboard DTs={DTs} />);
-    const DT1 = screen.getByText('DT: DT1');
-    const DT1Status = screen.getByText('Status: true');
+
+    const DT1 = screen.getByTestId(DTs[0].id);
+    const DT1Status = within(DT1).getByText('Running: true');
+
     expect(DT1).toBeInTheDocument();
     expect(DT1Status).toBeInTheDocument();
   });
 
   it('renders with multiple DTs', () => {
-    render(<DTboard />);
-    const DTboardElement = screen.getByText('DTboard');
+    const DTs: DTControl[] = [
+      { id: 0, name: 'DT1', running: true },
+      { id: 1, name: 'DT2', running: false },
+      { id: 2, name: 'DT3', running: true },
+    ];
+    render(<DTboard DTs={DTs} />);
+
+    const DTboardElement = screen.getByText('Your Digital Twins');
+
     expect(DTboardElement).toBeInTheDocument();
   });
 
@@ -46,12 +69,14 @@ describe('DTboard', () => {
       { id: 2, name: 'DT3', running: true },
     ];
     render(<DTboard DTs={DTs} />);
-    const DT1 = screen.getByText('DT: DT1');
-    const DT2 = screen.getByText('DT: DT2');
-    const DT3 = screen.getByText('DT: DT3');
-    const DT1Status = screen.getByText('Status: false');
-    const DT2Status = screen.getByText('Status: false');
-    const DT3Status = screen.getByText('Status: false');
+
+    const DT1 = screen.getByTestId(DTs[0].id);
+    const DT2 = screen.getByTestId(DTs[1].id);
+    const DT3 = screen.getByTestId(DTs[2].id);
+
+    const DT1Status = within(DT1).getByText('Running: true');
+    const DT2Status = within(DT2).getByText('Running: false');
+    const DT3Status = within(DT3).getByText('Running: true');
     expect(DT1).toBeInTheDocument();
     expect(DT2).toBeInTheDocument();
     expect(DT3).toBeInTheDocument();
