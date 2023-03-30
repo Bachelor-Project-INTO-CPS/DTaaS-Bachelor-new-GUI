@@ -2,7 +2,7 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Layout from 'page/Layout';
-import RecentRuns from './RecentRuns';
+import RecentRuns from 'components/RecentRuns';
 import Logs from './Logs';
 
 function DTHistory() {
