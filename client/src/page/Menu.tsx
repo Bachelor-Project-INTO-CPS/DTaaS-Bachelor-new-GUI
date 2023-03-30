@@ -7,19 +7,10 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import MenuToolbar from './MenuToolbar';
-
+import MenuToolbar, { transition } from './MenuToolbar';
 import MenuItems from './MenuItems';
 
 const drawerWidth = 240;
-
-const transition = ({ theme, open }: { theme: Theme; open: boolean }) =>
-  theme.transitions.create(['width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: open
-      ? theme.transitions.duration.enteringScreen
-      : theme.transitions.duration.leavingScreen,
-  });
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
