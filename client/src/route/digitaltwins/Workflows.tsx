@@ -5,6 +5,7 @@ import TabComponent, {
   TabData,
 } from 'components/tab/TabComponent';
 import DTboard, { DTControl } from 'components/DTControl/DTboard';
+import { Typography } from '@mui/material';
 import tabs from './WorkflowsData';
 
 const DTs: DTControl[] = [
@@ -32,7 +33,6 @@ const tabData: TabData[] = createTabData(
     label: tab.label,
     body: (
       <>
-        {tab.body}
         {tab.label === 'Execute' && <DTboard DTs={DTs} />}
         {i === 0 && tab.label !== 'Execute' && (
           <Iframe
@@ -41,6 +41,7 @@ const tabData: TabData[] = createTabData(
             fullsize
           />
         )}
+        <Typography>{tab.body}</Typography>
       </>
     ),
   })),

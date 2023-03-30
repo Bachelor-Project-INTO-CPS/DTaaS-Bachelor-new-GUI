@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { TabData } from 'components/tab/TabComponent';
 
 interface TabPanelProps {
@@ -23,15 +23,7 @@ function TabPanel(props: TabPanelProps) {
           : { minHeight: '100%' }),
       }}
     >
-      <Typography
-        sx={
-          tab.fullsize && active
-            ? { display: 'flex', flexDirection: 'column', flexGrow: 1 }
-            : { minHeight: '100%' }
-        }
-      >
-        {tab.body}
-      </Typography>
+      {tab.body}
     </Box>
   );
 }
