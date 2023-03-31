@@ -13,18 +13,32 @@ const links: TestLink[] = [
   { text: 'Scenario Analysis', url: '/sanalysis' },
   { text: 'History', url: '/history' },
 ];
+
 test.describe('Header Contents and Navigation Links', () => {
-  for (const link in links) {
-    test(`Navigation to ${links[link].text} link on the dashboard page`, async ({
+  links.forEach((link) => {
+    test(`Navigation to ${link.text} link on the dashboard page`, async ({
       page,
     }) => {
-      await page.goto(`${links[link].url}`);
-      for (const link in links) {
-        await page
-          .locator(`div[role="button"]:has-text("${links[link].text}")`)
-          .click();
-        await expect(page).toHaveURL(links[link].url);
-      }
+      await page.goto(`${link.url}`);
+      await expect(page).toHaveURL(link.url);
     });
-  }
+  });
+});
+
+test.describe('Navigation from each link to other links', () => {
+  links.forEach((link) => {
+    test(`Navigation from ${link.text} link to other links`, async ({
+      page,
+    }) => {
+      await page.goto(`${link.url}`);
+      links.forEach(async (linkToClick) => {
+        if (linkToClick !== link) {
+          await page
+            .locator(`div[role="button"]:has-text("${linkToClick.text}")`)
+            .click();
+          await expect(page).toHaveURL(linkToClick.url);
+        }
+      });
+    });
+  });
 });
