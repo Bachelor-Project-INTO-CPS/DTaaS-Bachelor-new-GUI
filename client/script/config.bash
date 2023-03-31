@@ -10,7 +10,7 @@ if [ -z "$mode" ]; then
 fi
 
 set_env() {
-    printf "Setting env to $1"
+    printf "Setting env to %s" "$1"
     cp "config/$1.js" "public/env.js" # Configure dev environment in public for next build
     if [ -d build ]; then
         cp "public/env.js" "build/env.js" # Hot swap dev to build
