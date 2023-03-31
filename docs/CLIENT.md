@@ -8,7 +8,7 @@ To implement the build on your server, follow these steps:
 
 ```js
 window.env = {
-  REACT_APP_ENVIRONMENT: "test | prod | dev",
+  REACT_APP_ENVIRONMENT: "prod | dev",
   REACT_APP_URL_LIB: "URL for the library components",
   REACT_APP_URL_DT: "URL for the Digital Twins",
   REACT_APP_URL_WORKBENCH: "URL for the workbench",
