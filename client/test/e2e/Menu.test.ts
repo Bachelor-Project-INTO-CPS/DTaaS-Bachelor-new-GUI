@@ -31,14 +31,14 @@ test.describe('Navigation from each link to other links', () => {
       page,
     }) => {
       await page.goto(`${link.url}`);
-      links.forEach(async (linkToClick) => {
+      for (const linkToClick of links) {
         if (linkToClick !== link) {
           await page
             .locator(`div[role="button"]:has-text("${linkToClick.text}")`)
             .click();
           await expect(page).toHaveURL(linkToClick.url);
         }
-      });
+      }
     });
   });
 });
