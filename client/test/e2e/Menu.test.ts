@@ -31,8 +31,10 @@ test.describe('Navigation from each link to other links', () => {
       page,
     }) => {
       await page.goto(`${link.url}`);
+      /* eslint-disable no-restricted-syntax */
       for (const linkToClick of links) {
         if (linkToClick !== link) {
+          /* eslint-disable no-await-in-loop */
           await page
             .locator(`div[role="button"]:has-text("${linkToClick.text}")`)
             .click();
