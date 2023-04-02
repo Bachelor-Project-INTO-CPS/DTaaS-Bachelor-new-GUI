@@ -2,32 +2,28 @@ import * as React from 'react';
 import { Box, Typography } from '@mui/material';
 import { TabData } from 'components/tab/TabComponent';
 
-interface TabPanelProps {
+
+interface TabRenderProps {
   children: TabData;
-  active?: boolean;
 }
 
-function TabPanel(props: TabPanelProps) {
-  const { children: tab, active } = props;
+function TabRender(props: TabRenderProps) {
+  const { children: tab } = props;
 
   return (
     <Box
       role="tabpanel"
-      display={active ? 'block' : 'none'}
       id={`simple-tabpanel-${tab.index}`}
       aria-labelledby={`simple-tab-${tab.index}`}
       sx={{
         p: 2,
-        ...(tab.fullsize && active
-          ? { display: 'flex', flexDirection: 'column', flexGrow: 1 }
-          : { minHeight: '100%' }),
+        height: '100%',
+        display: 'flex', flexDirection: 'column', flexGrow: 1 
       }}
     >
       <Typography
         sx={
-          tab.fullsize && active
-            ? { display: 'flex', flexDirection: 'column', flexGrow: 1 }
-            : { minHeight: '100%' }
+            { display: 'flex', flexDirection: 'column', flexGrow: 1 }
         }
       >
         {tab.body}
@@ -43,6 +39,6 @@ function a11yProps(index: number) {
   };
 }
 
-export default TabPanel;
+export default TabRender;
 
 export { a11yProps };
