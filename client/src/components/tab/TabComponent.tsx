@@ -25,28 +25,28 @@ export function createTabData(
 }
 
 function TabComponent(props: { tabs: TabData[] }) {
-
   return (
-  <Paper sx={{
-    p: 2,
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100%' ,
-  }}>
-        <Tabs >
-            <TabList>
+    <Paper
+      sx={{
+        p: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100%',
+      }}
+    >
+      <Tabs>
+        <TabList>
           {props.tabs.map((tab) => (
             <Tab key={tab.index}>{tab.label}</Tab>
           ))}
-          </TabList>
-          {props.tabs.map((tab) => (
-            <TabPanel key={tab.index}>
-              <TabRender >{tab}</TabRender>
-            </TabPanel>
-             ))}         
-        </Tabs>
+        </TabList>
+        {props.tabs.map((tab) => (
+          <TabPanel key={tab.index}>
+            <TabRender>{tab}</TabRender>
+          </TabPanel>
+        ))}
+      </Tabs>
     </Paper>
-
   );
 }
 

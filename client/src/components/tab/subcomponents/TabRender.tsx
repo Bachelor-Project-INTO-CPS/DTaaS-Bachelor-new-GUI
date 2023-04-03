@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Box, Typography } from '@mui/material';
 import { TabData } from 'components/tab/TabComponent';
 
-
 interface TabRenderProps {
   children: TabData;
 }
@@ -18,13 +17,13 @@ function TabRender(props: TabRenderProps) {
       sx={{
         p: 2,
         height: '100%',
-        display: 'flex', flexDirection: 'column', flexGrow: 1 
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: 1,
       }}
     >
       <Typography
-        sx={
-            { display: 'flex', flexDirection: 'column', flexGrow: 1 }
-        }
+        sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}
       >
         {tab.body}
       </Typography>
@@ -33,4 +32,3 @@ function TabRender(props: TabRenderProps) {
 }
 
 export default TabRender;
-

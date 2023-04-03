@@ -23,13 +23,14 @@ describe('TabComponent', () => {
       { label: 'Tab 2', body: <div>Tab 2 content</div> },
       { label: 'Tab 3', body: <div>Tab 3 content</div> },
     ]);
-    const { getByText, getByRole,queryByText} = render(<TabComponent tabs={tabs} />);
-    const tab = getByRole('tab',{name:'Tab 2'});
-    
+    const { getByText, getByRole, queryByText } = render(
+      <TabComponent tabs={tabs} />
+    );
+    const tab = getByRole('tab', { name: 'Tab 2' });
+
     await userEvent.click(tab);
     expect(queryByText('Tab 1 content')).not.toBeInTheDocument();
     expect(getByText('Tab 2 content')).toBeInTheDocument();
     expect(queryByText('Tab 3 content')).not.toBeInTheDocument();
-
   });
 });

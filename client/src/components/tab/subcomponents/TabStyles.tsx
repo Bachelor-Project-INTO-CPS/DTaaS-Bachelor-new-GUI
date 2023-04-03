@@ -56,4 +56,9 @@ const StyledTabPanel = styled(TabPanel)`
   }
 `;
 
-export {StyledTab as Tab, StyledTabList as TabList, StyledTabPanel as TabPanel, StyledTabs as Tabs}
+export {
+  StyledTab as Tab,
+  StyledTabList as TabList,
+  StyledTabPanel as TabPanel,
+  StyledTabs as Tabs,
+};
