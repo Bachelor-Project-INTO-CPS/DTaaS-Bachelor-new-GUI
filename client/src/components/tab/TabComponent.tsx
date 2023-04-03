@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { Paper } from '@mui/material';
 import TabRender from './subcomponents/TabRender';
-import './react-tabs.css'
+import { Tab, TabList, TabPanel, Tabs } from './subcomponents/TabStyles';
 
 type TabDataIndex = number & { readonly __tabDataIndex: unique symbol };
 
