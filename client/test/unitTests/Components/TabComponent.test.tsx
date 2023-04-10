@@ -1,14 +1,22 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TabComponent, { createTabData } from 'components/tab/TabComponent';
+import TabComponent, { TabData } from 'components/tab/TabComponent';
 
 describe('TabComponent', () => {
+  test('empty tab renders',  () => {
+    const tabs: TabData[] = [
+    ];
+    render(<TabComponent tabs={tabs} />);
+    expect(true);
+
+  });
+
   test('renders tabs with labels and default tab open', () => {
-    const tabs = createTabData([
+    const tabs = [
       { label: 'Tab 1', body: <div>Tab 1 content</div> },
       { label: 'Tab 2', body: <div>Tab 2 content</div> },
-    ]);
+    ];
     const { getByText, queryByText } = render(<TabComponent tabs={tabs} />);
     expect(getByText('Tab 1')).toBeInTheDocument();
     expect(getByText('Tab 2')).toBeInTheDocument();
@@ -18,11 +26,11 @@ describe('TabComponent', () => {
   });
 
   test('change tab', async () => {
-    const tabs = createTabData([
+    const tabs = [
       { label: 'Tab 1', body: <div>Tab 1 content</div> },
       { label: 'Tab 2', body: <div>Tab 2 content</div> },
       { label: 'Tab 3', body: <div>Tab 3 content</div> },
-    ]);
+    ];
     const { getByText, getByRole, queryByText } = render(
       <TabComponent tabs={tabs} />
     );
@@ -33,4 +41,6 @@ describe('TabComponent', () => {
     expect(getByText('Tab 2 content')).toBeInTheDocument();
     expect(queryByText('Tab 3 content')).not.toBeInTheDocument();
   });
+
+
 });

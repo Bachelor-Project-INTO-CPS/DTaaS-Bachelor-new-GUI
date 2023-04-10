@@ -3,17 +3,18 @@ import { Box } from '@mui/material';
 import { TabData } from 'components/tab/TabComponent';
 
 interface TabRenderProps {
+  index: number;
   children: TabData;
 }
 
 function TabRender(props: TabRenderProps) {
-  const { children: tab } = props;
+  const { children: tab,index } = props;
 
   return (
     <Box
       role="tabpanel"
-      id={`simple-tabpanel-${tab.index}`}
-      aria-labelledby={`simple-tab-${tab.index}`}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
       sx={{
         p: 2,
         height: '100%',
