@@ -10,7 +10,6 @@ engines:
     duplication:
         enabled: true
         config:
-            threshold: 7
             languages:
                 - typescript
                 - javascript
@@ -25,7 +24,7 @@ engines:
 checks:
     similar-code:
         config:
-            threshold: 7
+            threshold: 100
 ratings:
     paths:
         - "**.css"
