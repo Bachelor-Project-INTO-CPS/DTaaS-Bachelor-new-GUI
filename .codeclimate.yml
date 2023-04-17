@@ -1,42 +1,25 @@
 ---
-engines:
+version: "2"
+plugins:
   shellcheck:
     enabled: true
-  checkstyle:
-    enabled: true
-    channel: "beta"
   csslint:
     enabled: true
   duplication:
     enabled: true
     config:
       languages:
-        - typescript
-        - javascript
-        - python
-        - php
+        - typescript:
+        - javascript:
+        - python:
+        - php:
   eslint:
     enabled: true
     config:
       config: .eslintrc
   fixme:
     enabled: true
-checks:
-  similar-code:
-    config:
-      threshold: 45
-ratings:
-  paths:
-    - "**.css"
-    - "**.inc"
-    - "**.ts"
-    - "**.js"
-    - "**.jsx"
-    - "**.tsx"
-    - "**.module"
-    - "**.sh"
-    - "**.bash"
-exclude_paths:
+exclude_patterns:
   - "**.md"
   - "**.txt"
   - "**.json"
