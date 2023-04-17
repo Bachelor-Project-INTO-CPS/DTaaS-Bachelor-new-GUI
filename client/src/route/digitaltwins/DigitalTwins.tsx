@@ -1,7 +1,8 @@
 import * as React from 'react';
 import Layout from 'page/Layout';
-import TabComponent, { TabData } from 'components/tab/TabComponent';
+import TabComponent from 'components/tab/TabComponent';
 import Iframe from 'components/Iframe';
+import { TabData } from 'components/tab/subcomponents/TabRender';
 import tabs from './DigitalTwinData';
 
 const jupyterURL = window.env.REACT_APP_URL_DT;
