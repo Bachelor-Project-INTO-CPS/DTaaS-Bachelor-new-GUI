@@ -3,7 +3,7 @@ import Layout from 'page/Layout';
 import TabComponent from 'components/tab/TabComponent';
 import Iframe from 'components/Iframe';
 import { TabData } from 'components/tab/subcomponents/TabRender';
-import tabs from './DigitalTwinData';
+import tabs from './DigitalTwinTabData';
 
 const jupyterURL = window.env.REACT_APP_URL_DT;
 
