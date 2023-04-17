@@ -24,7 +24,7 @@ engines:
 checks:
     similar-code:
         config:
-            threshold: 50
+            threshold: 45
 ratings:
     paths:
         - "**.css"
