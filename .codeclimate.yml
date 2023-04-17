@@ -21,6 +21,10 @@ engines:
             config: .eslintrc
     fixme:
         enabled: true
+checks:
+    similar-code:
+        config:
+            threshold: 10
 ratings:
     paths:
         - "**.css"
