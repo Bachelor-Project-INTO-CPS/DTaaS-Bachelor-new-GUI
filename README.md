@@ -24,7 +24,7 @@ Before you make commits, please install the git hooks provided in the repository
 script/configure-git-hooks.sh
 ```
 
-This will ensure that your commits are formatted correctly and that the tests pass before you push your changes.
+This will ensure that your commits are formatted correctly and that the unittests pass before you push your changes. Be aware that the tests take a long time to run. If you want to skip the tests or formatting, you can use the `--no-verify` flag on `git commit` or `git push`.
 
 ### Infrastructure Components
 

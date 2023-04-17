@@ -5,5 +5,5 @@ if git diff --cached --name-only | grep "^client/" >/dev/null; then
     yarn install
     yarn format && yarn syntax
 else
-    echo "No changes in the client directory. Skipping pre-commit hook."
+    printf "No changes in the client directory. Skipping pre-commit hook."
 fi
