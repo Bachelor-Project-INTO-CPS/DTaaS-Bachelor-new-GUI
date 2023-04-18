@@ -1,4 +1,5 @@
 import * as React from 'react';
+import IframeReact from 'react-iframe';
 
 interface IFrameProps {
   url: string;
@@ -8,7 +9,12 @@ interface IFrameProps {
 function Iframe({ url, title }: IFrameProps) {
   // Be aware sandbox is not supported by current JupyterLight implementation.
   return (
-    <iframe title={title} src={url} width="100%" style={{ flexGrow: '1' }} />
+    <IframeReact
+      title={title}
+      url={url}
+      width="100%"
+      styles={{ flexGrow: '1' }}
+    />
   );
 }
 
