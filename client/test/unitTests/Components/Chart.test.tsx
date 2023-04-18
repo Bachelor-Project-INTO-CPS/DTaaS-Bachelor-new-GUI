@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import Chart from 'components/Chart';
 
+jest.mock('components/Chart', () => ({
+  default: jest.requireActual('components/Chart').default,
+}));
+
 jest.mock('recharts', () => ({
   ResponsiveContainer: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
@@ -14,7 +18,7 @@ jest.mock('page/Title', () => ({
 }));
 
 describe('Chart', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     // Supress console.error messages. This is a hack to avoid errors from
     // recharts. Rechart is being mocked, so it should not be throwing errors.
     jest.spyOn(console, 'error').mockImplementation();

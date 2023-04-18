@@ -1,29 +1,37 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import ScenarioAnalysis from 'route/scenarioAnalysis/ScenarioAnalysis';
-
-jest.mock('route/scenarioAnalysis/Workflows', () => ({
-  default: () => <div>workflows-mock</div>,
-}));
-
-jest.mock('page/Layout', () => ({
-  default: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-}));
+import tabs from 'route/scenarioAnalysis/ScenarioAnalysisTabData';
 
 describe('ScenarioAnalysis', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    render(<ScenarioAnalysis />);
   });
 
   it('renders ScenarioAnalysis', () => {
-    render(<ScenarioAnalysis />);
     expect(true);
   });
 
-  it('renders components', () => {
-    render(<ScenarioAnalysis />);
-    expect(screen.queryByText('workflows-mock')).toBeInTheDocument();
+  it('should render labels of all tabs', () => {
+    tabs.forEach((tab) => {
+      expect(screen.getByRole('tab', { name: tab.label })).toBeInTheDocument();
+    });
+  });
+
+  it('should render the data clicked tab', () => {
+    tabs.forEach((tab) => {
+      const tabElement = screen.getByRole('tab', { name: tab.label });
+      act(() => {
+        tabElement.click();
+      });
+      expect(screen.getByText(tab.body)).toBeInTheDocument();
+
+      // Expect the other tabs to not be rendered
+      tabs
+        .filter((otherTab) => otherTab.label !== tab.label)
+        .forEach((otherTab) => {
+          expect(screen.queryByText(otherTab.body)).not.toBeInTheDocument();
+        });
+    });
   });
 });

@@ -3,20 +3,18 @@ import Layout from 'page/Layout';
 import TabComponent from 'components/tab/TabComponent';
 import Iframe from 'components/Iframe';
 import { TabData } from 'components/tab/subcomponents/TabRender';
+import { getURLforLIB } from 'util/envUtil';
+import { Typography } from '@mui/material';
 import tabs from './LibraryTabData';
 
-const jupyterURL = window.env.REACT_APP_URL_LIB;
+const jupyterURL = getURLforLIB();
 
 const tabsData: TabData[] = tabs.map((tab) => ({
   label: tab.label,
   body: (
     <>
-      {tab.body}
-      <Iframe
-        title={`JupyterLight-Demo-${tab.label}`}
-        url={`${jupyterURL}`}
-        fullsize
-      />
+      <Typography variant="body1">{tab.body}</Typography>
+      <Iframe title={`JupyterLight-Demo-${tab.label}`} url={`${jupyterURL}`} />
     </>
   ),
 }));
