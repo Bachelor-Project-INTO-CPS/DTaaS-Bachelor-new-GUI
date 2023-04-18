@@ -1,4 +1,6 @@
-const tabs = [
+import { ITabs } from 'route/IData';
+
+const tabs: ITabs[] = [
   {
     label: 'Define',
     body: 'Create multiple scenarios and potentially select the execution infrastructure.',
