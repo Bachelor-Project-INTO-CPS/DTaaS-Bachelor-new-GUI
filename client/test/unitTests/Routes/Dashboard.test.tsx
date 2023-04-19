@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import Dashboard from 'route/dashboard/Dashboard';
+import { InitRouteTests } from '../testUtils';
 
 describe('Dashboard', () => {
-  beforeEach(() => {
-    render(<Dashboard />);
-  });
-
-  it('renders Dashboard', () => {
-    expect(true);
-  });
+  InitRouteTests(<Dashboard />);
 
   it('renders Chart and RecentRuns components', () => {
     expect(screen.queryByText('chart-mock')).toBeInTheDocument();
