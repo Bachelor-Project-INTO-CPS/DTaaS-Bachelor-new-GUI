@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { createEvent, fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Logs from 'route/history/Logs';
+import { itPreventsDefaultActionWhenLinkIsClicked } from '../testUtils';
 
 jest.mock('route/history/Logs', () => ({
   default: jest.requireActual('route/history/Logs').default,
@@ -26,11 +27,5 @@ describe('Logs', () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  test('prevents default action when "See more" link is clicked', () => {
-    const seeMoreLink = screen.getByText('See more');
-    // Simulate click event on see more link
-    const clickEvent = createEvent.click(seeMoreLink);
-    fireEvent(seeMoreLink, clickEvent);
-    expect(clickEvent.defaultPrevented).toBeTruthy();
-  });
+  itPreventsDefaultActionWhenLinkIsClicked('See more');
 });

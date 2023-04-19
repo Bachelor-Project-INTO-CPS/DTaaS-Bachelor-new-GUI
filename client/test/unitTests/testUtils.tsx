@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {
   act,
+  createEvent,
+  fireEvent,
   getDefaultNormalizer,
   render,
   screen,
@@ -43,6 +45,24 @@ export function itDisplaysContentOfTabs(
         .forEach((otherTab) => {
           expect(screen.queryByText(otherTab.body)).not.toBeInTheDocument();
         });
+    });
+  });
+}
+
+export function itPreventsDefaultActionWhenLinkIsClicked(linkText: string) {
+  it(`should prevent default action when ${linkText} is clicked`, () => {
+    const linkElement = screen.getByRole('link', { name: linkText });
+    // Simulate click event on see more link
+    const clickEvent = createEvent.click(linkElement);
+    fireEvent(linkElement, clickEvent);
+    expect(clickEvent.defaultPrevented).toBeTruthy();
+  });
+}
+
+export function itDisplaysMocks(DisplayedText: string[]) {
+  it('should render the mocks', () => {
+    DisplayedText.forEach((text) => {
+      expect(screen.getByText(text)).toBeInTheDocument();
     });
   });
 }
