@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { screen } from '@testing-library/react';
-import { InitRouteTests } from '../testUtils';
 import WorkBench from 'route/workbench/Workbench';
+import { InitRouteTests } from '../testUtils';
 
 describe('Workbench', () => {
   InitRouteTests(<WorkBench />);
