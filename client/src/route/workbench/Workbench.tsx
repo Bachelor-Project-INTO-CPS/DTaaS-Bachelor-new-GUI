@@ -1,17 +1,24 @@
 import { Paper } from '@mui/material';
-import Iframe from 'components/Iframe';
+import WorkbenchButtons from 'components/WorkbenchButtons';
 import Layout from 'page/Layout';
 import * as React from 'react';
-import { getURLforWorkbench } from 'util/envUtil';
+import styled from '@emotion/styled';
+import buttons from './WorkbenchButtonData';
 
-const UrlWorkbench = getURLforWorkbench();
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
+
+const Title = styled.h1`
+  position: absolute;
+  margin-left: 30px;
+  top: 10px;
+`;
 
 function WorkBenchContent() {
-  /*
-  Will become configurable in the next iteration
-  const UrlWorkbench = new URL('user/2/tree?', window.location.href);
-  */
-
   return (
     <Layout>
       <Paper
@@ -19,9 +26,14 @@ function WorkBenchContent() {
           p: 2,
           height: '100%',
           display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
         }}
       >
-        <Iframe title="workbench-sandbox" url={UrlWorkbench} />
+        <Title>Workbench Tools</Title>
+        <Container>
+          <WorkbenchButtons buttons={buttons} />
+        </Container>
       </Paper>
     </Layout>
   );
