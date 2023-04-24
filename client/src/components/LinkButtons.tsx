@@ -3,18 +3,16 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
 import { SvgIconProps } from '@mui/material';
-import { getURLforWorkbench } from 'util/envUtil';
 
-const linkURL = getURLforWorkbench();
-
-interface Button {
+export interface Button {
   name: string;
-  link: string;
+  endpoint: string;
   icon: React.ReactElement<SvgIconProps>;
 }
 
-interface WorkbenchButtonsProps {
+interface LinkButtonsProps {
   buttons: Button[];
+  link?: string;
 }
 
 const StyledIconButton = styled(IconButton)`
@@ -37,17 +35,17 @@ const ButtonRow = styled.div`
 
 const customIconSize = 100;
 
-const WorkbenchButtons: React.FC<WorkbenchButtonsProps> = ({ buttons }) => {
-  const openLink = (link: string) => {
-    window.open(link, '_blank');
+const LinkButtons: React.FC<LinkButtonsProps> = ({ buttons, link }) => {
+  const openLink = (url: string) => {
+    window.open(url, '_blank');
   };
 
   return (
     <ButtonRow>
       {buttons.map((button, index) => (
-        <Tooltip key={index} title={linkURL + button.link}>
+        <Tooltip key={index} title={link + button.endpoint}>
           <IconLabel>
-            <StyledIconButton onClick={() => openLink(linkURL + button.link)}>
+            <StyledIconButton onClick={() => openLink(link + button.endpoint)}>
               {React.cloneElement(button.icon, {
                 style: { fontSize: customIconSize },
               })}
@@ -60,4 +58,4 @@ const WorkbenchButtons: React.FC<WorkbenchButtonsProps> = ({ buttons }) => {
   );
 };
 
-export default WorkbenchButtons;
+export default LinkButtons;

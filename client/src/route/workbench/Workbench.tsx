@@ -1,9 +1,12 @@
 import { Paper } from '@mui/material';
-import WorkbenchButtons from 'components/WorkbenchButtons';
+import LinkButtons from 'components/LinkButtons';
 import Layout from 'page/Layout';
 import * as React from 'react';
 import styled from '@emotion/styled';
+import { getURLforWorkbench } from 'util/envUtil';
 import buttons from './WorkbenchButtonData';
+
+const linkURL = getURLforWorkbench();
 
 const Container = styled.div`
   display: flex;
@@ -32,7 +35,7 @@ function WorkBenchContent() {
       >
         <Title>Workbench Tools</Title>
         <Container>
-          <WorkbenchButtons buttons={buttons} />
+          <LinkButtons buttons={buttons} link={linkURL} />
         </Container>
       </Paper>
     </Layout>

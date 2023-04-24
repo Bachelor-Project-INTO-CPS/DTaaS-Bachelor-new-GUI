@@ -7,22 +7,22 @@ import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
 const buttons = [
   {
     name: 'Terminal',
-    link: '',
+    endpoint: '',
     icon: <TerminalOutlinedIcon />,
   },
   {
     name: 'Desktop',
-    link: '',
+    endpoint: '',
     icon: <DesktopWindowsOutlinedIcon />,
   },
   {
     name: 'VSCode',
-    link: '',
+    endpoint: '',
     icon: <CodeOutlinedIcon />,
   },
   {
     name: 'JupyterLab',
-    link: '',
+    endpoint: '',
     icon: <ScienceOutlinedIcon />,
   },
   // Add more buttons as needed
