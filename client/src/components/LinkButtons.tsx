@@ -6,18 +6,13 @@ import { SvgIconProps } from '@mui/material';
 
 export interface Button {
   name: string;
-  endpoint: string;
+  link: string;
   icon: React.ReactElement<SvgIconProps>;
 }
 
 interface LinkButtonsProps {
   buttons: Button[];
-  link?: string;
 }
-
-const StyledIconButton = styled(IconButton)`
-  margin: 8px;
-`;
 
 const IconLabel = styled.div`
   display: flex;
@@ -35,7 +30,7 @@ const ButtonRow = styled.div`
 
 const customIconSize = 100;
 
-const LinkButtons: React.FC<LinkButtonsProps> = ({ buttons, link }) => {
+const LinkButtons: React.FC<LinkButtonsProps> = ({ buttons }) => {
   const openLink = (url: string) => {
     window.open(url, '_blank');
   };
@@ -43,13 +38,13 @@ const LinkButtons: React.FC<LinkButtonsProps> = ({ buttons, link }) => {
   return (
     <ButtonRow>
       {buttons.map((button, index) => (
-        <Tooltip key={index} title={link + button.endpoint}>
+        <Tooltip key={index} title={button.link}>
           <IconLabel>
-            <StyledIconButton onClick={() => openLink(link + button.endpoint)}>
+            <IconButton onClick={() => openLink(button.link)}>
               {React.cloneElement(button.icon, {
                 style: { fontSize: customIconSize },
               })}
-            </StyledIconButton>
+            </IconButton>
             {button.name}
           </IconLabel>
         </Tooltip>

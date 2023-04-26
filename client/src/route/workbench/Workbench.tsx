@@ -3,22 +3,13 @@ import LinkButtons from 'components/LinkButtons';
 import Layout from 'page/Layout';
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { getURLforWorkbench } from 'util/envUtil';
-import buttons from './WorkbenchButtonData';
-
-const linkURL = getURLforWorkbench();
+import { getButtonsforWorkbench } from 'util/envUtil';
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-`;
-
-const Title = styled.h1`
-  position: absolute;
-  margin-left: 30px;
-  top: 10px;
+  flex-grow: 1;
 `;
 
 function WorkBenchContent() {
@@ -33,9 +24,9 @@ function WorkBenchContent() {
           position: 'relative',
         }}
       >
-        <Title>Workbench Tools</Title>
+        <h1>Workbench Tools</h1>
         <Container>
-          <LinkButtons buttons={buttons} link={linkURL} />
+          <LinkButtons buttons={getButtonsforWorkbench()} />
         </Container>
       </Paper>
     </Layout>
