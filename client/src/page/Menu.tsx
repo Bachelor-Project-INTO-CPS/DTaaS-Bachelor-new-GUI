@@ -13,7 +13,7 @@ const drawerWidth = 240;
 
 function MiniDrawer() {
   const theme = useTheme();
-  const menuState = useSelector((state: RootState) => state.menu)
+  const menuState = useSelector((state: RootState) => state.menu);
   const dispatch = useDispatch();
   const [anchorElUser, setAnchorElUser] =
     React.useState<HTMLButtonElement | null>(null);
@@ -21,8 +21,8 @@ function MiniDrawer() {
   const handleCloseUserMenu = () => setAnchorElUser(null);
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorElUser(event.currentTarget);
-   const handleDrawerOpen = () => dispatch(openMenu());
-   const handleDrawerClose = () => dispatch(closeMenu());
+  const handleDrawerOpen = () => dispatch(openMenu());
+  const handleDrawerClose = () => dispatch(closeMenu());
 
   return (
     <Box sx={{ display: 'flex' }}>
