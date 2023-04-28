@@ -1,7 +1,3 @@
-/*
-src: https://github.com/mui/material-ui/blob/v5.10.0/docs/data/material/getting-started/templates/sign-in/SignIn.js
-*/
-
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -20,7 +16,7 @@ import Container from '@mui/material/Container';
 import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUser } from 'store/auth';
+import { setUser } from 'store/auth.slice';
 
 import Footer from '../../page/Footer';
 import { useAuth } from '../../components/AuthContext';
@@ -54,10 +50,11 @@ function SignIn() {
   const dispatch = useDispatch();
   const { logIn } = useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = React.useState<string>('');
+  const [email, setEmail] = React.useState<string>();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!email) return;
     dispatch(setUser(email));
     logIn();
     navigate('/library');

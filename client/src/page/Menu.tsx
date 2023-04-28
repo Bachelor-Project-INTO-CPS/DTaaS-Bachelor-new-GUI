@@ -1,10 +1,8 @@
-/* eslint-disable no-console */
-
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeMenu, openMenu } from 'store/menu';
+import { closeMenu, openMenu } from 'store/menu.slice';
 import { RootState } from 'store/store';
 import MenuToolbar from './MenuToolbar';
 import DrawerComponent from './DrawerComponent';

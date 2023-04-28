@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import menuSlice from './menu';
-import authSlice from './auth';
+import menuSlice from './menu.slice';
+import authSlice from './auth.slice';
 
 const rootReducer = combineReducers({
   menu: menuSlice,

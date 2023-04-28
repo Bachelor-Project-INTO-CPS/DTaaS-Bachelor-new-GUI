@@ -1,12 +1,11 @@
-/* eslint-disable no-param-reassign  */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface AuthState {
-  user: string;
+  user: string | undefined;
 }
 
 const initState: AuthState = {
-  user: '',
+  user: undefined,
 };
 
 const authSlice = createSlice({
