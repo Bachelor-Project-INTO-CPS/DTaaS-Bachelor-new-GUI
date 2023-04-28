@@ -8,10 +8,8 @@ import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { KeyLinkPair, getURLforWorkbench } from 'util/envUtil';
+import { KeyLinkPair } from 'util/envUtil';
 import { Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { RootState } from 'store/store';
 
 const IconLabel = styled.div`
   display: flex;
@@ -63,34 +61,33 @@ interface IconButton {
   icon: React.ReactElement;
   name: string;
 }
-
-const constructLink = (endpoint: string): string => {
-  const userState = useSelector((state: RootState) => state.auth);
-  const url = getURLforWorkbench().trim();
-  const baseURL = url.endsWith('/') ? url : `${url}/`;
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `${endpoint}/`;
-  return `${baseURL}${userState.user}${cleanEndpoint}`;
-};
-
 const getIconButtons = (buttons: KeyLinkPair[]): IconButton[] =>
   buttons.map((button) => {
     const iconData = LinkIcons[button.key.toUpperCase()] || LinkIcons.NO_ICON;
     return {
-      link: constructLink(button.link),
+      link: button.link,
       icon: iconData.icon,
       name: iconData.name || button.link,
     };
   });
 
-const LinkButtons = ({
-  buttons,
-  size,
-}: {
+interface LinkButtonProps {
   buttons: KeyLinkPair[];
   size?: number;
-}) => {
-  const iconButtons = getIconButtons(buttons);
+}
 
+/**
+ * @description Renders a row of buttons with icons and labels. The buttons open a new tab with the link.
+ * @category Component
+  * @param buttons: KeyLinkPair[] (required) - an array of objects with a key and link
+  * @param size: number (optional) - the size of the icons
+  * @returns React.ReactElement - a row of buttons with icons and labels
+  * @example
+  * const linkValues = getWorkbenchLinkValues();
+  * <LinkButtons buttons={linkValues} size={6} />
+
+ */ const LinkButtons = ({ buttons, size }: LinkButtonProps) => {
+  const iconButtons = getIconButtons(buttons);
   return (
     <ButtonRow>
       {iconButtons.map((button, index) => (
