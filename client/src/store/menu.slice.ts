@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface MenuState {
-  open: boolean;
+  isOpen: boolean;
 }
 
 const initState: MenuState = {
-  open: false,
+  isOpen: false,
 };
 
 const menuSlice = createSlice({
@@ -13,10 +13,10 @@ const menuSlice = createSlice({
   initialState: initState,
   reducers: {
     openMenu: (state: MenuState) => {
-      state.open = true;
+      state.isOpen = true;
     },
     closeMenu: (state: MenuState) => {
-      state.open = false;
+      state.isOpen = false;
     },
   },
 });

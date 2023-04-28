@@ -16,7 +16,7 @@ import Container from '@mui/material/Container';
 import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUser } from 'store/auth.slice';
+import { setUserName } from 'store/auth.slice';
 
 import Footer from '../../page/Footer';
 import { useAuth } from '../../components/AuthContext';
@@ -55,7 +55,7 @@ function SignIn() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!email) return;
-    dispatch(setUser(email));
+    dispatch(setUserName(email));
     logIn();
     navigate('/library');
   };

@@ -25,7 +25,7 @@ function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <MenuToolbar
-        open={menuState.open}
+        open={menuState.isOpen}
         drawerWidth={drawerWidth}
         handleCloseUserMenu={handleCloseUserMenu}
         handleDrawerOpen={handleDrawerOpen}
@@ -33,11 +33,11 @@ function MiniDrawer() {
         anchorElUser={anchorElUser}
       />
       <DrawerComponent
-        open={menuState.open}
+        open={menuState.isOpen}
         theme={theme}
         handleDrawerClose={handleDrawerClose}
       />
-      <p>{menuState.open.toString()}</p>
+      <p>{menuState.isOpen.toString()}</p>
     </Box>
   );
 }
