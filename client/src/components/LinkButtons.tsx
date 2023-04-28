@@ -8,7 +8,8 @@ import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { IWorkbenchLink } from 'util/envUtil';
+import { KeyLinkPair, getURLforWorkbench, getUserName } from 'util/envUtil';
+import { Typography } from '@mui/material';
 
 const IconLabel = styled.div`
   display: flex;
@@ -61,13 +62,20 @@ interface IconButton {
   name: string;
 }
 
-const getIconButtons = (buttons: IWorkbenchLink[]): IconButton[] =>
+const constructLink = (endpoint: string): string => {
+  const url = getURLforWorkbench().trim();
+  const baseURL = url.endsWith('/') ? url : `${url}/`;
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `${endpoint}/`;
+  return `${baseURL}${getUserName()}${cleanEndpoint}`;
+};
+
+const getIconButtons = (buttons: KeyLinkPair[]): IconButton[] =>
   buttons.map((button) => {
     const iconData = LinkIcons[button.key.toUpperCase()] || LinkIcons.NO_ICON;
     return {
-      link: button.link,
+      link: constructLink(button.link),
       icon: iconData.icon,
-      name: iconData.name || button.key,
+      name: iconData.name || button.link,
     };
   });
 
@@ -75,12 +83,9 @@ const LinkButtons = ({
   buttons,
   size,
 }: {
-  buttons: IWorkbenchLink[];
+  buttons: KeyLinkPair[];
   size?: number;
 }) => {
-  const openLink = (url: string) => {
-    window.open(url, '_blank');
-  };
   const iconButtons = getIconButtons(buttons);
 
   return (
@@ -88,12 +93,16 @@ const LinkButtons = ({
       {iconButtons.map((button, index) => (
         <Tooltip key={index} title={button.link}>
           <IconLabel>
-            <IconButton onClick={() => openLink(button.link)}>
+            <IconButton
+              onClick={() => {
+                window.open(button.link, '_blank');
+              }}
+            >
               {React.cloneElement(button.icon, {
                 style: { fontSize: `${size?.toString()}rem` },
               })}
             </IconButton>
-            {button.name}
+            <Typography variant="h6">{button.name}</Typography>
           </IconLabel>
         </Tooltip>
       ))}
