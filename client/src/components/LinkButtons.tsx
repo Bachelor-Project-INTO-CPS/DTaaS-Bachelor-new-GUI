@@ -8,8 +8,10 @@ import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { KeyLinkPair, getURLforWorkbench, getUserName } from 'util/envUtil';
+import { KeyLinkPair, getURLforWorkbench } from 'util/envUtil';
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store/store';
 
 const IconLabel = styled.div`
   display: flex;
@@ -63,10 +65,11 @@ interface IconButton {
 }
 
 const constructLink = (endpoint: string): string => {
+  const userState = useSelector((state:RootState) => state.auth)
   const url = getURLforWorkbench().trim();
   const baseURL = url.endsWith('/') ? url : `${url}/`;
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `${endpoint}/`;
-  return `${baseURL}${getUserName()}${cleanEndpoint}`;
+  return `${baseURL}${userState.user}${cleanEndpoint}`;
 };
 
 const getIconButtons = (buttons: KeyLinkPair[]): IconButton[] =>

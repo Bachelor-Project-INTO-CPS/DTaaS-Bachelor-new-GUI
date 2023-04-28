@@ -1,3 +1,4 @@
+
 export function getURLforDT(): string {
   return window.env.REACT_APP_URL_DT;
 }
@@ -8,10 +9,6 @@ export function getURLforLIB(): string {
 
 export function getURLforWorkbench(): string {
   return window.env.REACT_APP_URL_WORKBENCH;
-}
-
-export function getUserName(): string {
-  return 'User1';
 }
 
 export interface KeyLinkPair {

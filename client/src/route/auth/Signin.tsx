@@ -18,11 +18,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
-
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setUser } from 'store/auth';
 
 import Footer from '../../page/Footer';
-
 import { useAuth } from '../../components/AuthContext';
 
 // const drawerWidth = 240;
@@ -51,11 +51,14 @@ import { useAuth } from '../../components/AuthContext';
 const theme: Theme = createTheme();
 
 function SignIn() {
+  const dispatch = useDispatch();
   const { logIn } = useAuth();
   const navigate = useNavigate();
+  const [email, setEmail] = React.useState<string>('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    dispatch(setUser(email));
     logIn();
     navigate('/library');
   };
@@ -103,6 +106,8 @@ function SignIn() {
           >
             <TextField
               margin="normal"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               required
               fullWidth
               id="email"
