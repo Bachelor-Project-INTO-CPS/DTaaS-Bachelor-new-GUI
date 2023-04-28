@@ -6,9 +6,14 @@ export function getURLforLIB(): string {
   return window.env.REACT_APP_URL_LIB;
 }
 
-export function getWorkbenchLinkValues(): { key: string; link: string }[] {
+export interface IWorkbenchLink {
+  key: string;
+  link: string;
+}
+
+export function getWorkbenchLinkValues(): IWorkbenchLink[] {
   const prefix = 'REACT_APP_WORKBENCHLINK_';
-  const workbenchLinkValues: { key: string; link: string }[] = [];
+  const workbenchLinkValues: IWorkbenchLink[] = [];
 
   Object.keys(window.env)
     .filter((key) => key.startsWith(prefix))

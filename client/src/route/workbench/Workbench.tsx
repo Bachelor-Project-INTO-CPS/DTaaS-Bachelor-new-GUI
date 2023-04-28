@@ -3,7 +3,7 @@ import LinkButtons from 'components/LinkButtons';
 import Layout from 'page/Layout';
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { getButtonsforWorkbench } from 'util/envUtil';
+import { getWorkbenchLinkValues } from 'util/envUtil';
 
 const Container = styled.div`
   display: flex;
@@ -13,6 +13,7 @@ const Container = styled.div`
 `;
 
 function WorkBenchContent() {
+  const linkValues = getWorkbenchLinkValues();
   return (
     <Layout>
       <Paper
@@ -26,7 +27,7 @@ function WorkBenchContent() {
       >
         <h1>Workbench Tools</h1>
         <Container>
-          <LinkButtons buttons={getButtonsforWorkbench()} />
+          <LinkButtons buttons={linkValues} size={100} />
         </Container>
       </Paper>
     </Layout>
