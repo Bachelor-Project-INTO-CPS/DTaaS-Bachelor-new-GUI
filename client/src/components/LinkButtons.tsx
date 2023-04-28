@@ -7,6 +7,7 @@ import DesktopWindowsOutlinedIcon from '@mui/icons-material/DesktopWindowsOutlin
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { IWorkbenchLink } from 'util/envUtil';
 
 const IconLabel = styled.div`
@@ -34,23 +35,23 @@ const LinkIcons: LinkIconsType = {
   },
   VNCDESKTOP: {
     icon: <DesktopWindowsOutlinedIcon />,
-    name: 'name',
+    name: 'Desktop',
   },
   VSCODE: {
     icon: <CodeOutlinedIcon />,
-    name: 'name',
+    name: 'VSCode',
   },
   JUPYTERLAB: {
     icon: <ScienceOutlinedIcon />,
-    name: 'name',
+    name: 'JupyterLab',
   },
   JUPYTERNOTEBOOK: {
     icon: <NoteAltOutlinedIcon />,
-    name: 'name',
+    name: 'Jupyter Notebook',
   },
-  UNDEFINED: {
-    icon: <TerminalOutlinedIcon />,
-    name: 'name',
+  NO_ICON: {
+    icon: <OpenInNewIcon />,
+    name: '',
   },
 };
 
@@ -60,27 +61,15 @@ interface IconButton {
   name: string;
 }
 
-const getIconButtons = (buttons: IWorkbenchLink[]): IconButton[] => {
-  const iconButtons: IconButton[] = [];
-
-  buttons.forEach((button) => {
-    if (LinkIcons[button.key] !== undefined) {
-      iconButtons.push({
-        link: button.link,
-        icon: LinkIcons[button.key].icon,
-        name: LinkIcons[button.key].name,
-      });
-    } else {
-      iconButtons.push({
-        link: button.link,
-        icon: LinkIcons.UNDEFINED.icon,
-        name: button.key,
-      });
-    }
+const getIconButtons = (buttons: IWorkbenchLink[]): IconButton[] =>
+  buttons.map((button) => {
+    const iconData = LinkIcons[button.key.toUpperCase()] || LinkIcons.NO_ICON;
+    return {
+      link: button.link,
+      icon: iconData.icon,
+      name: iconData.name || button.key,
+    };
   });
-
-  return iconButtons;
-};
 
 const LinkButtons = ({
   buttons,
@@ -101,7 +90,7 @@ const LinkButtons = ({
           <IconLabel>
             <IconButton onClick={() => openLink(button.link)}>
               {React.cloneElement(button.icon, {
-                fontSize: `${size?.toString()}rem`,
+                style: { fontSize: `${size?.toString()}rem` },
               })}
             </IconButton>
             {button.name}

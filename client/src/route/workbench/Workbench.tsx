@@ -27,7 +27,7 @@ function WorkBenchContent() {
       >
         <h1>Workbench Tools</h1>
         <Container>
-          <LinkButtons buttons={linkValues} size={100} />
+          <LinkButtons buttons={linkValues} size={6} />
         </Container>
       </Paper>
     </Layout>
