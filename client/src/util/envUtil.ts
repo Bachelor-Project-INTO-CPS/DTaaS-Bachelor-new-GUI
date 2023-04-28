@@ -1,4 +1,3 @@
-
 export function getURLforDT(): string {
   return window.env.REACT_APP_URL_DT;
 }

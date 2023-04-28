@@ -65,7 +65,7 @@ interface IconButton {
 }
 
 const constructLink = (endpoint: string): string => {
-  const userState = useSelector((state:RootState) => state.auth)
+  const userState = useSelector((state: RootState) => state.auth);
   const url = getURLforWorkbench().trim();
   const baseURL = url.endsWith('/') ? url : `${url}/`;
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `${endpoint}/`;
