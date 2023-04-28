@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import LinkButtons from 'components/LinkButtons';
 import Layout from 'page/Layout';
 import * as React from 'react';
@@ -25,7 +25,7 @@ function WorkBenchContent() {
           position: 'relative',
         }}
       >
-        <h1>Workbench Tools</h1>
+        <Typography variant="h4">Workbench Tools</Typography>
         <Container>
           <LinkButtons buttons={linkValues} size={6} />
         </Container>

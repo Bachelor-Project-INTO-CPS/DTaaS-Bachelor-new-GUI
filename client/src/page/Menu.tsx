@@ -37,7 +37,6 @@ function MiniDrawer() {
         theme={theme}
         handleDrawerClose={handleDrawerClose}
       />
-      <p>{menuState.isOpen.toString()}</p>
     </Box>
   );
 }
