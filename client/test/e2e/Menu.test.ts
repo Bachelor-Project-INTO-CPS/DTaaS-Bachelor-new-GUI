@@ -7,14 +7,13 @@ interface TestLink {
   url: string;
 }
 const links: TestLink[] = [
-  { text: 'Library', url: '/library' },
-  { text: 'Digital Twins', url: '/digitaltwins' },
-  { text: 'Workbench', url: '/workbench' },
+  { text: 'Library', url: './library' },
+  { text: 'Digital Twins', url: './digitaltwins' },
+  { text: 'Workbench', url: './workbench' },
 ];
-
 test.describe('Menu Links from first page (Layout)', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('./');
     await page.getByRole('textbox', { name: 'username' }).fill('user-test');
     await page.locator('button:has-text("Sign In")').click();
   });
