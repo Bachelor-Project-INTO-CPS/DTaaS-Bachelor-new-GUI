@@ -14,10 +14,7 @@ const tabsData: TabData[] = tabs.map((tab) => ({
   body: (
     <>
       <Typography variant="body1">{tab.body}</Typography>
-      <Iframe
-        title={`JupyterLight-Demo-${tab.label}`}
-        url={`${jupyterURL}/${tab.label}`}
-      />
+      <Iframe title={`JupyterLight-Demo-${tab.label}`} url={jupyterURL} />
     </>
   ),
 }));
