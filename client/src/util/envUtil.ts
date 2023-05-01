@@ -51,5 +51,9 @@ export function getWorkbenchLinkValues(): KeyLinkPair[] {
       }
     });
 
+  if (workbenchLinkValues.length === 0) {
+    throw new Error(`No environment variables found with prefix "${prefix}"`);
+  }
+
   return workbenchLinkValues;
 }
