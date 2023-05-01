@@ -38,8 +38,8 @@ describe('envUtil', () => {
   });
 
   test('GetURL should return the correct enviroment variables', () => {
-    expect(getURLforDT()).toBe(testDT);
-    expect(getURLforLIB()).toBe(testLIB);
+    expect(getURLforDT()).toBe(`${testDT}/${testUsername}/lab`);
+    expect(getURLforLIB()).toBe(`${testLIB}/${testUsername}/`);
     expect(getURLforWorkbench()).toBe(testWorkbench);
   });
 
