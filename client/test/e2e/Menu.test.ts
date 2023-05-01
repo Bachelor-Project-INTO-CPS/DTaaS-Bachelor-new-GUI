@@ -2,15 +2,12 @@
 
 import { test, expect } from '@playwright/test';
 
-interface TestLink {
-  text: string;
-  url: string;
-}
-const links: TestLink[] = [
+const links: { text: string; url: string }[] = [
   { text: 'Library', url: './library' },
   { text: 'Digital Twins', url: './digitaltwins' },
   { text: 'Workbench', url: './workbench' },
 ];
+
 test.describe('Menu Links from first page (Layout)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('./');
