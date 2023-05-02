@@ -1,12 +1,7 @@
 // src: https://playwright.dev/docs/writing-tests
 
 import { test, expect } from '@playwright/test';
-
-const links: { text: string; url: string }[] = [
-  { text: 'Library', url: './library' },
-  { text: 'Digital Twins', url: './digitaltwins' },
-  { text: 'Workbench', url: './workbench' },
-];
+import links from './Links.ts'; // Extension is required with Playwright import
 
 test.describe('Menu Links from first page (Layout)', () => {
   test.beforeEach(async ({ page }) => {
