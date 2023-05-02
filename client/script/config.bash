@@ -20,8 +20,8 @@ list_env() {
     if [ $env_count -eq 0 ]; then
         printf "No environment files found in %s. Please add 'env.<my-config>' to the directory \n" "$config_dir"
     else
-        printf "Use yarn configapp with one of the following arguments:\n"
-        printf "$env_list \n"
+        printf "Avaiable enviroments:%s\n" "$env_list"
+        printf "To set an environment, run 'yarn configapp <my-env>'\n"
 fi
 }
 
@@ -48,7 +48,7 @@ mode=$1
 if [ -z "$mode" ]; then
     list_env
     else
-    set_env $mode
+    set_env "$mode"
 fi
 
 exit 0
