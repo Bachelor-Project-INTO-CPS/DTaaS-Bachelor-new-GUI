@@ -1,0 +1,30 @@
+@startuml WorkbenchV2
+
+() "KeyLinkPair[]" as KLP
+() "Username"
+
+[Auth Slice] as authStore
+[envUtil]
+component Workbench {
+  portin " " as useEnv
+  
+  () "Size" as size
+  () "KeyLinkPair[]" as KLP2
+  
+  [LinkButtons] as LNKbtn
+  [LinkButtonsLib]
+  
+  useEnv -r- KLP2
+  LNKbtn -u-( KLP2
+  LNKbtn .r.> size
+  LNKbtn -l-( LinkIcons
+  LinkButtonsLib -r- LinkIcons
+}
+
+Workbench -d- () size
+
+authStore -r- Username 
+envUtil -l-( Username
+envUtil -r- KLP
+useEnv -u-( KLP
+@enduml
