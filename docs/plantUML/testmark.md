@@ -14,6 +14,6 @@ Foo1 -> Foo6 : To collections
 @enduml
 ```
 
-See below
+See below for the result: ?
 
 ![](./md-sample-sequence.svg)
