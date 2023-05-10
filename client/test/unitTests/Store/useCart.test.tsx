@@ -1,7 +1,11 @@
 import { renderHook } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 import useCart from 'store/useCart';
-import { addToCart, removeFromCart, clearCart } from 'store/CartStore/cart.slice';
+import {
+  addToCart,
+  removeFromCart,
+  clearCart,
+} from 'store/CartStore/cart.slice';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
@@ -15,12 +19,11 @@ describe('useCart', () => {
   it('should return cart state and actions', () => {
     const mockCartState = { assets: [{ path: '/assets/1', isFolder: false }] };
 
-    
     const actions = {
       addToCart,
       removeFromCart,
-      clearCart
-    }
+      clearCart,
+    };
     const mockSelector = jest.fn().mockReturnValue(mockCartState);
     (useSelector as jest.Mock).mockImplementation(mockSelector);
 

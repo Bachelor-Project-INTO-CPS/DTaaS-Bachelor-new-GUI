@@ -14,7 +14,7 @@ const cartSlice = createSlice({
   initialState: initState,
   reducers: {
     addToCart: (state: CartState, action: PayloadAction<Asset>) => {
-      if (!state.assets.find(asset => asset.path === action.payload.path))
+      if (!state.assets.find((asset) => asset.path === action.payload.path))
         state.assets.push(action.payload);
     },
     removeFromCart: (state: CartState, action: PayloadAction<Asset>) => {

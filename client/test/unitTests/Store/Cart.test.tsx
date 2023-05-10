@@ -1,4 +1,9 @@
-import cartReducer, { CartState, addToCart, clearCart, removeFromCart } from "store/CartStore/cart.slice";
+import cartReducer, {
+  CartState,
+  addToCart,
+  clearCart,
+  removeFromCart,
+} from 'store/CartStore/cart.slice';
 
 describe('cartSlice', () => {
   let initialState: CartState;
@@ -20,7 +25,7 @@ describe('cartSlice', () => {
     const assetToAdd = { path: '/assets/1', isFolder: false };
     const action = addToCart(assetToAdd);
     const stateFirstAction = cartReducer(initialState, action);
-    const stateFinal = cartReducer(stateFirstAction, action)
+    const stateFinal = cartReducer(stateFirstAction, action);
 
     expect(stateFinal.assets.length).toEqual(1);
   });
