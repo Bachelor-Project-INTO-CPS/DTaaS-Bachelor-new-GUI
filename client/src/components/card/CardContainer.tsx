@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import CardComponent, { CardData } from './CardComponent';
 
 interface CardContainerProps {
@@ -10,19 +10,29 @@ function CardContainer(props: CardContainerProps) {
   const { data } = props;
 
   return (
-    <Box
+    <Grid
+      container
+      spacing={2}
       sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
+        overflow: 'auto',
+        maxHeight: 'inherent',
       }}
     >
       {data.map((cardData) => (
-        <Grid key={cardData.index} item sx={{ minWidth: 170, width: 250 }}>
+        <Grid
+          key={cardData.index}
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          sx={{ minWidth: 250 }}
+        >
           <CardComponent data={cardData} />
         </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 }
 
