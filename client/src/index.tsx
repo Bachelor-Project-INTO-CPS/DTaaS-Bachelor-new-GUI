@@ -1,3 +1,4 @@
+import { RelayEnvironmentProvider } from 'react-relay';
 import '@fontsource/roboto';
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -5,6 +6,7 @@ import ReactDOM from 'react-dom/client';
 import WorkBench from 'route/workbench/Workbench';
 import AppProvider from 'AppProvider';
 import { getURLbasename } from 'util/envUtil';
+import RelayEnvironment from './RelayEnvironment';
 import Library from './route/library/Library';
 import DigitalTwins from './route/digitaltwins/DigitalTwins';
 import SignIn from './route/auth/Signin';
@@ -52,6 +54,7 @@ const router = createBrowserRouter(
       ),
     },
   ],
+
   {
     basename: `/${getURLbasename()}`,
   }
@@ -61,13 +64,15 @@ const root = document.getElementById('root');
 
 if (root) {
   ReactDOM.createRoot(root).render(
-    <React.StrictMode>
-      <AppProvider>
-        <AuthProvider>
-          <RouterProvider router={router} />
-        </AuthProvider>
-      </AppProvider>
-    </React.StrictMode>
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
+      <React.StrictMode>
+        <AppProvider>
+          <AuthProvider>
+            <RouterProvider router={router} />
+          </AuthProvider>
+        </AppProvider>
+      </React.StrictMode>
+    </RelayEnvironmentProvider>
   );
 } else {
   throw Error("Couldn't find root element");
