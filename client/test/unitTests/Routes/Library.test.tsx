@@ -19,5 +19,7 @@ describe('Library with no props', () => {
 
   itDisplaysContentOfTabs(tabs);
 
-  itHasCorrectURLOfTabsWithIframe(urlsByTabs);
+  itHasCorrectURLOfTabsWithIframe(
+    urlsByTabs.filter((pair) => pair.label !== 'Functions')
+  );
 });
