@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Grid } from '@mui/material';
-import CardComponent, { CardData } from './CardComponent';
+import AssetCard, { CardData } from './AssetCard';
 
-interface CardContainerProps {
+interface AssetBoardProps {
   data: CardData[];
 }
 
@@ -16,7 +16,7 @@ const outerGridContainerProps = {
   },
 };
 
-function CardContainer(props: CardContainerProps) {
+function AssetBoard(props: AssetBoardProps) {
   const { data } = props;
   return (
     <Grid {...outerGridContainerProps}>
@@ -30,11 +30,11 @@ function CardContainer(props: CardContainerProps) {
           lg={3}
           sx={{ minWidth: 250 }}
         >
-          <CardComponent data={cardData} />
+          <AssetCard data={cardData} />
         </Grid>
       ))}
     </Grid>
   );
 }
 
-export default CardContainer;
+export default AssetBoard;
