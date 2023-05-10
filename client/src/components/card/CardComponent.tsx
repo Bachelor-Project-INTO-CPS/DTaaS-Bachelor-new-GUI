@@ -26,7 +26,6 @@ interface CardProps {
   data: CardData;
   sx?: SxProps<Theme>;
 }
-
 function CardActionAreaContainer(data: CardData): React.ReactElement {
   return (
     <CardActionArea sx={{ textAlign: 'start' }}>
