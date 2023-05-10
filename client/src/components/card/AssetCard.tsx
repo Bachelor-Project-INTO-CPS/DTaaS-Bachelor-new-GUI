@@ -11,22 +11,39 @@ import {
   SxProps,
   Theme,
 } from '@mui/material';
+import styled from '@emotion/styled';
+import AddButton from 'components/AddButton';
 
 type CardDataIndex = number & { readonly __tabDataIndex: unique symbol };
 
 export interface CardData {
   index?: CardDataIndex;
-  title: string;
+  name: string;
   description: string;
   icon: string;
-  folder?: boolean;
+  isDir?: boolean;
 }
 
 interface CardProps {
   data: CardData;
   sx?: SxProps<Theme>;
 }
-function CardActionAreaContainer(data: CardData): React.ReactElement {
+
+const Header = styled(Typography)`
+  white-space. nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const Description = styled(Typography)`
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+function CardActionAreaContainer(data: CardData) {
   return (
     <CardActionArea sx={{ textAlign: 'start' }}>
       <Grid container alignItems="center">
@@ -37,12 +54,10 @@ function CardActionAreaContainer(data: CardData): React.ReactElement {
               ':last-child': { paddingBottom: 0 },
             }}
           >
-            <Typography variant="h6" component="div">
-              {data.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Header variant="h6">{data.name}</Header>
+            <Description variant="body2" color="text.secondary">
               {data.description}
-            </Typography>
+            </Description>
           </CardContent>
         </Grid>
         <Grid item xs={5} sx={{ width: 100 }}>
@@ -53,20 +68,18 @@ function CardActionAreaContainer(data: CardData): React.ReactElement {
   );
 }
 
-function CardActionsContainer() {
+function CardButtonsContainer(/* data: CardData */) {
   return (
     <CardActions>
       <Button variant="contained" fullWidth size="small" color="primary">
         Details
       </Button>
-      <Button variant="contained" fullWidth size="small" color="primary">
-        Select
-      </Button>
+      <AddButton /* {data} */ />
     </CardActions>
   );
 }
 
-function CardComponent(props: CardProps) {
+function AssetCard(props: CardProps) {
   const { data, sx } = props;
 
   return (
@@ -81,9 +94,9 @@ function CardComponent(props: CardProps) {
       }}
     >
       <CardActionAreaContainer {...data} />
-      <CardActionsContainer />
+      <CardButtonsContainer /* {...data} */ />
     </Card>
   );
 }
 
-export default CardComponent;
+export default AssetCard;

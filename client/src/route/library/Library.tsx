@@ -5,47 +5,48 @@ import Iframe from 'components/Iframe';
 import { TabData } from 'components/tab/subcomponents/TabRender';
 import { useURLforLIB } from 'util/envUtil';
 import { Typography } from '@mui/material';
-import { CardData } from 'components/card/CardComponent';
-import CardContainer from 'components/card/CardContainer';
+import { CardData } from 'components/card/AssetCard';
+import AssetBoard from 'components/card/AssetBoard';
 import tabs from './LibraryTabData';
 
 const cardData: CardData[] = [
   {
-    title: 'fileTest1',
-    description: 'Small description of fileTest1',
+    name: 'fileTest1.somethingsdfsdfsdf',
+    description: 'Aenean placerat. In vulputate urna',
     icon: 'description',
   },
   {
-    title: 'folderTest1',
+    name: 'folderTest1',
     description:
-      'Small description of folderTest1 bla bla bla esdrfsd sdf  asd as df sdfas',
+      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
     icon: 'folder',
   },
   {
-    title: 'fileTest2',
-    description: 'Small description of fileTest2',
-    icon: 'description',
-  },
-  {
-    title: 'fileTest3',
-    description: 'Small description of fileTest3',
-    icon: 'description',
-  },
-  {
-    title: 'folderTest1',
+    name: 'fileTest2',
     description:
-      'Small description of folderTest1 bla bla bla esdrfsd sdf  asd as df sdfas',
+      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
+    icon: 'description',
+  },
+  {
+    name: 'fileTest3',
+    description: 'Aenean placerat. In vulputate urna',
+    icon: 'description',
+  },
+  {
+    name: 'folderTest1',
+    description:
+      'Praesent in mauris eu tortor porttitor accumsan. Mauris suscipit, ligula',
     icon: 'folder',
   },
   {
-    title: 'fileTest3',
-    description: 'Small description of fileTest3',
+    name: 'fileTest3',
+    description:
+      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
     icon: 'description',
   },
   {
-    title: 'folderTest1',
-    description:
-      'Small description of folderTest1 bla bla bla esdrfsd sdf  asd as df sdfas',
+    name: 'folderTest1',
+    description: 'Aenean placerat. In vulputate urna',
     icon: 'folder',
   },
 ];
@@ -57,7 +58,7 @@ function useLibraryData() {
     body: (
       <>
         <Typography variant="body1">{tab.body}</Typography>
-        {tab.label === 'Functions' && <CardContainer data={cardData} />}
+        {tab.label === 'Functions' && <AssetBoard data={cardData} />}
         {tab.label !== 'Functions' && (
           <Iframe title={`JupyterLight-Demo-${tab.label}`} url={LIBurl} />
         )}
