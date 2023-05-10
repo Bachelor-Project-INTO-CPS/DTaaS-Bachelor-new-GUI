@@ -6,19 +6,20 @@ interface CardContainerProps {
   data: CardData[];
 }
 
+const outerGridContainerProps = {
+  container: true,
+  spacing: 2,
+  sx: {
+    justifyContent: 'flex-start',
+    overflow: 'auto',
+    maxHeight: 'inherent',
+  },
+};
+
 function CardContainer(props: CardContainerProps) {
   const { data } = props;
-
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{
-        justifyContent: 'flex-start',
-        overflow: 'auto',
-        maxHeight: 'inherent',
-      }}
-    >
+    <Grid {...outerGridContainerProps}>
       {data.map((cardData) => (
         <Grid
           key={cardData.index}
