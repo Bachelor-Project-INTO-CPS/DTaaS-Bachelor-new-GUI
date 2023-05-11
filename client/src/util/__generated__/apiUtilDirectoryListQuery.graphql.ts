@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a078680b9a224dee73c669a7dd1bbdae>>
+ * @generated SignedSource<<bca372aea120b5f41e5a9844a2d9a68d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,22 +14,20 @@ export type apiUtilDirectoryListQuery$variables = {
 };
 export type apiUtilDirectoryListQuery$data = {
   readonly project: {
-    readonly path: string | null;
+    readonly path: string;
     readonly repository: {
       readonly paginatedTree: {
         readonly nodes: ReadonlyArray<{
           readonly blobs: {
-            readonly edges: ReadonlyArray<{
-              readonly node: {
-                readonly name: string | null;
-                readonly path: string | null;
-              } | null;
+            readonly nodes: ReadonlyArray<{
+              readonly name: string;
+              readonly path: string;
             } | null> | null;
-          } | null;
+          };
           readonly trees: {
             readonly nodes: ReadonlyArray<{
-              readonly name: string | null;
-              readonly path: string | null;
+              readonly name: string;
+              readonly path: string;
             } | null> | null;
           } | null;
         } | null> | null;
@@ -137,22 +135,11 @@ v3 = [
                       {
                         "alias": null,
                         "args": null,
-                        "concreteType": "BlobEdge",
+                        "concreteType": "Blob",
                         "kind": "LinkedField",
-                        "name": "edges",
+                        "name": "nodes",
                         "plural": true,
-                        "selections": [
-                          {
-                            "alias": null,
-                            "args": null,
-                            "concreteType": "Blob",
-                            "kind": "LinkedField",
-                            "name": "node",
-                            "plural": false,
-                            "selections": (v2/*: any*/),
-                            "storageKey": null
-                          }
-                        ],
+                        "selections": (v2/*: any*/),
                         "storageKey": null
                       }
                     ],
@@ -210,16 +197,16 @@ return {
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "145b98e9caf68973d244782f6f677343",
+    "cacheID": "ca0db0f07455f5da27f40d05dc97c48d",
     "id": null,
     "metadata": {},
     "name": "apiUtilDirectoryListQuery",
     "operationKind": "query",
-    "text": "query apiUtilDirectoryListQuery(\n  $path: String!\n) {\n  project(fullPath: \"gitlab-org/gitlab-foss\") {\n    webUrl\n    path\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          blobs {\n            edges {\n              node {\n                name\n                path\n              }\n            }\n          }\n          trees {\n            nodes {\n              name\n              path\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query apiUtilDirectoryListQuery(\n  $path: String!\n) {\n  project(fullPath: \"gitlab-org/gitlab-foss\") {\n    webUrl\n    path\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          blobs {\n            nodes {\n              name\n              path\n            }\n          }\n          trees {\n            nodes {\n              name\n              path\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "21d671b214f01c5b3e5b42c9d975ad83";
+(node as any).hash = "6bbd2fed8122c3b1533404a573f2e73e";
 
 export default node;

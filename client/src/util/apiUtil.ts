@@ -3,8 +3,8 @@ import { useLazyLoadQuery } from 'react-relay';
 import { apiUtilDirectoryListQuery } from 'util/__generated__/apiUtilDirectoryListQuery.graphql';
 
 interface Asset {
-  name: string | null | undefined;
-  path: string | null | undefined;
+  name: string;
+  path: string;
   isDir: boolean;
 }
 
@@ -17,11 +17,9 @@ const getFilesQuery = graphql`
         paginatedTree(path: $path, recursive: false) {
           nodes {
             blobs {
-              edges {
-                node {
-                  name
-                  path
-                }
+              nodes {
+                name
+                path
               }
             }
             trees {
@@ -37,32 +35,30 @@ const getFilesQuery = graphql`
   }
 `;
 
-const useAssets = (path: string) => {
+const useAssets = (dirPath: string) => {
   const data = useLazyLoadQuery<apiUtilDirectoryListQuery>(getFilesQuery, {
-    path,
+    path: dirPath,
   });
-  if (data === null) {
-    return null;
+
+  const nodes = data.project?.repository?.paginatedTree?.nodes ?? [];
+  if (nodes.length === 0) {
+    return [];
   }
 
-  const assets: Asset[] = [];
-  data.project?.repository?.paginatedTree?.nodes?.forEach((node) => {
-    node?.blobs?.edges?.forEach((edge) => {
-      assets.push({
-        name: edge?.node?.name,
-        path: edge?.node?.path,
-        isDir: false,
-      });
-    });
-    node?.trees?.nodes?.forEach((tree) => {
-      assets.push({
-        name: tree?.name,
-        path: tree?.path,
-        isDir: true,
-      });
-    });
-  });
-  return assets;
+  return nodes.flatMap((node) =>
+    [
+      ...(node?.blobs?.nodes ?? []).filter(
+        (file): file is { name: string; path: string } => file != null
+      ),
+      ...(node?.trees?.nodes ?? []).filter(
+        (dir): dir is { name: string; path: string } => dir != null
+      ),
+    ].map(({ name, path, ...rest }) => ({
+      name,
+      path,
+      isDir: Object.prototype.hasOwnProperty.call(rest, 'tree'),
+    }))
+  );
 };
 
 export default useAssets;
