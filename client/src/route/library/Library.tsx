@@ -5,10 +5,19 @@ import Iframe from 'components/Iframe';
 import { TabData } from 'components/tab/subcomponents/TabRender';
 import { useURLforLIB } from 'util/envUtil';
 import { Typography } from '@mui/material';
+import getFilesQuery from 'util/apiUtil';
+import { useLazyLoadQuery } from 'react-relay';
+import { apiUtilDirectoryListQuery } from 'util/__generated__/apiUtilDirectoryListQuery.graphql';
 import tabs from './LibraryTabData';
 
 function LibraryContent() {
   const LIBurl = useURLforLIB();
+  const data = useLazyLoadQuery<apiUtilDirectoryListQuery>(getFilesQuery, {
+    path: '/',
+  });
+
+  // eslint-disable-next-line no-console
+  console.log(data);
 
   const tabsData: TabData[] = tabs.map((tab) => ({
     label: tab.label,

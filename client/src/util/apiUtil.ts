@@ -1,4 +1,4 @@
-import { graphql } from 'relay-runtime';
+import graphql from 'babel-plugin-relay/macro';
 
 const getFilesQuery = graphql`
   query apiUtilDirectoryListQuery($path: String!) {

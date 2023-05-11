@@ -23,7 +23,8 @@ const fetchFn: FetchFunction = async (request, variables) => {
     }),
   });
 
-  return resp.json();
+  // eslint-disable-next-line no-return-await
+  return await resp.json();
 };
 
 function createRelayEnvironment() {
