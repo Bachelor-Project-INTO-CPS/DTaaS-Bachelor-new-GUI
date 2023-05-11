@@ -26,8 +26,13 @@ exclude_patterns:
   - "**.txt"
   - "**.json"
   - docs/
+  - deploy/
+  - ssl/
+  - servers/
+
   - "**/node_modules/"
   - "**/build/"
   - "**/public/"
   - "**/coverage"
   - "client/config/"
+  - "**/__generated__/"
