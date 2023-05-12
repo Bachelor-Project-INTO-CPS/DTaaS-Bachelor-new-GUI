@@ -5,26 +5,28 @@ import {
   Store,
   FetchFunction,
 } from 'relay-runtime';
+import axios from 'axios';
 
 const HTTP_ENDPOINT = 'https://gitlab.com/api/graphql';
 
 const fetchFn: FetchFunction = async (request, variables) => {
-  const resp = await fetch(HTTP_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      Accept:
-        'application/graphql-response+json; charset=utf-8, application/json; charset=utf-8',
-      'Content-Type': 'application/json',
-      // <-- Additional headers like 'Authorization' would go here
-    },
-    body: JSON.stringify({
-      query: request.text, // <-- The GraphQL document composed by Relay
+  const resp = await axios.post(
+    HTTP_ENDPOINT,
+    {
+      query: request.text,
       variables,
-    }),
-  });
+    },
+    {
+      headers: {
+        Accept:
+          'application/graphql-response+json; charset=utf-8, application/json; charset=utf-8',
+        'Content-Type': 'application/json',
+        // <-- Additional headers like 'Authorization' would go here
+      },
+    }
+  );
 
-  // eslint-disable-next-line no-return-await
-  return await resp.json();
+  return resp.data;
 };
 
 function createRelayEnvironment() {

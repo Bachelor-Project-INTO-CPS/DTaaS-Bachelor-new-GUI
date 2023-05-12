@@ -5,16 +5,10 @@ import Iframe from 'components/Iframe';
 import { TabData } from 'components/tab/subcomponents/TabRender';
 import { useURLforLIB } from 'util/envUtil';
 import { Typography } from '@mui/material';
-import useAssets from 'util/apiUtil';
 import tabs from './LibraryTabData';
 
 function LibraryContent() {
   const LIBurl = useURLforLIB();
-  const data = useAssets('vendor');
-
-  // eslint-disable-next-line no-console
-  console.log(data);
-
   const tabsData: TabData[] = tabs.map((tab) => ({
     label: tab.label,
     body: (
