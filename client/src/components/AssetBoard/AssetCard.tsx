@@ -12,7 +12,7 @@ import {
   Theme,
 } from '@mui/material';
 import styled from '@emotion/styled';
-import AddButton from 'components/AddButton';
+import AddButton from 'components/AssetBoard/AddButton';
 
 type CardDataIndex = number & { readonly __tabDataIndex: unique symbol };
 
@@ -87,7 +87,7 @@ function AssetCard(props: CardProps) {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        minWidth: 240,
+        minWidth: 235,
         height: 170,
         justifyContent: 'space-between',
         ...sx,
