@@ -10,7 +10,7 @@ import tabs from './LibraryTabData';
 
 function LibraryContent() {
   const LIBurl = useURLforLIB();
-  const data = useAssets('/');
+  const data = useAssets('vendor');
 
   // eslint-disable-next-line no-console
   console.log(data);

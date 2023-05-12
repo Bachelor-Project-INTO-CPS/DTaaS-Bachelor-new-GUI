@@ -35,7 +35,25 @@ const getFilesQuery = graphql`
   }
 `;
 
-const useAssets = (dirPath: string) => {
+interface Asset {
+  name: string;
+  path: string;
+  isDir: boolean;
+}
+
+const mapToAssets = (
+  arr: { name: string; path: string }[],
+  isDir: boolean
+): Asset[] =>
+  arr
+    .filter((node): node is { name: string; path: string } => node != null)
+    .map(({ name, path }) => ({
+      name,
+      path,
+      isDir,
+    })) as Asset[];
+
+const useAssets = (dirPath: string): Asset[] => {
   const data = useLazyLoadQuery<apiUtilDirectoryListQuery>(getFilesQuery, {
     path: dirPath,
   });
@@ -45,20 +63,21 @@ const useAssets = (dirPath: string) => {
     return [];
   }
 
-  return nodes.flatMap((node) =>
-    [
-      ...(node?.blobs?.nodes ?? []).filter(
-        (file): file is { name: string; path: string } => file != null
-      ),
-      ...(node?.trees?.nodes ?? []).filter(
-        (dir): dir is { name: string; path: string } => dir != null
-      ),
-    ].map(({ name, path, ...rest }) => ({
-      name,
-      path,
-      isDir: Object.prototype.hasOwnProperty.call(rest, 'tree'),
-    }))
-  );
+  type entry = {
+    name: string;
+    path: string;
+  };
+
+  return [
+    ...mapToAssets(
+      nodes.flatMap((node) => node?.blobs?.nodes ?? []) as entry[],
+      false
+    ),
+    ...mapToAssets(
+      nodes.flatMap((node) => node?.trees?.nodes ?? []) as entry[],
+      true
+    ),
+  ];
 };
 
 export default useAssets;
