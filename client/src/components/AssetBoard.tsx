@@ -68,9 +68,9 @@ function AssetBoard(props: { pathToAssets: string }) {
   const assets: Asset[] = useAssetsFake(props.pathToAssets);
   return (
     <Grid {...outerGridContainerProps}>
-      {assets.map((asset) => (
+      {assets.map((asset, index) => (
         <Grid
-          key={asset.index}
+          key={index}
           item
           xs={12}
           sm={6}

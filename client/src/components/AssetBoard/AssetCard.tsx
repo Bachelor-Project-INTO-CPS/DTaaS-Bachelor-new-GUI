@@ -58,7 +58,7 @@ function CardButtonsContainer(asset: Asset) {
           Details
         </Button>
       )}
-      <AddButton /* {asset} */ />
+      <AddButton {...asset} />
     </CardActions>
   );
 }
