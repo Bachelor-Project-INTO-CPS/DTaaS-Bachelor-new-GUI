@@ -5,47 +5,44 @@ import AssetCard from './AssetBoard/AssetCard';
 
 const useAssetsFake = (path: string): Asset[] => [
   {
-    name: 'fileTest1.somethingsdfsdfsdf',
+    name: 'folderTest1.somethingsdfsdfsdf',
     description: 'Aenean placerat. In vulputate urna',
-    isDir: false,
+    isDir: true,
     path,
   },
   {
-    name: 'folderTest1',
+    name: 'folderTest2.something',
+    isDir: true,
+    path,
+  },
+  {
+    name: 'folderTest3',
     description:
       'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
     isDir: true,
     path,
   },
   {
-    name: 'fileTest2',
-    description:
-      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
-    isDir: false,
-    path,
-  },
-  {
-    name: 'fileTest3',
+    name: 'folderTest4',
     description: 'Aenean placerat. In vulputate urna',
-    isDir: false,
-    path,
-  },
-  {
-    name: 'folderTest1',
-    description:
-      'Praesent in mauris eu tortor porttitor accumsan. Mauris suscipit, ligula',
     isDir: true,
     path,
   },
   {
-    name: 'fileTest3',
-    description:
-      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
-    isDir: false,
+    name: 'folderTest5',
+    description: undefined,
+    isDir: true,
     path,
   },
   {
-    name: 'folderTest1',
+    name: 'folderTest6',
+    description:
+      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
+    isDir: true,
+    path,
+  },
+  {
+    name: 'folderTest7',
     description: 'Aenean placerat. In vulputate urna',
     isDir: true,
     path,
@@ -81,7 +78,7 @@ function AssetBoard(props: { pathToAssets: string }) {
           lg={3}
           sx={{ minWidth: 250 }}
         >
-          <AssetCard data={asset} />
+          <AssetCard asset={asset} />
         </Grid>
       ))}
     </Grid>

@@ -2,21 +2,13 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import {
-  Button,
-  CardActionArea,
-  CardActions,
-  Grid,
-  Icon,
-  SxProps,
-  Theme,
-} from '@mui/material';
+import { Button, CardActions, Grid, Icon, SxProps, Theme } from '@mui/material';
 import styled from '@emotion/styled';
 import AddButton from 'components/AssetBoard/AddButton';
 import { Asset } from 'models/Asset';
 
 interface CardProps {
-  data: Asset;
+  asset: Asset;
   sx?: SxProps<Theme>;
 }
 
@@ -36,44 +28,43 @@ const Description = styled(Typography)`
 
 function CardActionAreaContainer(asset: Asset) {
   return (
-    <CardActionArea sx={{ textAlign: 'start' }}>
-      <Grid container alignItems="center">
-        <Grid item xs={7}>
-          <CardContent
-            sx={{
-              padding: '5px 5px 0px 10px',
-              ':last-child': { paddingBottom: 0 },
-            }}
-          >
-            <Header variant="h6">{asset.name}</Header>
-            <Description variant="body2" color="text.secondary">
-              {asset.description}
-            </Description>
-          </CardContent>
-        </Grid>
-        <Grid item xs={5} sx={{ width: 100 }}>
-          <Icon sx={{ fontSize: 100 }}>
-            {asset.isDir ? 'folder' : 'description'}
-          </Icon>
-        </Grid>
+    <Grid container>
+      <Grid item xs={7}>
+        <CardContent
+          sx={{
+            padding: '5px 0px 0px 0px',
+            ':last-child': { paddingBottom: 0 },
+          }}
+        >
+          <Description variant="body2" color="text.secondary">
+            {asset.description}
+          </Description>
+        </CardContent>
       </Grid>
-    </CardActionArea>
+      <Grid item xs={5} textAlign={'end'} sx={{ width: 100 }}>
+        <Icon sx={{ fontSize: 80 }}>
+          {asset.isDir ? 'folder' : 'description'}
+        </Icon>
+      </Grid>
+    </Grid>
   );
 }
 
-function CardButtonsContainer(/* data: CardData */) {
+function CardButtonsContainer(asset: Asset) {
   return (
     <CardActions>
-      <Button variant="contained" fullWidth size="small" color="primary">
-        Details
-      </Button>
-      <AddButton /* {data} */ />
+      {asset.description && (
+        <Button variant="contained" fullWidth size="small" color="primary">
+          Details
+        </Button>
+      )}
+      <AddButton /* {asset} */ />
     </CardActions>
   );
 }
 
 function AssetCard(props: CardProps) {
-  const { data, sx } = props;
+  const { asset: data, sx } = props;
 
   return (
     <Card
@@ -83,11 +74,13 @@ function AssetCard(props: CardProps) {
         minWidth: 235,
         height: 170,
         justifyContent: 'space-between',
+        padding: '5px 10px 5px 10px',
         ...sx,
       }}
     >
+      <Header variant="h6">{data.name}</Header>
       <CardActionAreaContainer {...data} />
-      <CardButtonsContainer /* {...data} */ />
+      <CardButtonsContainer {...data} />
     </Card>
   );
 }
