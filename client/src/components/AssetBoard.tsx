@@ -1,10 +1,56 @@
 import * as React from 'react';
 import { Grid } from '@mui/material';
-import AssetCard, { CardData } from './AssetBoard/AssetCard';
+import { Asset } from 'models/Asset';
+import AssetCard from './AssetBoard/AssetCard';
 
-interface AssetBoardProps {
-  data: CardData[];
-}
+const useAssetsFake = (path: string): Asset[] => [
+  {
+    name: 'fileTest1.somethingsdfsdfsdf',
+    description: 'Aenean placerat. In vulputate urna',
+    isDir: false,
+    path,
+  },
+  {
+    name: 'folderTest1',
+    description:
+      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
+    isDir: true,
+    path,
+  },
+  {
+    name: 'fileTest2',
+    description:
+      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
+    isDir: false,
+    path,
+  },
+  {
+    name: 'fileTest3',
+    description: 'Aenean placerat. In vulputate urna',
+    isDir: false,
+    path,
+  },
+  {
+    name: 'folderTest1',
+    description:
+      'Praesent in mauris eu tortor porttitor accumsan. Mauris suscipit, ligula',
+    isDir: true,
+    path,
+  },
+  {
+    name: 'fileTest3',
+    description:
+      'Morbi leo mi, nonummy eget, tristique non, rhoncus non, leo. Nullam faucibus mi quis velit. Integer in sapien. Fusce tellus',
+    isDir: false,
+    path,
+  },
+  {
+    name: 'folderTest1',
+    description: 'Aenean placerat. In vulputate urna',
+    isDir: true,
+    path,
+  },
+];
 
 const outerGridContainerProps = {
   container: true,
@@ -21,13 +67,13 @@ const outerGridContainerProps = {
  * @param props Takes relative path to Assets. E.g `Library` for Library assets. OR maybe the full path using `useURLforLIB`?
  * @returns
  */
-function AssetBoard(props: AssetBoardProps) {
-  const { data } = props;
+function AssetBoard(props: { pathToAssets: string }) {
+  const assets: Asset[] = useAssetsFake(props.pathToAssets);
   return (
     <Grid {...outerGridContainerProps}>
-      {data.map((cardData) => (
+      {assets.map((asset) => (
         <Grid
-          key={cardData.index}
+          key={asset.index}
           item
           xs={12}
           sm={6}
@@ -35,7 +81,7 @@ function AssetBoard(props: AssetBoardProps) {
           lg={3}
           sx={{ minWidth: 250 }}
         >
-          <AssetCard data={cardData} />
+          <AssetCard data={asset} />
         </Grid>
       ))}
     </Grid>

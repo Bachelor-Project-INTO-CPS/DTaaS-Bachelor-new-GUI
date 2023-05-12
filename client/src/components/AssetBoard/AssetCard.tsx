@@ -13,19 +13,10 @@ import {
 } from '@mui/material';
 import styled from '@emotion/styled';
 import AddButton from 'components/AssetBoard/AddButton';
-
-type CardDataIndex = number & { readonly __tabDataIndex: unique symbol };
-
-export interface CardData {
-  index?: CardDataIndex;
-  name: string;
-  description: string;
-  icon: string;
-  isDir?: boolean;
-}
+import { Asset } from 'models/Asset';
 
 interface CardProps {
-  data: CardData;
+  data: Asset;
   sx?: SxProps<Theme>;
 }
 
@@ -43,7 +34,7 @@ const Description = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
-function CardActionAreaContainer(data: CardData) {
+function CardActionAreaContainer(asset: Asset) {
   return (
     <CardActionArea sx={{ textAlign: 'start' }}>
       <Grid container alignItems="center">
@@ -54,14 +45,16 @@ function CardActionAreaContainer(data: CardData) {
               ':last-child': { paddingBottom: 0 },
             }}
           >
-            <Header variant="h6">{data.name}</Header>
+            <Header variant="h6">{asset.name}</Header>
             <Description variant="body2" color="text.secondary">
-              {data.description}
+              {asset.description}
             </Description>
           </CardContent>
         </Grid>
         <Grid item xs={5} sx={{ width: 100 }}>
-          <Icon sx={{ fontSize: 100 }}>{data.icon}</Icon>
+          <Icon sx={{ fontSize: 100 }}>
+            {asset.isDir ? 'folder' : 'description'}
+          </Icon>
         </Grid>
       </Grid>
     </CardActionArea>
