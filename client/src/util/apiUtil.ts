@@ -56,6 +56,13 @@ const mapToAssets = (
       isDir,
     })) as Asset[];
 
+/**
+ * Retrives a list of assets from the given directory path in a GitLab repository.
+ * Uses ENV variables to deterimine the group and graphQL endpoint for requests.
+ * The project must be the same as the username used for logging in.
+ * @param dirPath relative path to the directory in the repository
+ * @returns An array of `Asset` objects
+ */
 const useAssets = (dirPath: string): Asset[] => {
   const group = getGitlabGroup();
   const project = useSelector((state: RootState) => state.auth).userName;

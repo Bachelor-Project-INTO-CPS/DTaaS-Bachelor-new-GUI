@@ -5,6 +5,7 @@ import {
   cleanURL,
   getURLbasename,
   getGitlabGroup,
+  getGitlabURL,
 } from 'util/envUtil';
 import { renderHook } from '@testing-library/react';
 import { wrapWithInitialState } from '../testUtils';
@@ -74,7 +75,7 @@ describe('envUtil', () => {
   });
 
   test('GetGitlabUrl should return the correct enviroment variable', () => {
-    expect(cleanURL(testGitlabURL)).toBe(testGitlabURL);
+    expect(getGitlabURL()).toBe(testGitlabURL);
   });
 
   test('GetURL should return the correct enviroment variables', () => {

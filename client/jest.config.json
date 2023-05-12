@@ -13,7 +13,8 @@
     "build",
     "src/index.tsx",
     "src/AppProvider.tsx",
-    "src/store/store.ts"
+    "src/store/store.ts",
+    "src/util/__generated__/"
   ],
   "modulePathIgnorePatterns": ["test/e2e", "mocks", "config"],
   "coverageDirectory": "<rootDir>/coverage/",
