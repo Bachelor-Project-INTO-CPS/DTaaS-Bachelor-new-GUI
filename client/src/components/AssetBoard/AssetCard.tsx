@@ -12,7 +12,7 @@ import {
   Theme,
 } from '@mui/material';
 import styled from '@emotion/styled';
-import AddButton from 'components/AddButton';
+import AddButton from 'components/AssetBoard/AddButton';
 
 type CardDataIndex = number & { readonly __tabDataIndex: unique symbol };
 

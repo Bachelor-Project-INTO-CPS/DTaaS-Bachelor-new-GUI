@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Grid } from '@mui/material';
-import AssetCard, { CardData } from './AssetCard';
+import AssetCard, { CardData } from './AssetBoard/AssetCard';
 
 interface AssetBoardProps {
   data: CardData[];
@@ -16,6 +16,11 @@ const outerGridContainerProps = {
   },
 };
 
+/**
+ * Displays a board with navigational properties to locate and select assets for DT configuration.
+ * @param props Takes relative path to Assets. E.g `Library` for Library assets. OR maybe the full path using `useURLforLIB`?
+ * @returns
+ */
 function AssetBoard(props: AssetBoardProps) {
   const { data } = props;
   return (
