@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bca372aea120b5f41e5a9844a2d9a68d>>
+ * @generated SignedSource<<304b8c8c7b62ef801fb52b94a4d3ae64>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,6 +10,7 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type apiUtilDirectoryListQuery$variables = {
+  groupAndProject: string;
   path: string;
 };
 export type apiUtilDirectoryListQuery$data = {
@@ -42,21 +43,24 @@ export type apiUtilDirectoryListQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "path"
-  }
-],
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "groupAndProject"
+},
 v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "path"
+},
+v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "path",
   "storageKey": null
 },
-v2 = [
+v3 = [
   {
     "alias": null,
     "args": null,
@@ -64,16 +68,16 @@ v2 = [
     "name": "name",
     "storageKey": null
   },
-  (v1/*: any*/)
+  (v2/*: any*/)
 ],
-v3 = [
+v4 = [
   {
     "alias": null,
     "args": [
       {
-        "kind": "Literal",
+        "kind": "Variable",
         "name": "fullPath",
-        "value": "gitlab-org/gitlab-foss"
+        "variableName": "groupAndProject"
       }
     ],
     "concreteType": "Project",
@@ -88,7 +92,7 @@ v3 = [
         "name": "webUrl",
         "storageKey": null
       },
-      (v1/*: any*/),
+      (v2/*: any*/),
       {
         "alias": null,
         "args": null,
@@ -139,7 +143,7 @@ v3 = [
                         "kind": "LinkedField",
                         "name": "nodes",
                         "plural": true,
-                        "selections": (v2/*: any*/),
+                        "selections": (v3/*: any*/),
                         "storageKey": null
                       }
                     ],
@@ -160,7 +164,7 @@ v3 = [
                         "kind": "LinkedField",
                         "name": "nodes",
                         "plural": true,
-                        "selections": (v2/*: any*/),
+                        "selections": (v3/*: any*/),
                         "storageKey": null
                       }
                     ],
@@ -176,37 +180,43 @@ v3 = [
         "storageKey": null
       }
     ],
-    "storageKey": "project(fullPath:\"gitlab-org/gitlab-foss\")"
+    "storageKey": null
   }
 ];
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "apiUtilDirectoryListQuery",
-    "selections": (v3/*: any*/),
+    "selections": (v4/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "apiUtilDirectoryListQuery",
-    "selections": (v3/*: any*/)
+    "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "ca0db0f07455f5da27f40d05dc97c48d",
+    "cacheID": "189debcb38a4791cc6ab01033924e7b5",
     "id": null,
     "metadata": {},
     "name": "apiUtilDirectoryListQuery",
     "operationKind": "query",
-    "text": "query apiUtilDirectoryListQuery(\n  $path: String!\n) {\n  project(fullPath: \"gitlab-org/gitlab-foss\") {\n    webUrl\n    path\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          blobs {\n            nodes {\n              name\n              path\n            }\n          }\n          trees {\n            nodes {\n              name\n              path\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query apiUtilDirectoryListQuery(\n  $path: String!\n  $groupAndProject: ID!\n) {\n  project(fullPath: $groupAndProject) {\n    webUrl\n    path\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          blobs {\n            nodes {\n              name\n              path\n            }\n          }\n          trees {\n            nodes {\n              name\n              path\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "6bbd2fed8122c3b1533404a573f2e73e";
+(node as any).hash = "fdb797c9994f1aaebe96e22efd43a4c1";
 
 export default node;

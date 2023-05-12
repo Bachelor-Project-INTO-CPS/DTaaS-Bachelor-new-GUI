@@ -6,8 +6,9 @@ import {
   FetchFunction,
 } from 'relay-runtime';
 import axios from 'axios';
+import { getGitlabURL } from 'util/envUtil';
 
-const HTTP_ENDPOINT = 'https://gitlab.com/api/graphql';
+const HTTP_ENDPOINT = getGitlabURL();
 
 const fetchFn: FetchFunction = async (request, variables) => {
   const resp = await axios.post(

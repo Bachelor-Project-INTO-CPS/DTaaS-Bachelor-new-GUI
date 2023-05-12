@@ -1,6 +1,9 @@
 import graphql from 'babel-plugin-relay/macro';
+import { useSelector } from 'react-redux';
 import { useLazyLoadQuery } from 'react-relay';
+import { RootState } from 'store/store';
 import { apiUtilDirectoryListQuery } from 'util/__generated__/apiUtilDirectoryListQuery.graphql';
+import { getGitlabGroup } from 'util/envUtil';
 
 interface Asset {
   name: string;
@@ -9,8 +12,8 @@ interface Asset {
 }
 
 const getFilesQuery = graphql`
-  query apiUtilDirectoryListQuery($path: String!) {
-    project(fullPath: "gitlab-org/gitlab-foss") {
+  query apiUtilDirectoryListQuery($path: String!, $groupAndProject: ID!) {
+    project(fullPath: $groupAndProject) {
       webUrl
       path
       repository {
@@ -54,8 +57,12 @@ const mapToAssets = (
     })) as Asset[];
 
 const useAssets = (dirPath: string): Asset[] => {
+  const group = getGitlabGroup();
+  const project = useSelector((state: RootState) => state.auth).userName;
+
   const data = useLazyLoadQuery<apiUtilDirectoryListQuery>(getFilesQuery, {
     path: dirPath,
+    groupAndProject: `${group}/${project}`,
   });
 
   const nodes = data.project?.repository?.paginatedTree?.nodes ?? [];

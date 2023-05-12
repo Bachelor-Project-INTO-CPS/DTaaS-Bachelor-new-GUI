@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom/client';
 import WorkBench from 'route/workbench/Workbench';
 import AppProvider from 'AppProvider';
 import { getURLbasename } from 'util/envUtil';
-import RelayEnvironment from './RelayEnvironment';
 import Library from './route/library/Library';
 import DigitalTwins from './route/digitaltwins/DigitalTwins';
 import SignIn from './route/auth/Signin';

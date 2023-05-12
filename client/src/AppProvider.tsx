@@ -16,12 +16,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
       <RelayEnvironmentProvider environment={RelayEnvironment}>
-        <ThemeProvider theme={mdTheme}>
-          <AuthProvider>
-            <CssBaseline />
-            {children}
-          </AuthProvider>
-        </ThemeProvider>
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <ThemeProvider theme={mdTheme}>
+            <AuthProvider>
+              <CssBaseline />
+              {children}
+            </AuthProvider>
+          </ThemeProvider>
+        </React.Suspense>
       </RelayEnvironmentProvider>
     </Provider>
   );
