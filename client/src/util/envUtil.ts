@@ -51,7 +51,7 @@ export interface KeyLinkPair {
  * The `link` is constructed by appending the `username` to the end of the *REACT_APP_URL_WORKBENCH*, and then appending the value of the environment variable to the end of that.
  * For example, if the *REACT_APP_URL_WORKBENCH* is https://foo.com, the `username` is *"user1"*, and the value of the environment variable is "/my-workbench", then the link will be https://foo.com/user1/my-workbench.
  */
-export function getWorkbenchLinkValues(): KeyLinkPair[] {
+export function useWorkbenchLinkValues(): KeyLinkPair[] {
   const prefix = 'REACT_APP_WORKBENCHLINK_';
   const workbenchLinkValues: KeyLinkPair[] = [];
 

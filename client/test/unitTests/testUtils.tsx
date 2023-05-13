@@ -7,7 +7,48 @@ import {
   render,
   screen,
 } from '@testing-library/react';
+import { RootState, setupStore } from 'store/store';
+import { Provider } from 'react-redux';
+import { PreloadedState } from 'redux';
 
+interface RenderProps {
+  children: React.ReactNode;
+  initialState?: RootState;
+}
+
+/**
+ * Create a wrapper for the component to be tested.
+ * 
+ * This wrapper can be used with the render and the render-hook functions from `@testing-library`.
+ * Example usage:
+ * ```tsx
+ * const initUser = wrapWithInitialState({
+    auth: { userName: "user1" }
+  });
+
+  render(<ComponentToBeTested />, {
+    wrapper: initUser
+  });
+  ```
+ * @param initialState Optional initial state for the store
+ * @returns 
+ */
+export const wrapWithInitialState = (
+  initialState?: PreloadedState<RootState>
+) => {
+  const renderWithStore: React.FC<RenderProps> = ({
+    children,
+  }: RenderProps) => {
+    const store = setupStore(initialState);
+    return <Provider store={store}>{children}</Provider>;
+  };
+  return renderWithStore;
+};
+
+/**
+ * All route components should be tested with this function. It renders the component and checks if it renders.
+ * @param component The component to be tested
+ */
 export function InitRouteTests(component: React.ReactElement) {
   beforeEach(() => {
     render(component);
@@ -18,6 +59,10 @@ export function InitRouteTests(component: React.ReactElement) {
   });
 }
 
+/**
+ * Tests if the component renders the given text on all tabs
+ * @param tabs An array of objects with the label and the body of the tab
+ */
 export function itDisplaysContentOfTabs(
   tabs: { label: string; body: string }[]
 ) {
@@ -49,16 +94,23 @@ export function itDisplaysContentOfTabs(
   });
 }
 
+/**
+ * Ensure that the default action is prevented when a link is clicked. Links are identified by their text.
+ * @param linkText The text of the link
+ */
 export function itPreventsDefaultActionWhenLinkIsClicked(linkText: string) {
   it(`should prevent default action when ${linkText} is clicked`, () => {
     const linkElement = screen.getByRole('link', { name: linkText });
-    // Simulate click event on see more link
     const clickEvent = createEvent.click(linkElement);
     fireEvent(linkElement, clickEvent);
     expect(clickEvent.defaultPrevented).toBeTruthy();
   });
 }
 
+/**
+ * Makes sure that the mocks are displayed
+ * @param DisplayedText An array of strings that should be displayed
+ */
 export function itDisplaysMocks(DisplayedText: string[]) {
   it('should render the mocks', () => {
     DisplayedText.forEach((text) => {
@@ -72,6 +124,10 @@ export interface TabLabelURLPair {
   url: string;
 }
 
+/**
+ * Used to test if the correct Iframe is rendered when a tab is clicked.
+ * @param tablabelsURLpair An array of objects with the label and the URL of the tab
+ */
 export function itHasCorrectURLOfTabsWithIframe(
   tablabelsURLpair: TabLabelURLPair[]
 ) {
