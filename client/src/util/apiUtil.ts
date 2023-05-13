@@ -1,5 +1,5 @@
 import { useLazyLoadQuery } from 'react-relay';
-import { gitLabQueriesgitLabDirectoryListQuery } from 'util/__generated__/gitLabQueriesgitLabDirectoryListQuery.graphql';
+import { gitLabQueriesgitLabDirectoryListQuery } from 'util/queries/__generated__/gitLabQueriesgitLabDirectoryListQuery.graphql';
 import { getGitlabGroup } from 'util/envUtil';
 import { useAppSelector } from 'store/hooks';
 import { Asset } from 'models/Asset';

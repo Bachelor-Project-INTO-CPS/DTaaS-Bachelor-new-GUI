@@ -14,7 +14,7 @@
     "src/index.tsx",
     "src/AppProvider.tsx",
     "src/store/store.ts",
-    "src/util/__generated__/",
+    "src/util/queries/__generated__/",
     "src/RelayEnvironment.ts",
     "src/util/queries/"
   ],
