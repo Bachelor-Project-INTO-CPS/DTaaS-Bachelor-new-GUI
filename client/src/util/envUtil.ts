@@ -22,19 +22,19 @@ const useUserLink = (baseURL: string, endpoint?: string): string => {
 };
 
 export function useURLforDT(): string {
-  return useUserLink(useAppURL(), window.env.REACT_APP_URL_DTLINK);
+  return useUserLink(getAppURL(), window.env.REACT_APP_URL_DTLINK);
 }
 
-export function useURLbasename(): string {
+export function getURLbasename(): string {
   return cleanURL(window.env.REACT_APP_URL_BASENAME);
 }
 
 export function useURLforLIB(): string {
-  return useUserLink(useAppURL(), window.env.REACT_APP_URL_LIBLINK);
+  return useUserLink(getAppURL(), window.env.REACT_APP_URL_LIBLINK);
 }
 
-function useAppURL(): string {
-  return `${cleanURL(window.env.REACT_APP_URL)}/${useURLbasename()}`;
+function getAppURL(): string {
+  return `${cleanURL(window.env.REACT_APP_URL)}/${getURLbasename()}`;
 }
 
 export interface KeyLinkPair {
@@ -63,7 +63,7 @@ export function useWorkbenchLinkValues(): KeyLinkPair[] {
         const keyWithoutPrefix = key.slice(prefix.length);
         workbenchLinkValues.push({
           key: keyWithoutPrefix,
-          link: useUserLink(useAppURL(), value),
+          link: useUserLink(getAppURL(), value),
         });
       }
     });

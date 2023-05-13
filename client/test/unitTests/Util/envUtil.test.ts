@@ -3,7 +3,7 @@ import {
   useURLforLIB,
   useWorkbenchLinkValues,
   cleanURL,
-  useURLbasename,
+  getURLbasename,
 } from 'util/envUtil';
 import { renderHook } from '@testing-library/react';
 import { wrapWithInitialState } from '../testUtils';
@@ -52,7 +52,7 @@ describe('envUtil', () => {
         expect(useURLforLIB()).toBe(
           `${testAppURL}/${testBasename}/${testUsername}/${testLIB}`
         );
-        expect(useURLbasename()).toBe(testBasename);
+        expect(getURLbasename()).toBe(testBasename);
       },
       { wrapper: renderWithUsername }
     );
@@ -108,7 +108,7 @@ describe('envUtil', () => {
       () => {
         expect(useURLforDT()).toBe(`${testAppURL}/${testUsername}/${testDT}`);
         expect(useURLforLIB()).toBe(`${testAppURL}/${testUsername}/${testLIB}`);
-        expect(useURLbasename()).toBe('');
+        expect(getURLbasename()).toBe('');
       },
       { wrapper: renderWithUsername }
     );
