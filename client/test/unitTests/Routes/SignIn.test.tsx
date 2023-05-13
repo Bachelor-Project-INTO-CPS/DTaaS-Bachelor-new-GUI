@@ -4,12 +4,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import SignIn from 'route/auth/Signin';
 import AuthContext from 'components/AuthContext';
 import { Provider } from 'react-redux';
-import store from 'store/store';
+import { setupStore } from 'store/store';
 
 jest.unmock('react-redux'); // unmock to use the actual implementation of react-redux useSelector
 
 describe('SignIn', () => {
   it('renders the SignIn form', () => {
+    const store = setupStore();
     render(
       <Provider store={store}>
         <AuthContext.Provider

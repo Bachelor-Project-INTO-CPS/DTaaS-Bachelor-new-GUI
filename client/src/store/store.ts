@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { PreloadedState, combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import menuSlice from './menu.slice';
 import authSlice from './auth.slice';
@@ -10,9 +10,11 @@ const rootReducer = combineReducers({
   cart: cartSlice,
 });
 
-const store = configureStore({
-  reducer: rootReducer,
-});
+export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
+  configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
 
-export type RootState = ReturnType<typeof store.getState>;
-export default store;
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
