@@ -1,13 +1,13 @@
 import { PreloadedState, combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import menuSlice from './menu.slice';
-import authSlice from './auth.slice';
-import cartSlice from './CartStore/cart.slice';
+import menuReducer from './menu.slice';
+import authReducer from './auth.slice';
+import cartReducer from './CartStore/cart.slice';
 
 const rootReducer = combineReducers({
-  menu: menuSlice,
-  auth: authSlice,
-  cart: cartSlice,
+  menu: menuReducer,
+  auth: authReducer,
+  cart: cartReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
