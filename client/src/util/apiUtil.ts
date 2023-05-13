@@ -3,7 +3,7 @@ import { gitLabQueriesgitLabDirectoryListQuery } from 'util/__generated__/gitLab
 import { getGitlabGroup } from 'util/envUtil';
 import { useAppSelector } from 'store/hooks';
 import { Asset } from 'models/Asset';
-import getFilesQuery from './gitLabQueries';
+import getFilesQuery from './queries/gitLabQueries';
 
 const mapToAssets = (
   arr: { name: string; path: string }[],
