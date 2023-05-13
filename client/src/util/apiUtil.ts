@@ -1,42 +1,15 @@
-import graphql from 'babel-plugin-relay/macro';
 import { useSelector } from 'react-redux';
 import { useLazyLoadQuery } from 'react-relay';
 import { RootState } from 'store/store';
-import { apiUtilDirectoryListQuery } from 'util/__generated__/apiUtilDirectoryListQuery.graphql';
+import { gitLabQueriesgitLabDirectoryListQuery } from 'util/__generated__/gitLabQueriesgitLabDirectoryListQuery.graphql';
 import { getGitlabGroup } from 'util/envUtil';
+import getFilesQuery from './gitLabQueries';
 
 interface Asset {
   name: string;
   path: string;
   isDir: boolean;
 }
-
-const getFilesQuery = graphql`
-  query apiUtilDirectoryListQuery($path: String!, $groupAndProject: ID!) {
-    project(fullPath: $groupAndProject) {
-      webUrl
-      path
-      repository {
-        paginatedTree(path: $path, recursive: false) {
-          nodes {
-            blobs {
-              nodes {
-                name
-                path
-              }
-            }
-            trees {
-              nodes {
-                name
-                path
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 interface Asset {
   name: string;
@@ -63,14 +36,17 @@ const mapToAssets = (
  * @param dirPath relative path to the directory in the repository
  * @returns An array of `Asset` objects
  */
-const useAssets = (dirPath: string): Asset[] => {
+function useAssets(dirPath: string): Asset[] {
   const group = getGitlabGroup();
   const project = useSelector((state: RootState) => state.auth).userName;
 
-  const data = useLazyLoadQuery<apiUtilDirectoryListQuery>(getFilesQuery, {
-    path: dirPath,
-    groupAndProject: `${group}/${project}`,
-  });
+  const data = useLazyLoadQuery<gitLabQueriesgitLabDirectoryListQuery>(
+    getFilesQuery,
+    {
+      path: dirPath,
+      groupAndProject: `${group}/${project}`,
+    }
+  );
 
   const nodes = data.project?.repository?.paginatedTree?.nodes ?? [];
   if (nodes.length === 0) {
@@ -92,6 +68,6 @@ const useAssets = (dirPath: string): Asset[] => {
       true
     ),
   ];
-};
+}
 
 export default useAssets;

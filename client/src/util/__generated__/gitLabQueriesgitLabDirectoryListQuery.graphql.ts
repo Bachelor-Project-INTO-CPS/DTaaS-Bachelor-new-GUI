@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<304b8c8c7b62ef801fb52b94a4d3ae64>>
+ * @generated SignedSource<<0cf99abfba3f2b4d9aa52d37fb4d36a7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,11 +9,11 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type apiUtilDirectoryListQuery$variables = {
+export type gitLabQueriesgitLabDirectoryListQuery$variables = {
   groupAndProject: string;
   path: string;
 };
-export type apiUtilDirectoryListQuery$data = {
+export type gitLabQueriesgitLabDirectoryListQuery$data = {
   readonly project: {
     readonly path: string;
     readonly repository: {
@@ -37,9 +37,9 @@ export type apiUtilDirectoryListQuery$data = {
     readonly webUrl: string | null;
   } | null;
 };
-export type apiUtilDirectoryListQuery = {
-  response: apiUtilDirectoryListQuery$data;
-  variables: apiUtilDirectoryListQuery$variables;
+export type gitLabQueriesgitLabDirectoryListQuery = {
+  response: gitLabQueriesgitLabDirectoryListQuery$data;
+  variables: gitLabQueriesgitLabDirectoryListQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -191,7 +191,7 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "apiUtilDirectoryListQuery",
+    "name": "gitLabQueriesgitLabDirectoryListQuery",
     "selections": (v4/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -203,20 +203,20 @@ return {
       (v0/*: any*/)
     ],
     "kind": "Operation",
-    "name": "apiUtilDirectoryListQuery",
+    "name": "gitLabQueriesgitLabDirectoryListQuery",
     "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "189debcb38a4791cc6ab01033924e7b5",
+    "cacheID": "db8142e6c6027316c0a3099bb84f02b9",
     "id": null,
     "metadata": {},
-    "name": "apiUtilDirectoryListQuery",
+    "name": "gitLabQueriesgitLabDirectoryListQuery",
     "operationKind": "query",
-    "text": "query apiUtilDirectoryListQuery(\n  $path: String!\n  $groupAndProject: ID!\n) {\n  project(fullPath: $groupAndProject) {\n    webUrl\n    path\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          blobs {\n            nodes {\n              name\n              path\n            }\n          }\n          trees {\n            nodes {\n              name\n              path\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query gitLabQueriesgitLabDirectoryListQuery(\n  $path: String!\n  $groupAndProject: ID!\n) {\n  project(fullPath: $groupAndProject) {\n    webUrl\n    path\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          blobs {\n            nodes {\n              name\n              path\n            }\n          }\n          trees {\n            nodes {\n              name\n              path\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "fdb797c9994f1aaebe96e22efd43a4c1";
+(node as any).hash = "9b6f29df561dd41c5ca729894cccaae9";
 
 export default node;
