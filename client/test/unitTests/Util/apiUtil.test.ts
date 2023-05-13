@@ -1,6 +1,10 @@
 import { renderHook } from '@testing-library/react';
 import useAssets from 'util/apiUtil';
-import { wrapWithInitialState } from '../testUtils';
+import { Asset } from 'models/Asset';
+import {
+  generateMockGraphQLtreeWithAssets,
+  wrapWithInitialState,
+} from '../testUtils';
 
 jest.unmock('util/apiUtil');
 jest.mock('util/gitLabQueries', () => ({
@@ -8,38 +12,27 @@ jest.mock('util/gitLabQueries', () => ({
   default: 'query',
 }));
 
+const mockAssets: Asset[] = [
+  {
+    name: 'file1',
+    path: '/path/file1',
+    isDir: false,
+  },
+  {
+    name: 'file2',
+    path: '/path/file2',
+    isDir: false,
+  },
+  {
+    name: 'dir1',
+    path: '/path/dir1',
+    isDir: true,
+  },
+];
+
 jest.mock('react-relay', () => ({
   __esModule: true,
-  useLazyLoadQuery: () => ({
-    project: {
-      repository: {
-        paginatedTree: {
-          nodes: [
-            {
-              blobs: {
-                nodes: [
-                  {
-                    name: 'asset1.txt',
-                    path: '/path/to/asset1',
-                  },
-                ],
-              },
-            },
-            {
-              trees: {
-                nodes: [
-                  {
-                    name: 'directory1',
-                    path: '/path/to/directory1',
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-    },
-  }),
+  useLazyLoadQuery: () => generateMockGraphQLtreeWithAssets(mockAssets),
 }));
 
 it('returns assets for given directory path', async () => {
@@ -51,7 +44,7 @@ it('returns assets for given directory path', async () => {
   renderHook(
     () => {
       const assets = useAssets('/path');
-      expect(assets.length).toBe(2);
+      expect(assets.length).toBe(mockAssets.length);
     },
     { wrapper: initUser }
   );
