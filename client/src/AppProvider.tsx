@@ -2,7 +2,7 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { setupStore } from 'store/store';
+import { setupStore } from 'store/Redux/store';
 
 const mdTheme: Theme = createTheme({
   palette: {

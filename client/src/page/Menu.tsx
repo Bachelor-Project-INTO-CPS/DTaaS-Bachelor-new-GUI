@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { closeMenu, openMenu } from 'store/menu.slice';
+import { useAppDispatch, useAppSelector } from 'store/Redux/hooks';
+import { closeMenu, openMenu } from 'store/Redux/slices/menu.slice';
 import MenuToolbar from './MenuToolbar';
 import DrawerComponent from './DrawerComponent';
 

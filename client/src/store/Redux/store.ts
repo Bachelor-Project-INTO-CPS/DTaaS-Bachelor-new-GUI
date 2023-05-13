@@ -1,8 +1,8 @@
 import { PreloadedState, combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import menuReducer from './menu.slice';
-import authReducer from './auth.slice';
-import cartReducer from './CartStore/cart.slice';
+import menuReducer from './slices/menu.slice';
+import authReducer from './slices/auth.slice';
+import cartReducer from './slices/cart.slice';
 
 const rootReducer = combineReducers({
   menu: menuReducer,

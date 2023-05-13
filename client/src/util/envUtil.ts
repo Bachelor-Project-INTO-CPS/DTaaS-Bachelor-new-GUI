@@ -1,4 +1,4 @@
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'store/Redux/hooks';
 
 /**
  * @param url or endpoint to clean
@@ -54,6 +54,7 @@ export interface KeyLinkPair {
 export function useWorkbenchLinkValues(): KeyLinkPair[] {
   const prefix = 'REACT_APP_WORKBENCHLINK_';
   const workbenchLinkValues: KeyLinkPair[] = [];
+  const appUrl = getAppURL();
 
   Object.keys(window.env)
     .filter((key) => key.startsWith(prefix))
@@ -63,7 +64,7 @@ export function useWorkbenchLinkValues(): KeyLinkPair[] {
         const keyWithoutPrefix = key.slice(prefix.length);
         workbenchLinkValues.push({
           key: keyWithoutPrefix,
-          link: useUserLink(getAppURL(), value),
+          link: useUserLink(appUrl, value),
         });
       }
     });
