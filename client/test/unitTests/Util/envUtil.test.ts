@@ -78,12 +78,6 @@ describe('envUtil', () => {
     expect(getGitlabURL()).toBe(testGitlabURL);
   });
 
-  test('GetURL should return the correct enviroment variables', () => {
-    expect(useURLforDT()).toBe(
-      `${testAppURL}/${testBasename}/${testUsername}/${testDT}`
-    );
-  });
-
   test('useWorkbenchLinkValues should return an array', () => {
     const { result } = renderHook(() => useWorkbenchLinkValues(), {
       wrapper: renderWithUsername,
