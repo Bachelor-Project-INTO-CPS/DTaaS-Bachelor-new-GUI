@@ -1,5 +1,4 @@
-import { useSelector } from 'react-redux';
-import { RootState } from 'store/store';
+import { useAppSelector } from 'store/hooks';
 
 /**
  * @param url or endpoint to clean
@@ -16,7 +15,7 @@ export function cleanURL(url: string): string {
  * @returns a complete URL: `baseUrl` / `username` / `endpoint`
  */
 const useUserLink = (baseURL: string, endpoint?: string): string => {
-  const username = useSelector((state: RootState) => state.auth).userName;
+  const username = useAppSelector((state) => state.auth).userName;
   const cleanBaseURL = cleanURL(baseURL);
   const cleanEndpoint = cleanURL(endpoint ?? '');
   return `${cleanBaseURL}/${username}/${cleanEndpoint}`;

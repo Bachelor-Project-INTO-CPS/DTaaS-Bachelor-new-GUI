@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { closeMenu, openMenu } from 'store/menu.slice';
-import { RootState } from 'store/store';
 import MenuToolbar from './MenuToolbar';
 import DrawerComponent from './DrawerComponent';
 
@@ -11,8 +10,8 @@ const drawerWidth = 240;
 
 const hooks = () => {
   const theme = useTheme();
-  const menuState = useSelector((state: RootState) => state.menu);
-  const dispatch = useDispatch();
+  const menuState = useAppSelector((state) => state.menu);
+  const dispatch = useAppDispatch();
   const [anchorElUser, setAnchorElUser] =
     React.useState<HTMLButtonElement | null>(null);
   return { theme, menuState, dispatch, anchorElUser, setAnchorElUser };

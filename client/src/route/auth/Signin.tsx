@@ -14,7 +14,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { setUserName } from 'store/auth.slice';
 
@@ -24,7 +24,7 @@ import { useAuth } from '../../components/AuthContext';
 const theme: Theme = createTheme();
 
 function SignIn() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { logIn } = useAuth();
   const navigate = useNavigate();
   const [localUsername, setLocalUsername] = React.useState<string>('');
