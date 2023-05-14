@@ -11,48 +11,13 @@ import { Provider } from 'react-redux';
 import { PreloadedState } from 'redux';
 import { RootState, setupStore } from 'store/Redux/store';
 
-interface RenderProps {
-  children: React.ReactNode;
-  initialState?: RootState;
-}
-
-/**
- * Create a wrapper for the component to be tested.
- * 
- * This wrapper can be used with the render and the render-hook functions from `@testing-library`.
- * Example usage:
- * ```tsx
- * const initUser = wrapWithInitialState({
-    auth: { userName: "user1" }
-  });
-
-  render(<ComponentToBeTested />, {
-    wrapper: initUser
-  });
-  ```
- * @param initialState Optional initial state for the store
- * @returns 
- */
-export const wrapWithInitialState = (
-  initialState?: PreloadedState<RootState>
-) => {
-  const renderWithStore: React.FC<RenderProps> = ({
-    children,
-  }: RenderProps) => {
-    const store = setupStore(initialState);
-    return <Provider store={store}>{children}</Provider>;
-  };
-  return renderWithStore;
-};
-
 /**
  * All route components should be tested with this function. It renders the component and checks if it renders.
  * @param component The component to be tested
  */
 export function InitRouteTests(component: React.ReactElement) {
-  const initialState = wrapWithInitialState({ auth: { userName: 'user1' } });
   beforeEach(() => {
-    render(component, { wrapper: initialState });
+    render(component);
   });
 
   it('renders', () => {
@@ -148,3 +113,42 @@ export function itHasCorrectURLOfTabsWithIframe(
     });
   });
 }
+
+// #####################################################################################
+// # The following functions are used to test the Redux store.                         #
+
+interface RenderProps {
+  children: React.ReactNode;
+  initialState?: RootState;
+}
+
+/**
+ * Create a wrapper for the component to be tested.
+ * 
+ * This wrapper can be used with the render and the render-hook functions from `@testing-library`.
+ * Example usage:
+ * ```tsx
+ * const initUser = wrapWithInitialState({
+    auth: { userName: "user1" }
+  });
+
+  render(<ComponentToBeTested />, {
+    wrapper: initUser
+  });
+  ```
+ * @param initialState Optional initial state for the store
+ * @returns 
+ */
+export const wrapWithInitialState = (
+  initialState?: PreloadedState<RootState>
+) => {
+  const renderWithStore: React.FC<RenderProps> = ({
+    children,
+  }: RenderProps) => {
+    const store = setupStore(initialState);
+    return <Provider store={store}>{children}</Provider>;
+  };
+  return renderWithStore;
+};
+
+// #####################################################################################

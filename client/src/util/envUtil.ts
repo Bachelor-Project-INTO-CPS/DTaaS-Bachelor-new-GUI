@@ -1,4 +1,4 @@
-import { useAppSelector } from 'store/Redux/hooks';
+import useUserData from 'store/UserAccess';
 
 /**
  * @param url or endpoint to clean
@@ -15,7 +15,7 @@ export function cleanURL(url: string): string {
  * @returns a complete URL: `baseUrl` / `username` / `endpoint`
  */
 const useUserLink = (baseURL: string, endpoint: string): string => {
-  const username = useAppSelector((state) => state.auth).userName;
+  const { userName: username } = useUserData().state;
   const cleanBaseURL = cleanURL(baseURL);
   const cleanEndpoint = cleanURL(endpoint);
   return `${cleanBaseURL}/${username}/${cleanEndpoint}`;
