@@ -2,7 +2,7 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import store from 'store/store';
+import { setupStore } from 'store/Redux/store';
 
 const mdTheme: Theme = createTheme({
   palette: {
@@ -11,6 +11,8 @@ const mdTheme: Theme = createTheme({
 });
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
+  const store = setupStore();
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={mdTheme}>
