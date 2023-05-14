@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import SignIn from 'route/auth/Signin';
 import AuthContext from 'components/AuthContext';
 import { Provider } from 'react-redux';
-import { setupStore } from 'store/store';
+import { setupStore } from 'store/Redux/store';
 
 describe('SignIn', () => {
   it('renders the SignIn form', () => {

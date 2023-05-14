@@ -7,9 +7,9 @@ import {
   render,
   screen,
 } from '@testing-library/react';
-import { RootState, setupStore } from 'store/store';
 import { Provider } from 'react-redux';
 import { PreloadedState } from 'redux';
+import { RootState, setupStore } from 'store/Redux/store';
 
 interface RenderProps {
   children: React.ReactNode;

@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import useUserData from 'store/AuthAccess';
+import useUserData from 'store/UserAccess';
 import Footer from '../../page/Footer';
 import { useAuth } from '../../components/AuthContext';
 
