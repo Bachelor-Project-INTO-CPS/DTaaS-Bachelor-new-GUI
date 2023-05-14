@@ -14,17 +14,15 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUserName } from 'store/auth.slice';
-
+import useUserData from 'store/UserAccess';
 import Footer from '../../page/Footer';
 import { useAuth } from '../../components/AuthContext';
 
 const theme: Theme = createTheme();
 
 function SignIn() {
-  const dispatch = useDispatch();
+  const { actions } = useUserData();
   const { logIn } = useAuth();
   const navigate = useNavigate();
   const [localUsername, setLocalUsername] = React.useState<string>('');
@@ -38,7 +36,7 @@ function SignIn() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!localUsername) return;
-    dispatch(setUserName(localUsername));
+    actions.setUser(localUsername);
     logIn();
     navigate('/library');
   };
