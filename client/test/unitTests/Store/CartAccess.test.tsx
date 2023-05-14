@@ -3,54 +3,44 @@ import { Asset } from 'models/Asset';
 import useCart from 'store/CartAccess';
 import { wrapWithInitialState } from '../testUtils';
 
-
 describe('useCart', () => {
   const defaultRender = wrapWithInitialState();
-  const testAsset : Asset = 
-  {
+  const testAsset: Asset = {
     path: '/assets/1',
     name: 'testAsset',
-    isDir: false
+    isDir: false,
   };
-  
-  it('should handle addToCart correctly', () => {
 
+  it('should handle addToCart correctly', () => {
     const { result } = renderHook(() => useCart(), { wrapper: defaultRender });
 
     act(() => {
-        result.current.actions.add(testAsset);
+      result.current.actions.add(testAsset);
     });
 
     expect(result.current.state.assets).toContain(testAsset);
-
-
   });
 
   it('should not add duplicates with addToCart', () => {
-
-  
     const { result } = renderHook(() => useCart(), { wrapper: defaultRender });
-
 
     act(() => {
       result.current.actions.add(testAsset);
     });
     act(() => {
-    result.current.actions.add(testAsset);
+      result.current.actions.add(testAsset);
     });
 
     expect(result.current.state.assets.length).toEqual(1);
   });
 
   it('should handle removeFromCart correctly', () => {
-
     const preLoadedState = wrapWithInitialState({
       cart: {
-        assets:
-        [testAsset]
-      }
-    })
-    
+        assets: [testAsset],
+      },
+    });
+
     const { result } = renderHook(() => useCart(), { wrapper: preLoadedState });
 
     act(() => {
@@ -61,8 +51,6 @@ describe('useCart', () => {
   });
 
   it('should handle clearCart correctly', () => {
-
-
     const { result } = renderHook(() => useCart(), { wrapper: defaultRender });
 
     act(() => {
@@ -70,6 +58,4 @@ describe('useCart', () => {
     });
     expect(result.current.state.assets).toHaveLength(0);
   });
-
-
 });

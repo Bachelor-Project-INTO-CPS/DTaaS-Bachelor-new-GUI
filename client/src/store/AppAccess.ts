@@ -6,7 +6,7 @@ function useApp() {
   const state = useAppSelector((store) => store.menu);
   const actions = {
     open: dispatch(menu.openMenu()),
-    close: dispatch(menu.closeMenu())
+    close: dispatch(menu.closeMenu()),
   };
 
   return { state, actions };
