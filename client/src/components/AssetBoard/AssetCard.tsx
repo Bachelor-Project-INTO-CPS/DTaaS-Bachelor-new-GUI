@@ -13,6 +13,9 @@ interface CardProps {
 }
 
 const Header = styled(Typography)`
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   white-space. nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
