@@ -50,8 +50,9 @@ export const wrapWithInitialState = (
  * @param component The component to be tested
  */
 export function InitRouteTests(component: React.ReactElement) {
+  const initialState = wrapWithInitialState({ auth: { userName: 'user1' } });
   beforeEach(() => {
-    render(component);
+    render(component, { wrapper: initialState });
   });
 
   it('renders', () => {

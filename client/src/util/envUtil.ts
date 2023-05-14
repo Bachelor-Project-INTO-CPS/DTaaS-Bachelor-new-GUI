@@ -5,19 +5,19 @@ import { useAppSelector } from 'store/Redux/hooks';
  * @returns a `string` with no whitespaces, leading or trailing slashes
  */
 export function cleanURL(url: string): string {
-  return url?.trim().replace(/^\/|\/$/g, ''); // Remove leading and trailing slashes
+  return url.trim().replace(/^\/|\/$/g, ''); // Remove leading and trailing slashes
 }
 
 /**
  * Injects the `username` into the `baseURL` and `endpoint` to create a link.
  * @param baseURL Example `https://foo.com` Any leading or trailing slashes will be removed.
- * @param endpoint (optional). Example `bar` Any leading or trailing slashes will be removed.
+ * @param endpoint . Example `bar` Any leading or trailing slashes will be removed.
  * @returns a complete URL: `baseUrl` / `username` / `endpoint`
  */
-const useUserLink = (baseURL: string, endpoint?: string): string => {
+const useUserLink = (baseURL: string, endpoint: string): string => {
   const username = useAppSelector((state) => state.auth).userName;
   const cleanBaseURL = cleanURL(baseURL);
-  const cleanEndpoint = cleanURL(endpoint ?? '');
+  const cleanEndpoint = cleanURL(endpoint);
   return `${cleanBaseURL}/${username}/${cleanEndpoint}`;
 };
 
