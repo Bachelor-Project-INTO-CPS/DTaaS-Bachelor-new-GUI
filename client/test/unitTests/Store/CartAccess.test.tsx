@@ -3,7 +3,7 @@ import { Asset } from 'models/Asset';
 import useCart from 'store/CartAccess';
 import { wrapWithInitialState } from '../testUtils';
 
-describe('useCart', () => {
+describe('CartAccess', () => {
   const defaultRender = wrapWithInitialState();
   const testAsset: Asset = {
     path: '/assets/1',
