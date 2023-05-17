@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '@mui/material';
 import { Asset } from 'models/Asset';
-import useCart from 'store/useCart';
+import useCart from 'store/CartAccess';
 
 function AddButton(asset: Asset) {
   const { state, actions } = useCart();
@@ -13,11 +13,7 @@ function AddButton(asset: Asset) {
       size="small"
       color="primary"
       onClick={() => {
-        // eslint-disable-next-line no-console
-        console.log(state.assets.length);
-        actions.addToCart(asset);
-        // eslint-disable-next-line no-console
-        console.log(state.assets.length);
+        actions.add(asset);
       }}
     >
       Select

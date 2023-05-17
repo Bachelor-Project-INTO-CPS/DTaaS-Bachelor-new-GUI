@@ -2,20 +2,19 @@ import * as React from 'react';
 import Layout from 'page/Layout';
 import TabComponent from 'components/tab/TabComponent';
 import { TabData } from 'components/tab/subcomponents/TabRender';
-import { useURLforLIB } from 'util/envUtil';
 import { Paper, Typography } from '@mui/material';
 import AssetBoard from 'components/AssetBoard';
 import tabs from './LibraryTabData';
 
 function useLibraryData() {
-  const LIBurl = useURLforLIB();
-
   const tabsData: TabData[] = tabs.map((tab) => ({
     label: tab.label,
     body: (
       <>
         <Typography variant="body1">{tab.body}</Typography>
-        <AssetBoard pathToAssets={`${LIBurl}/${tab.label}`} />
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <AssetBoard pathToAssets={tab.label} />
+        </React.Suspense>
       </>
     ),
   }));
@@ -39,7 +38,8 @@ function LibraryContent() {
             paddingTop: '2rem',
           }}
         >
-          ShoppingCart
+          <Typography variant="h5">Shopping Cart</Typography>
+          brb
         </Paper>
       </div>
     </Layout>
