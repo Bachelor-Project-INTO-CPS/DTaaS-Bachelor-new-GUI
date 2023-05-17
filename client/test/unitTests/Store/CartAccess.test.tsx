@@ -12,17 +12,15 @@ describe('CartAccess', () => {
   };
 
   it('should handle addToCart correctly', () => {
-    const {
-      result: { current },
-    } = renderHook(() => useCart(), {
+    const { result } = renderHook(() => useCart(), {
       wrapper: defaultRender,
     });
 
     act(() => {
-      current.actions.add(testAsset);
+      result.current.actions.add(testAsset);
     });
 
-    expect(current.state.assets).toContain(testAsset);
+    expect(result.current.state.assets).toContain(testAsset);
   });
 
   it('should not add duplicates with addToCart', () => {

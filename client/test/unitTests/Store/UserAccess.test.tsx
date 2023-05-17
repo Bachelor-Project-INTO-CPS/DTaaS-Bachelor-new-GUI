@@ -3,12 +3,11 @@ import useUserData from 'store/UserAccess';
 import { wrapWithInitialState } from '../testUtils';
 
 describe('UserAccess', () => {
-  const defaultRender = wrapWithInitialState();
   const testUserName = 'testUser';
 
   it('should update user correctly with setUser', () => {
     const { result } = renderHook(() => useUserData(), {
-      wrapper: defaultRender,
+      wrapper: wrapWithInitialState(),
     });
 
     act(() => {
