@@ -12,7 +12,7 @@ function useLibraryData() {
     body: (
       <>
         <Typography variant="body1">{tab.body}</Typography>
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <React.Suspense fallback={<AssetBoard />}>
           <AssetBoard pathToAssets={tab.label} />
         </React.Suspense>
       </>

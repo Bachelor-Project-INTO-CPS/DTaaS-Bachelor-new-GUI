@@ -19,8 +19,15 @@ const outerGridContainerProps = {
  * @param props Takes relative path to Assets. E.g `Library` for Library assets. OR maybe the full path using `useURLforLIB`?
  * @returns
  */
-function AssetBoard(props: { pathToAssets: string }) {
+function AssetBoard(props: { pathToAssets?: string }) {
+  if (!props.pathToAssets) {
+    return <em style={{ textAlign: 'center' }}>loading...</em>;
+  }
   const assets: Asset[] = useAssets(props.pathToAssets);
+
+  if (!assets.length) {
+    return <em style={{ textAlign: 'center' }}>No assets found.</em>;
+  }
 
   return (
     <Grid {...outerGridContainerProps}>
