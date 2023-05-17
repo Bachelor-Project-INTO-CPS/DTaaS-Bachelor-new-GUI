@@ -29,12 +29,14 @@ type entry = {
  * @param dirPath relative path to the directory in the repository
  * @returns An array of `Asset` objects
  */
-function useAssets(dirPath: string): Asset[] {
+function useAssets(dirPath: string, privateRepo?: boolean): Asset[] {
   const data = useLazyLoadQuery<gitLabQueriesgitLabDirectoryListQuery>(
     getFilesQuery,
     {
       path: dirPath,
-      groupAndProject: `${getGitlabGroup()}/${useUserData().state.userName}`,
+      groupAndProject: `${getGitlabGroup()}/${
+        privateRepo ? useUserData().state.userName : 'Common'
+      }`,
     }
   );
 
