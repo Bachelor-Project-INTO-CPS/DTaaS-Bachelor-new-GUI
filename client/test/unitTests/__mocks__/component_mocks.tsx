@@ -16,7 +16,3 @@ jest.mock('components/AssetBoard/AddButton', () => ({
 jest.mock('components/AssetBoard', () => ({
   default: () => <div>AssetBoard</div>,
 }));
-
-jest.mock('components/cart/ShoppingCart', () => ({
-  default: () => <div>ShoppingCart</div>,
-}));
