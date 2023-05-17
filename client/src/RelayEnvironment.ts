@@ -22,6 +22,7 @@ const fetchFn: FetchFunction = async (request, variables) => {
         Accept:
           'application/graphql-response+json; charset=utf-8, application/json; charset=utf-8',
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         // <-- Additional headers like 'Authorization' would go here
       },
     }

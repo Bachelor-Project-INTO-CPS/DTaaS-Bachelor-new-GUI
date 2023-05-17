@@ -5,6 +5,7 @@ import {
   generateMockGraphQLtreeWithAssets,
   wrapWithInitialState,
 } from '../testUtils';
+import { mockAssets, testPath } from '../__mocks__/util_mocks';
 
 jest.unmock('util/apiUtil');
 jest.mock('util/queries/gitLabQueries', () => ({
@@ -12,25 +13,7 @@ jest.mock('util/queries/gitLabQueries', () => ({
   default: 'query',
 }));
 
-const testPath = '/path';
-
-const mock3Assets: Asset[] = [
-  {
-    name: 'file1',
-    path: `${testPath}/file1`,
-    isDir: false,
-  },
-  {
-    name: 'file2',
-    path: `${testPath}/file2`,
-    isDir: false,
-  },
-  {
-    name: 'dir1',
-    path: `${testPath}/dir1`,
-    isDir: true,
-  },
-];
+const mock3Assets: Asset[] = mockAssets;
 
 const initUser = wrapWithInitialState({
   auth: {

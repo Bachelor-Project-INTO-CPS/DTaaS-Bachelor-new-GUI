@@ -1,8 +1,8 @@
 import { useLazyLoadQuery } from 'react-relay';
 import { gitLabQueriesgitLabDirectoryListQuery } from 'util/queries/__generated__/gitLabQueriesgitLabDirectoryListQuery.graphql';
 import { getGitlabGroup } from 'util/envUtil';
-import { useAppSelector } from 'store/hooks';
 import { Asset } from 'models/Asset';
+import useUserData from 'store/UserAccess';
 import getFilesQuery from './queries/gitLabQueries';
 
 const mapToAssets = (
@@ -34,9 +34,7 @@ function useAssets(dirPath: string): Asset[] {
     getFilesQuery,
     {
       path: dirPath,
-      groupAndProject: `${getGitlabGroup()}/${
-        useAppSelector((state) => state.auth).userName
-      }`,
+      groupAndProject: `${getGitlabGroup()}/${useUserData().state.userName}`,
     }
   );
 

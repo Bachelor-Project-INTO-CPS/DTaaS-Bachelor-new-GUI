@@ -1,7 +1,10 @@
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
+import RelayEnvironment from 'RelayEnvironment';
+import { AuthProvider } from 'components/AuthContext';
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { RelayEnvironmentProvider } from 'react-relay';
 import { setupStore } from 'store/Redux/store';
 
 const mdTheme: Theme = createTheme({
