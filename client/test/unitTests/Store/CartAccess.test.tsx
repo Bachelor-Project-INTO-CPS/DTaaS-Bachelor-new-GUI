@@ -3,7 +3,7 @@ import { Asset } from 'models/Asset';
 import useCart from 'store/CartAccess';
 import { wrapWithInitialState } from '../testUtils';
 
-describe('useCart', () => {
+describe('CartAccess', () => {
   const defaultRender = wrapWithInitialState();
   const testAsset: Asset = {
     path: '/assets/1',
@@ -12,7 +12,9 @@ describe('useCart', () => {
   };
 
   it('should handle addToCart correctly', () => {
-    const { result } = renderHook(() => useCart(), { wrapper: defaultRender });
+    const { result } = renderHook(() => useCart(), {
+      wrapper: defaultRender,
+    });
 
     act(() => {
       result.current.actions.add(testAsset);
