@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import useCart from 'store/useCart';
+import useCart from 'store/CartAccess';
 import CartList from './CartList';
 
 function ShoppingCart() {
@@ -12,7 +12,7 @@ function ShoppingCart() {
     <>
       <CartList assets={state.assets}></CartList>
       <div>
-        <Button variant="contained" onClick={() => actions.clearCart()}>
+        <Button variant="contained" onClick={() => actions.clear()}>
           Clear Cart
         </Button>
         <Button variant="contained" onClick={() => navigate('/digitaltwins')}>
