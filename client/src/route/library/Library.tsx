@@ -7,14 +7,25 @@ import AssetBoard from 'components/AssetBoard';
 import tabs from './LibraryTabData';
 
 function useLibraryData() {
+  const assetBoardWithSuspense = (
+    pathToAssets: string,
+    privateRepo?: boolean
+  ) => (
+    <React.Suspense fallback={<AssetBoard />}>
+      <AssetBoard pathToAssets={pathToAssets} privateRepo={privateRepo} />
+    </React.Suspense>
+  );
   const tabsData: TabData[] = tabs.map((tab) => ({
     label: tab.label,
     body: (
       <>
         <Typography variant="body1">{tab.body}</Typography>
-        <React.Suspense fallback={<AssetBoard />}>
-          <AssetBoard pathToAssets={tab.label} />
-        </React.Suspense>
+        <TabComponent
+          tabs={[
+            { label: 'Private', body: assetBoardWithSuspense(tab.label, true) },
+            { label: 'Common', body: assetBoardWithSuspense(tab.label) },
+          ]}
+        />
       </>
     ),
   }));
