@@ -9,7 +9,6 @@ import tabs from './LibraryTabData';
 
 function LibraryContent() {
   const LIBurl = useURLforLIB();
-
   const tabsData: TabData[] = tabs.map((tab) => ({
     label: tab.label,
     body: (
