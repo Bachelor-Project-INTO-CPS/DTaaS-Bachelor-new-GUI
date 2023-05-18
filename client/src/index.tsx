@@ -7,6 +7,7 @@ import AppProvider from 'AppProvider';
 import LayoutPublic from 'page/LayoutPublic';
 import { AuthProvider } from 'components/AuthContext';
 import { getURLbasename } from 'util/envUtil';
+import LayoutPublic from 'page/LayoutPublic';
 import Library from './route/library/Library';
 import DigitalTwins from './route/digitaltwins/DigitalTwins';
 import SignIn from './route/auth/Signin';
