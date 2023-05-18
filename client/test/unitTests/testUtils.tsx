@@ -170,6 +170,9 @@ interface Accumulator {
   trees: { name: string; path: string }[];
 }
 
+// Needs to be updated to the new model:
+// Ignore blobs on the same level as trees, because they are not displayed
+// Make test case with README.md in trees and test case with no README.md in trees
 export function generateMockGraphQLtreeWithAssets(assets: Asset[]) {
   const initial: Accumulator = { blobs: [], trees: [] };
   const { blobs, trees } = assets.reduce((acc, asset) => {

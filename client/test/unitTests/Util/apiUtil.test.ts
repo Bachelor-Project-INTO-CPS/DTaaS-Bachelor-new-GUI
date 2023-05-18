@@ -8,7 +8,7 @@ import {
 import { mockAssets, testPath } from '../__mocks__/util_mocks';
 
 jest.unmock('util/apiUtil');
-jest.mock('util/queries/gitLabQueries', () => ({
+jest.mock('util/queries/gitLab', () => ({
   __esModule: true,
   default: 'query',
 }));
