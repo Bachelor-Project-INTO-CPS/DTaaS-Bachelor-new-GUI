@@ -57,6 +57,7 @@ const router = createBrowserRouter(
       ),
     },
   ],
+
   {
     basename: `/${getURLbasename()}`,
   }
@@ -68,9 +69,7 @@ if (root) {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <AppProvider>
-        <AuthProvider>
-          <RouterProvider router={router} />
-        </AuthProvider>
+        <RouterProvider router={router} />
       </AppProvider>
     </React.StrictMode>
   );
