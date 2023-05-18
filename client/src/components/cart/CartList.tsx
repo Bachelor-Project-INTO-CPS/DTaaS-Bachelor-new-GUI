@@ -10,7 +10,7 @@ function CartList(props: OwnProps) {
   return (
     <ul>
       {props.assets.map((a, i) => (
-        <CartItemRender key={i} asset={a} ></CartItemRender>
+        <CartItemRender key={i} asset={a}></CartItemRender>
       ))}
     </ul>
   );
