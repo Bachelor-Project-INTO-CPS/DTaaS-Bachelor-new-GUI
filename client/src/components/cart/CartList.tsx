@@ -1,6 +1,5 @@
 import { Asset } from 'models/Asset';
 import React from 'react';
-import CartItemRender from './CartItemRender';
 
 interface OwnProps {
   assets: Asset[];
@@ -14,6 +13,10 @@ function CartList(props: OwnProps) {
       ))}
     </ul>
   );
+}
+
+function CartItemRender(props: { asset: Asset }) {
+  return <li>{props.asset.path}</li>;
 }
 
 export default CartList;
