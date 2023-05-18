@@ -4,6 +4,7 @@ import TabComponent from 'components/tab/TabComponent';
 import { TabData } from 'components/tab/subcomponents/TabRender';
 import { Paper, Typography } from '@mui/material';
 import AssetBoard from 'components/AssetBoard';
+import ShoppingCart from 'components/cart/ShoppingCart';
 import tabs from './LibraryTabData';
 
 function useLibraryData() {
@@ -50,7 +51,7 @@ function LibraryContent() {
           }}
         >
           <Typography variant="h5">Shopping Cart</Typography>
-          brb
+          <ShoppingCart />
         </Paper>
       </div>
     </Layout>
