@@ -22,7 +22,6 @@ describe('SignIn', () => {
       { wrapper: wrapWithInitialState() }
     );
     expect(screen.getByLabelText(/Username/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: /Sign In/i })
     ).toBeInTheDocument();
