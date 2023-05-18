@@ -4,6 +4,8 @@ import {
   useWorkbenchLinkValues,
   cleanURL,
   getURLbasename,
+  getGitlabGroup,
+  getGitlabURL,
 } from 'util/envUtil';
 import { renderHook } from '@testing-library/react';
 import { wrapWithInitialState } from '../testUtils';
@@ -15,6 +17,8 @@ describe('envUtil', () => {
   const testLIB = '';
   const testAppURL = 'https://example.com';
   const testBasename = 'testBasename';
+  const testGitlabURL = 'testGitlabURL';
+  const testGitlabGroup = 'testGitlabGroup';
   const testWorkbenchEndpoints = [
     'one',
     '/two',
@@ -35,6 +39,8 @@ describe('envUtil', () => {
     REACT_APP_WORKBENCHLINK_VSCODE: testWorkbenchEndpoints[2],
     REACT_APP_WORKBENCHLINK_JUPYTERLAB: testWorkbenchEndpoints[3],
     REACT_APP_WORKBENCHLINK_JUPYTERNOTEBOOK: testWorkbenchEndpoints[4],
+    REACT_APP_BACKEND_URL_GITLAB: testGitlabURL,
+    REACT_APP_BACKEND_GITLAB_GROUP: testGitlabGroup,
   };
 
   const renderWithUsername = wrapWithInitialState({
@@ -62,6 +68,14 @@ describe('envUtil', () => {
       wrapper: renderWithUsername,
     });
     expect(resultURLbasename.current).toBe(testBasename);
+  });
+
+  test('GetGitlabGroup should return the correct enviroment variable', () => {
+    expect(getGitlabGroup()).toBe(testGitlabGroup);
+  });
+
+  test('GetGitlabUrl should return the correct enviroment variable', () => {
+    expect(getGitlabURL()).toBe(testGitlabURL);
   });
 
   test('useWorkbenchLinkValues should return an array', () => {
