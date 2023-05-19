@@ -6,14 +6,12 @@ import Button from '@mui/material/Button';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUserName } from 'store/auth.slice';
-
 import { useAuth } from 'react-oidc-context';
+import useUserData from 'store/UserAccess';
 
 function SignIn() {
-  const dispatch = useDispatch();
+  const { actions } = useUserData();
   const auth = useAuth();
   const navigate = useNavigate();
   const [localUsername, setLocalUsername] = React.useState<string>('');
@@ -27,7 +25,7 @@ function SignIn() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!localUsername) return;
-    dispatch(setUserName(localUsername));
+    actions.setUser(localUsername);
     auth.signinRedirect();
     navigate('/library');
   };
