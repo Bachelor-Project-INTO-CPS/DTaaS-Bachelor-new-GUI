@@ -29,7 +29,7 @@ const Description = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
-function CardActionAreaContainer(asset: Asset) {
+function CardDisplayArea(asset: Asset) {
   return (
     <Grid container>
       <Grid item xs={7}>
@@ -82,7 +82,7 @@ function AssetCard(props: CardProps) {
       }}
     >
       <Header variant="h6">{data.name}</Header>
-      <CardActionAreaContainer {...data} />
+      <CardDisplayArea {...data} />
       <CardButtonsContainer {...data} />
     </Card>
   );
