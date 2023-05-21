@@ -14,11 +14,13 @@ const cartSlice = createSlice({
   initialState: initState,
   reducers: {
     addToCart: (state: CartState, action: PayloadAction<Asset>) => {
-      if (!state.assets.find((asset) => isEqual(asset,action.payload)))
+      if (!state.assets.find((asset) => isEqual(asset, action.payload)))
         state.assets.push(action.payload);
     },
     removeFromCart: (state: CartState, action: PayloadAction<Asset>) => {
-      state.assets = state.assets.filter((asset) => !isEqual(asset,action.payload));
+      state.assets = state.assets.filter(
+        (asset) => !isEqual(asset, action.payload)
+      );
     },
     clearCart: (state: CartState) => {
       state.assets = [];

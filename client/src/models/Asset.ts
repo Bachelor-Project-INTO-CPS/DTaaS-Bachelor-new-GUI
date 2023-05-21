@@ -5,6 +5,6 @@ export interface Asset {
   isDir: boolean;
 }
 
-export function isEqual(a1: Asset, a2: Asset){
+export function isEqual(a1: Asset, a2: Asset) {
   return a1.path === a2.path;
 }
