@@ -14,7 +14,7 @@ const TestComponentId = 'component';
 
 describe('Layout component with one element', () => {
   beforeEach(() => {
-    renderLayoutWithRouter(Layout, TestComponentIdList);
+    renderLayoutWithRouter(Layout, [TestComponentId]);
   });
 
   basicLayoutTestsWithSingleComponent();
