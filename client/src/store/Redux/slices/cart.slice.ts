@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Asset } from 'models/Asset';
+import { Asset, isEqual } from 'models/Asset';
 
 export interface CartState {
   assets: Asset[];
@@ -14,11 +14,11 @@ const cartSlice = createSlice({
   initialState: initState,
   reducers: {
     addToCart: (state: CartState, action: PayloadAction<Asset>) => {
-      if (!state.assets.find((asset) => asset.path === action.payload.path))
+      if (!state.assets.find((asset) => isEqual(asset,action.payload)))
         state.assets.push(action.payload);
     },
     removeFromCart: (state: CartState, action: PayloadAction<Asset>) => {
-      state.assets = state.assets.filter((a) => a.path !== action.payload.path);
+      state.assets = state.assets.filter((asset) => !isEqual(asset,action.payload));
     },
     clearCart: (state: CartState) => {
       state.assets = [];
