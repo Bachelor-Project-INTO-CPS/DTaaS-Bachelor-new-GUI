@@ -16,6 +16,7 @@ package "Page" {
     class Layout
     class Tabs
     class PrivateRoute
+    class PopUp
     
     Layout -l[hidden]- Tabs
     Tabs -l[hidden]- PrivateRoute

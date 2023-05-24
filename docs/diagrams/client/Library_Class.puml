@@ -1,5 +1,6 @@
 @startuml
 hide empty members
+hide private members
 
 !include Types/Asset.puml
 !include Components/AssetBoard/Board.puml

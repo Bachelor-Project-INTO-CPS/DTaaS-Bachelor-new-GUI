@@ -1,4 +1,4 @@
 class "Component::AssetInfo" as Info {
-  + AssetInfo(path: string)
+  + AssetInfo(description: string)
   - RetriveInfo(path: string) : file
 }
