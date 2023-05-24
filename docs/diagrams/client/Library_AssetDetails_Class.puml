@@ -18,10 +18,6 @@ class "Structual::PopUp" as PopUp {
     + PrimaryButton: ReactElement
     + SecondaryButton: ReactElement
     + content?: string
-}
-
-
-class "Structual::PopUp" as PopUp {
     + Close()
 }
 
