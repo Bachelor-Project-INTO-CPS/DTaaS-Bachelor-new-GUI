@@ -11,14 +11,18 @@ remove @unlinked
 !include Store/UserAccess.puml
 !include Util/envUtil.puml
 
+class "Page::Structual::Tabs" as Tabs
+
+Board .r.> Tabs : <<uses>>
 Board ..> apiUtil : <<uses>>
 Board "1" *-- "0..*" Card
 Card *-- AddButton
-apiUtil ..> UserAccess : <<uses>>
-apiUtil ..> envUtil_API : <<uses>>
+'apiUtil ..> UserAccess : <<uses>>
+'apiUtil ..> envUtil_API : <<uses>>
 
-apiUtil -r[hidden]- Card
-Asset -r[hidden]- Board
-Asset -d[hidden]- apiUtil
-note top of Card : Displays a \nsingle asset
+'apiUtil -r[hidden]- Card
+'Asset -r[hidden]- Board
+'Asset -d[hidden]- apiUtil
+'note left of Card : Displays a \nsingle asset
+'note left of Board : Displays a \nlist of assets
 @enduml
