@@ -6,23 +6,21 @@ remove @unlinked
 !include Types/Asset.puml
 !include Components/AssetBoard/Board.puml
 !include Components/AssetBoard/Card.puml
-!include Components/AssetBoard/AddButton.puml
 !include Util/apiUtil.puml
+!include Components/AssetBoard/AddButton.puml
 !include Store/UserAccess.puml
 !include Util/envUtil.puml
+!include Components/AssetBoard/Info.puml
+!include Store/CartAccess.puml
 
 class "Page::Structual::Tabs" as Tabs
 
-Board .r.> Tabs : <<uses>>
+Card *-- Info
+Info *-r- AddButton
+Board .l.> Tabs : <<uses>>
 Board ..> apiUtil : <<uses>>
 Board "1" *-- "0..*" Card
 Card *-- AddButton
-'apiUtil ..> UserAccess : <<uses>>
-'apiUtil ..> envUtil_API : <<uses>>
 
 'apiUtil -r[hidden]- Card
-'Asset -r[hidden]- Board
-'Asset -d[hidden]- apiUtil
-'note left of Card : Displays a \nsingle asset
-'note left of Board : Displays a \nlist of assets
 @enduml

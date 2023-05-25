@@ -12,7 +12,7 @@ package "Routes" {
 }
 
 package "Page" {
-  package "StructualComponent" {
+  package "Structual" {
     class Layout
     class Tabs
     class PrivateRoute
@@ -21,7 +21,7 @@ package "Page" {
     Layout -l[hidden]- Tabs
     Tabs -l[hidden]- PrivateRoute
   }
-  package "BaseComponent" {
+  package "Base" {
     class Footer
     class Menu
     class Title
@@ -30,7 +30,7 @@ package "Page" {
     Menu -l[hidden]- Footer
   }
   
-  StructualComponent --[hidden] BaseComponent
+  Structual --[hidden] Base
 }
 
 package "Util" {
