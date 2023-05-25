@@ -9,7 +9,10 @@ remove @unlinked
 !include Store/UserAccess.puml
 !include Util/envUtil.puml
 
+class RelayEnvironment
+RelayEnvironment ..> envUtil_API : <<uses>>
 Board ..> apiUtil : <<uses>>
+apiUtil .r.> RelayEnvironment : <<uses>>
 apiUtil ..> UserAccess : <<uses>>
 apiUtil ..> envUtil_API : <<uses>>
 @enduml
