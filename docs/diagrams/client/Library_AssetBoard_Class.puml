@@ -18,8 +18,10 @@ Card *-- AddButton
 'Info *-d- AddButton
 'AddButton ..> CartAccess : <<uses>>
 apiUtil ..> UserAccess : <<uses>>
-apiUtil ...> envUtil : <<uses>>
+apiUtil ..> envUtil : <<uses>>
 
 apiUtil -r[hidden]- Card
-note right of Card : Displays a \nsingle asset
+Asset -r[hidden]- Board
+Asset -d[hidden]- apiUtil
+note top of Card : Displays a \nsingle asset
 @enduml
