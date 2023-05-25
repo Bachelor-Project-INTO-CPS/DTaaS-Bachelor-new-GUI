@@ -4,8 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import WorkBench from 'route/workbench/Workbench';
 import AppProvider from 'AppProvider';
-import LayoutPublic from 'page/LayoutPublic';
-import { AuthProvider } from 'components/AuthContext';
 import { getURLbasename } from 'util/envUtil';
 import LayoutPublic from 'page/LayoutPublic';
 import Library from './route/library/Library';
