@@ -1,4 +1,6 @@
+@startuml ShoppingCart class
 class "Component::ShoppingCart" as Shop {
   - EmptyCart(): bool
   + Checkout(): void
 }
+@enduml

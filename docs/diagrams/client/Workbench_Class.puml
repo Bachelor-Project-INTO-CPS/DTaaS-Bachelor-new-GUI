@@ -1,4 +1,4 @@
-@startuml
+@startuml Workbench page composition
 hide empty members
 remove @unlinked
 
@@ -8,8 +8,7 @@ remove @unlinked
 !include Components/LinkButtons.puml
 !include Components/LinkButtonsLib.puml
 
-class "Route::Workbench" as Workbench {
-}
+class "Route::Workbench" as Workbench
 
 Workbench ..> envUtil_Workbench: <<uses>>
 envUtil_Workbench ..> UserAccess: <<uses>>

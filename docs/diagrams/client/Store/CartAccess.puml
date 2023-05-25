@@ -1,3 +1,8 @@
+@startuml CartAccess class
+
 class "Store::CartAccess" as CartAccess {
   + useCartStore()
 } 
+
+
+@enduml

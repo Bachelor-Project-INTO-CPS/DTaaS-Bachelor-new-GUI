@@ -1,4 +1,4 @@
-@startuml
+@startuml package diagram for the frontend
 hide empty members
 
 

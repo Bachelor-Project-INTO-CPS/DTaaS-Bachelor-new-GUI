@@ -1,1 +1,3 @@
+@startuml LinkButtonLib 
 class "Components::LinkButtonLib" as LinkButtonsLib <<dictonary>>
+@enduml

@@ -1,4 +1,4 @@
-@startuml
+@startuml AssetBoard in Library page
 hide empty members
 hide private members
 remove @unlinked

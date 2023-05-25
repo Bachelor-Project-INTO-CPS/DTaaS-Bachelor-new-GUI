@@ -1,4 +1,6 @@
+@startuml AssetInfo class
 class "Component::AssetInfo" as Info {
   + AssetInfo(description: string)
   - RetriveInfo(path: string) : file
 }
+@enduml

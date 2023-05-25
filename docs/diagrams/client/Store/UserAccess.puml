@@ -1,3 +1,4 @@
+@startuml UserAccess class
 class "Store::UserAccess" as UserAccess{
   + useUsername(): string
 }

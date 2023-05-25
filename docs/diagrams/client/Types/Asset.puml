@@ -1,5 +1,8 @@
+@startuml Asset
+
 interface Asset {
   path: string
   name: string
   description?: string
 }
+@enduml

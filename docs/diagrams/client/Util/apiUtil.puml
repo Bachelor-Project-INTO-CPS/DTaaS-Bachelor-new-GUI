@@ -1,3 +1,4 @@
+@startuml apiUtil class
 class "Util::ApiUtil" as apiUtil 
 {
   + useAssets(pathToAsset: string, isPrivate: bool) : Asset[]
@@ -9,3 +10,4 @@ class "Util::ApiUtil" as apiUtil
   - getReadmesData(assets: Asset[], groupAndProject: string) : gitLabReadmeQuery$data
   - mergeAssets(assets: asset[], readmeData: gitLabReadmeQuery$data);
 }
+@enduml

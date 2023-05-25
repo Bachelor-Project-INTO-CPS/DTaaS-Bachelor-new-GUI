@@ -1,4 +1,6 @@
+@startuml KeyLinkPair
 interface KeyLinkPair {
   key: string
   link: string
 }
+@enduml

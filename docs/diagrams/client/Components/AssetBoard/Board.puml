@@ -1,3 +1,5 @@
+@startuml AssetBoard class
 class "Component::AssetBoard" as Board {
   +AssetBoard(pathToAssets: string)
 }
+@enduml

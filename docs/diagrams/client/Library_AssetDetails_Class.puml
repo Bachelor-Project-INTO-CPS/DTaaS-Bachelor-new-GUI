@@ -1,4 +1,4 @@
-@startuml
+@startuml AssetDetails on Library page
 hide empty members
 hide private members
 remove @unlinked

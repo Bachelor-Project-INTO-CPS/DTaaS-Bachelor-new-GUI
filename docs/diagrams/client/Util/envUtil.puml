@@ -1,3 +1,4 @@
+@startuml envUtil class diagrams
 'This one is used in Library
 class "Util::envUtil" as envUtil_API
 {
@@ -22,6 +23,7 @@ class "Util:envUTil" as envUtil_Iframe
 
 
 
+
 class "Util::envUtil" as envUtilFull
 {
   + cleanURL(url: string) : string
@@ -36,3 +38,4 @@ class "Util::envUtil" as envUtilFull
   --
   + getURLbasename(): string
 }
+@enduml

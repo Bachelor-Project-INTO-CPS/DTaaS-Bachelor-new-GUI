@@ -1,5 +1,6 @@
-@startuml
+@startuml API utility on Library page
 hide empty members
+hide private members
 remove @unlinked
 
 !include Types/Asset.puml

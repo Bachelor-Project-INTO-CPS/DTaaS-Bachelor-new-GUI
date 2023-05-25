@@ -1,3 +1,5 @@
+@startuml AssetCard class
 class "Component::AssetCard" as Card {
   + AssetCard(asset: Asset)
 }
+@enduml
