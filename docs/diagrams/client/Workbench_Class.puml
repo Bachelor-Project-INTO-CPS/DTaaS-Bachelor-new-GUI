@@ -1,5 +1,6 @@
 @startuml
 hide empty members
+remove @unlinked
 
 !include Types/KeyLinkPair.puml
 !include Store/UserAccess.puml
@@ -10,8 +11,8 @@ hide empty members
 class "Route::Workbench" as Workbench {
 }
 
-Workbench ..> envUtil: <<uses>>
-envUtil ..> UserAccess: <<uses>>
+Workbench ..> envUtil_Workbench: <<uses>>
+envUtil_Workbench ..> UserAccess: <<uses>>
 Workbench o-- LinkButtons
 LinkButtons ..> LinkButtonsLib: <<imports>>
 @enduml

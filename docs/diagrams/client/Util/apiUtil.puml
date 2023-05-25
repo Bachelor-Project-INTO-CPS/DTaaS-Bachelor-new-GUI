@@ -1,3 +1,11 @@
-class "Util::ApiUtil" as apiUtil{
-  +useAssets(string, bool) : Asset[]
+class "Util::ApiUtil" as apiUtil 
+{
+  + useAssets(pathToAsset: string, isPrivate: bool) : Asset[]
+  - getGroupAndProject(privateRepo: bool) : string
+  - getDirectoryData(dirPath: string, groupAndProject: string) : GitLabQueryData
+  - validateRepository(dirData: GitLabQueryData, groupAndProject: string) : Repository
+  - validateDirectories(Repository, dirPath) : TreeNodesArray
+  - createAssets(directories: TreeNodesArray) : Assets[]
+  - getReadmesData(assets: Asset[], groupAndProject: string) : gitLabReadmeQuery$data
+  - mergeAssets(assets: asset[], readmeData: gitLabReadmeQuery$data);
 }

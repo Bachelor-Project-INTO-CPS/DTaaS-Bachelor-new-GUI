@@ -4,14 +4,9 @@ hide private members
 remove @unlinked
 
 !include Types/Asset.puml
-'!include Components/AssetBoard/Board.puml
 !include Components/AssetBoard/AddButton.puml
 !include Components/AssetBoard/Card.puml
 !include Components/AssetBoard/Info.puml
-'!include Store/CartAccess.puml
-'!include Util/apiUtil.puml
-'!include Store/UserAccess.puml
-'!include Util/envUtil.puml
 
 class "Structual::PopUp" as PopUp {
     + title: string
@@ -22,17 +17,11 @@ class "Structual::PopUp" as PopUp {
 }
 
 
-'Board "1" *-- "0..*" Card
 Card *-- AddButton
 Card *-- Info
 Info o-l- AddButton
-Info --|> PopUp
-
-'PopUp .u.> IPopUp : <<Provides>>
+Info -u-|> PopUp
 
 
-
-AddButton -d[hidden]- Asset
-
-'note right of Card : Displays a \nsingle asset
+AddButton -u[hidden]- Asset
 @enduml

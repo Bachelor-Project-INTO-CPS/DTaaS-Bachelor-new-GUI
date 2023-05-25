@@ -1,4 +1,38 @@
-class "Util::envUtil" as envUtil{
-  + useWorkbenchLinkValues() : KeyLinkPair[]
-  + getGitlabGroup() : string
+'This one is used in Library
+class "Util::envUtil" as envUtil_API
+{
+  + getGitlabURL(): string
+  + getGitlabGroup(): string
+  - useUserLink(baseURL : string, endpoint: string) : string
+}
+
+class "Util:envUtil" as envUtil_Workbench 
+{
+    + useWorkbenchLinkValues(): KeyLinkPair[]
+}
+
+
+class "Util:envUTil" as envUtil_Iframe 
+{
+  + cleanURL(url: string) : string
+  + useURLforWorkbench() : string
+  + useURLforDT() : string
+  + useURLforLIB(): string
+}
+
+
+
+class "Util::envUtil" as envUtilFull
+{
+  + cleanURL(url: string) : string
+  + useURLforDT() : string
+  + useURLforLIB(): string
+  + getGitlabURL(): string
+  - getAppURL(): string
+  --
+  + getGitlabGroup(): string
+  + useWorkbenchLinkValues(): KeyLinkPair[]
+  - useUserLink(baseURL : string, endpoint: string) : string
+  --
+  + getURLbasename(): string
 }
