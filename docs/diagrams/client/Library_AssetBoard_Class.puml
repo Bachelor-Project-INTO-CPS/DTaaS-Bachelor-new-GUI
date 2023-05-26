@@ -8,19 +8,24 @@ remove @unlinked
 !include Components/AssetBoard/Card.puml
 !include Util/apiUtil.puml
 !include Components/AssetBoard/AddButton.puml
-!include Store/UserAccess.puml
 !include Util/envUtil.puml
 !include Components/AssetBoard/Info.puml
 !include Store/CartAccess.puml
 
 class "Page::Structual::Tabs" as Tabs
+class Board #LightBlue
+class Card #LightBlue
+class Info #LightBlue
+class AddButton #LightBlue
 
 Card *-- Info
-Info *-r- AddButton
-Board .l.> Tabs : <<uses>>
+Info o-r- AddButton
+Board o-l- Tabs
 Board ..> apiUtil : <<uses>>
 Board "1" *-- "0..*" Card
 Card *-- AddButton
+apiUtil -d[hidden]- AddButton
+AddButton .r.> CartAccess : <<uses>>
 
 'apiUtil -r[hidden]- Card
 @enduml

@@ -6,6 +6,9 @@ hide empty members
 !include Components/ShoppingCart/List.puml
 !include Store/CartAccess.puml
 
+class Shop #LightBlue
+class List #LightBlue
+
 Shop *-- List
 Shop ..> CartAccess : <<uses>>
 List .r.> CartAccess : <<uses>>

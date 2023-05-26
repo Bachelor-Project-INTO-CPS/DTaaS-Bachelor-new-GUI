@@ -9,6 +9,8 @@ remove @unlinked
 !include Store/UserAccess.puml
 !include Util/envUtil.puml
 
+class apiUtil #LightBlue
+
 class RelayEnvironment
 RelayEnvironment ..> envUtil_API : <<uses>>
 Board ..> apiUtil : <<uses>>
