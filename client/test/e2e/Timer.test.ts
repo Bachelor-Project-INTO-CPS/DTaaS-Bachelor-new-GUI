@@ -1,4 +1,3 @@
-
 import { test, expect } from '@playwright/test';
 
 test.describe('Timer test', () => {
@@ -8,12 +7,11 @@ test.describe('Timer test', () => {
     await page.locator('button:has-text("Sign In")').click();
   });
 
-test('Reponsetime is less than 200ms', async ({ page }) => {
+  test('Reponsetime is less than 200ms', async ({ page }) => {
     await page.goto('./digitaltwins');
-  const executeTabElement = await page.locator(
-    `li[role="tab"]:has-text("Execute")`
-  );
-  await executeTabElement.click({timeout:200});
+    const executeTabElement = await page.locator(
+      `li[role="tab"]:has-text("Execute")`
+    );
+    await executeTabElement.click({ timeout: 200 });
   });
-
 });
