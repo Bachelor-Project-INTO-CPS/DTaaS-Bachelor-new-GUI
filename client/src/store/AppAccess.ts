@@ -5,7 +5,11 @@ function useApp() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((store) => store.menu);
   const actions = {
-    open: () => dispatch(menu.openMenu()),
+    open: () => {
+      // eslint-disable-next-line no-console
+      console.log('open');
+      dispatch(menu.openMenu());
+    },
     close: () => dispatch(menu.closeMenu()),
   };
 
