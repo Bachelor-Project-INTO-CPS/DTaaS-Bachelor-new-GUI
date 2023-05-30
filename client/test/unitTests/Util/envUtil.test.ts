@@ -111,11 +111,12 @@ describe('envUtil', () => {
     });
   });
 
-  test('cleanURL should remove leading and trailing slashes', () => {
-    expect(cleanURL('/test/')).toBe('test');
-    expect(cleanURL('/test')).toBe('test');
-    expect(cleanURL('test/')).toBe('test');
-    expect(cleanURL('test')).toBe('test');
+  const dirtyTestURLs = ['test', 'test/', '/test', '/test/'];
+
+  fit('cleanURL should remove leading and trailing slashes', () => {
+    dirtyTestURLs.forEach((url) => {
+      expect(cleanURL(url)).toBe('test');
+    });
   });
 
   test('still handles if basename is set to empty string', () => {
