@@ -27,10 +27,10 @@ export const getReadmesQuery = graphql`
       repository {
         blobs(paths: $paths) {
           nodes {
-            rawTextBlob   # raw text of the file
-            name          # name of the file
-            path          # path of the file
-            fileType      # type of the file
+            rawTextBlob # raw text of the file
+            name # name of the file
+            path # path of the file
+            fileType # type of the file
           }
         }
       }

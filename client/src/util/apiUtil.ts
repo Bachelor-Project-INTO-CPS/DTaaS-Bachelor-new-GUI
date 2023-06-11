@@ -89,7 +89,6 @@ function createAssets(treeNodes: TreeNodesArray): Asset[] {
     assets.push({
       name: node.name,
       path: node.path,
-      isDir: true,
     });
   });
 

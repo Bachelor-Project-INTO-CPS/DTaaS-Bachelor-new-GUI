@@ -166,30 +166,38 @@ export const wrapWithInitialState = (
 // ********************API UTILS*****************************
 
 interface Accumulator {
-  blobs: { name: string; path: string }[];
+  blobs: { rawTextBlob: string; path: string }[];
   trees: { name: string; path: string }[];
 }
 
-// Needs to be updated to the new model:
-// Ignore blobs on the same level as trees, because they are not displayed
-// Make test case with README.md in trees and test case with no README.md in trees
+/**
+ * Generates a mock GraphQL tree with assets.
+ * @param assets An array of assets
+ * @returns Assets in a GraphQL tree structure
+ */
 export function generateMockGraphQLtreeWithAssets(assets: Asset[]) {
   const initial: Accumulator = { blobs: [], trees: [] };
-  const { blobs, trees } = assets.reduce((acc, asset) => {
-    const node = { name: asset.name, path: asset.path };
-    if (asset.isDir) {
-      acc.trees.push(node);
-    } else {
-      acc.blobs.push(node);
-    }
-    return acc;
-  }, initial);
+  const { blobs: files, trees: directories } = assets.reduce(
+    (accumulatedStructure, asset) => {
+      const node = { name: asset.name, path: asset.path };
+      accumulatedStructure.trees.push(node);
+      if (asset.description) {
+        accumulatedStructure.blobs.push({
+          path: `${asset.path}/README.md`,
+          rawTextBlob: asset.description,
+        });
+      }
+      return accumulatedStructure;
+    },
+    initial
+  );
 
   return {
     project: {
       repository: {
+        blobs: { nodes: files },
         paginatedTree: {
-          nodes: [{ trees: { nodes: trees } }, { blobs: { nodes: blobs } }],
+          nodes: [{ trees: { nodes: directories } }],
         },
       },
     },
