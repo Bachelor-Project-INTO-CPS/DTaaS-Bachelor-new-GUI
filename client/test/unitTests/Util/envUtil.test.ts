@@ -113,7 +113,7 @@ describe('envUtil', () => {
 
   const dirtyTestURLs = ['test', 'test/', '/test', '/test/'];
 
-  fit('cleanURL should remove leading and trailing slashes', () => {
+  test('cleanURL should remove leading and trailing slashes', () => {
     dirtyTestURLs.forEach((url) => {
       expect(cleanURL(url)).toBe('test');
     });
