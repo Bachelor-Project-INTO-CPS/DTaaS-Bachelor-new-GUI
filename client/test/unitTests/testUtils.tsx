@@ -10,7 +10,6 @@ import {
 import { Provider } from 'react-redux';
 import { PreloadedState } from 'redux';
 import { RootState, setupStore } from 'store/Redux/store';
-import { Asset } from 'models/Asset';
 
 export function generateTestDivs(testIds: string[]) {
   return testIds.map((id, i) => (
@@ -162,44 +161,4 @@ export const wrapWithInitialState = (
 
 // #####################################################################################
 
-// ###########################################################
-// ********************API UTILS*****************************
 
-interface Accumulator {
-  blobs: { rawTextBlob: string; path: string }[];
-  trees: { name: string; path: string }[];
-}
-
-/**
- * Generates a mock GraphQL tree with assets.
- * @param assets An array of assets
- * @returns Assets in a GraphQL tree structure
- */
-export function generateMockGraphQLtreeWithAssets(assets: Asset[]) {
-  const initial: Accumulator = { blobs: [], trees: [] };
-  const { blobs: files, trees: directories } = assets.reduce(
-    (accumulatedStructure, asset) => {
-      const node = { name: asset.name, path: asset.path };
-      accumulatedStructure.trees.push(node);
-      if (asset.description) {
-        accumulatedStructure.blobs.push({
-          path: `${asset.path}/README.md`,
-          rawTextBlob: asset.description,
-        });
-      }
-      return accumulatedStructure;
-    },
-    initial
-  );
-
-  return {
-    project: {
-      repository: {
-        blobs: { nodes: files },
-        paginatedTree: {
-          nodes: [{ trees: { nodes: directories } }],
-        },
-      },
-    },
-  };
-}

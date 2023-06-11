@@ -1,10 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import useAssets from 'util/apiUtil';
 import { Asset } from 'models/Asset';
-import {
-  generateMockGraphQLtreeWithAssets,
-  wrapWithInitialState,
-} from '../testUtils';
+import { wrapWithInitialState } from '../testUtils';
 import { mockAssets, testPath } from '../__mocks__/util_mocks';
 
 jest.unmock('util/apiUtil');
@@ -102,3 +99,45 @@ describe('useAssets', () => {
 
   // Add more tests here to determin path and username has been set correctly
 });
+
+// ###########################################################
+// ********************API UTILS*****************************
+
+interface Accumulator {
+  blobs: { rawTextBlob: string; path: string }[];
+  trees: { name: string; path: string }[];
+}
+
+/**
+ * Generates a mock GraphQL tree with assets.
+ * @param assets An array of assets
+ * @returns Assets in a GraphQL tree structure
+ */
+function generateMockGraphQLtreeWithAssets(assets: Asset[]) {
+  const initial: Accumulator = { blobs: [], trees: [] };
+  const { blobs: files, trees: directories } = assets.reduce(
+    (accumulatedStructure, asset) => {
+      const node = { name: asset.name, path: asset.path };
+      accumulatedStructure.trees.push(node);
+      if (asset.description) {
+        accumulatedStructure.blobs.push({
+          path: `${asset.path}/README.md`,
+          rawTextBlob: asset.description,
+        });
+      }
+      return accumulatedStructure;
+    },
+    initial
+  );
+
+  return {
+    project: {
+      repository: {
+        blobs: { nodes: files },
+        paginatedTree: {
+          nodes: [{ trees: { nodes: directories } }],
+        },
+      },
+    },
+  };
+}
