@@ -22,19 +22,18 @@ jobs:
       - name: Run the linting checks
         run: |
           cd client/	
-          yarn install	
+          ./scripts/install.sh
           yarn syntax
       - name: Build the React SPA website
         run: |
           cd client/	
-          yarn install	
+          ./scripts/install.sh
           yarn build
           yarn configapp dev
       - name: Run client unit and integration tests
         run: |
           cd client/	
-          yarn install	
-          yarn playwright install --with-deps
+          ./scripts/install.sh
           yarn test
       - name: Upload unit test coverage to Codecov
         uses: codecov/codecov-action@v3
