@@ -34,6 +34,7 @@ jobs:
         run: |
           cd client/	
           yarn install	
+          yarn playwright install --with-deps
           yarn test
       - name: Upload unit test coverage to Codecov
         uses: codecov/codecov-action@v3
