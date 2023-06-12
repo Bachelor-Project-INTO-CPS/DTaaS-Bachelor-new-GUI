@@ -15,7 +15,7 @@ test.describe('Tests on Authentication Flow', () => {
 
     await page.getByRole('button').filter({ hasText: 'Sign In' }).click();
 
-    await expect(page).toHaveURL(/.*libraryyy/);
+    await expect(page).toHaveURL(/.*library/);
   });
 
   test('Fill the signin fields', async ({ page }) => {
