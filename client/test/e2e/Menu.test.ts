@@ -23,11 +23,7 @@ test.describe('Menu Links from first page (Layout)', () => {
   test('Menu Links are clickable', async ({ page }) => {
     await links.reduce(async (previousPromise, link) => {
       await previousPromise;
-      const buttonSelector = page
-        .getByRole('button')
-        .filter({ hasText: link.text });
-      await buttonSelector.waitFor({ state: 'visible' });
-      await buttonSelector.click();
+      await page.getByRole('button').filter({ hasText: link.text }).click();
       await expect(page).toHaveURL(link.url);
       await expect(page.getByText('404 Not Found')).not.toBeVisible();
     }, Promise.resolve());
