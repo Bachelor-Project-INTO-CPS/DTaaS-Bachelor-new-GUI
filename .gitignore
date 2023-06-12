@@ -113,6 +113,7 @@ build/
 # Test reports
 coverage/
 playwright-report/
+client/test-results/
 
 # Mac temp files
 servers/.DS_Store
