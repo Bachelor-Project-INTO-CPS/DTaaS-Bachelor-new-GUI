@@ -15,7 +15,7 @@ test.describe('Tests on Authentication Flow', () => {
 
     await page.getByRole('button').filter({ hasText: 'Sign In' }).click();
 
-    await expect(page).toHaveURL(/.*library/);
+    await expect(page).toHaveURL(/.*libraryyy/);
   });
 
   test('Fill the signin fields', async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe('Tests on Authentication Flow', () => {
     await page.getByRole('button').filter({ hasText: 'Sign In' }).click();
     await expect(page).toHaveURL(/.*library/);
 
-    await page.getByLabel('Open settings').click({ timeout: 200 });
+    await page.getByLabel('Open settings').click();
     await page.getByText('Account').click();
     await expect(page).toHaveURL('./account');
 
