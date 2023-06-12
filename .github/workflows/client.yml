@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: E2E-error-trace
-          path: test-results      
+          path: client/test-results
       - name: Upload unit test coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
