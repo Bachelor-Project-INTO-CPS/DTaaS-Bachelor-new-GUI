@@ -6,7 +6,7 @@ import links from './Links.ts'; // Extension is required with Playwright import 
 test.describe('Tests on Authentication Flow', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('./');
-    await page.getByRole('textbox', { name: 'username' }).fill('user-test');
+    await page.getByRole('textbox', { name: 'username' }).fill('user1');
   });
 
   test('Homepage has correct title and signin link', async ({ page }) => {
@@ -30,7 +30,7 @@ test.describe('Tests on Authentication Flow', () => {
     await expect(page).toHaveURL(/.*library/);
 
     await page.getByLabel('Open settings').click({ timeout: 200 });
-    const accontbtn = await page.getByText('Account', {exact: false});
+    const accontbtn = await page.getByText('Account', { exact: false });
     await accontbtn.click();
     await expect(page).toHaveURL('./account');
 

@@ -6,7 +6,7 @@ import links from './Links.ts'; // Extension is required with Playwright import
 test.describe('Menu Links from first page (Layout)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('./');
-    await page.getByRole('textbox', { name: 'username' }).fill('user-test');
+    await page.getByRole('textbox', { name: 'username' }).fill('user1');
     await page.getByRole('button').filter({ hasText: 'Sign In' }).click();
   });
 
