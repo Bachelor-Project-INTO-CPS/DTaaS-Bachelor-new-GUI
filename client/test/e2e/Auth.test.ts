@@ -30,7 +30,8 @@ test.describe('Tests on Authentication Flow', () => {
     await expect(page).toHaveURL(/.*library/);
 
     await page.getByLabel('Open settings').click({ timeout: 200 });
-    await page.getByText('Account').click();
+    const accontbtn = await page.getByText('Account', {exact: false});
+    await accontbtn.click();
     await expect(page).toHaveURL('./account');
 
     await page.getByLabel('Open settings').click();
