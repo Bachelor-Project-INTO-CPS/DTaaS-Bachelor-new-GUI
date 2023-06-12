@@ -27,7 +27,7 @@ jobs:
       - name: Build the React SPA website
         run: |
           cd client/	
-          yarn install
+          ./script/install.bash 
           yarn build
           yarn configapp dev
       - name: Run client unit and integration tests
