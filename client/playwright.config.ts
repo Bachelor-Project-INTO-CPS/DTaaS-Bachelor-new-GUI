@@ -5,6 +5,7 @@
 import { devices } from '@playwright/test';
 
 const config = {
+  workers: 4,
   timeout: 30000,
   globalTimeout: 600000,
   testDir: './test/e2e',
@@ -17,6 +18,7 @@ const config = {
   ],
   use: {
     baseURL: 'http://localhost:4000/dtaas/',
+    trace: 'retain-on-failure',
   },
   projects: [
     {
