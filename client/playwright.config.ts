@@ -5,8 +5,7 @@
 import { devices } from '@playwright/test';
 
 const config = {
-  retries: 2,
-  workers: 1,
+  workers: 4,
   timeout: 30000,
   globalTimeout: 600000,
   testDir: './test/e2e',
