@@ -18,7 +18,8 @@ yarn develop    #start the development server without building. Great for live e
 
 
 #Required: Specify the environment; specify only one
-yarn configapp #prod | dev #If not specified, the app wont run.
+#If run with no arguments, it will list the available environments
+yarn configapp #prod | dev | test
 
 yarn start      #start the application
 yarn test       #UI testing of the application
@@ -35,14 +36,9 @@ It is required to have a `env.js` in the root directory of `build` during runtim
 
 If you want to switch between multiple environments, you can use the `yarn configapp` command to copy a configuration file from `client/config/` to the `build` directory.
 
-1. Save the file as `client/config/<config-name>.js`.
-2. Run the config command to copy the file to the `public` directory and the `build` directory, if a build is present.
-
-```bash
-yarn configapp <config-name>
-```
-
-> Which ever env.js file is present in the `public` directory during `yarn build`, will be used in the build.
+1. Save the file as `client/config/env.<config-name>`
+2. Run `yarn configapp <config-name>` to copy the file to the `public` directory and the `build` directory, if a build is present.
+   > Which ever env.js file is present in the `public` directory during `yarn build`, will be used in the build.
 
 It is therefore reccommend to keep the configurations in the `client/config/` directory and use the `yarn configapp` command to switch between them.
 
