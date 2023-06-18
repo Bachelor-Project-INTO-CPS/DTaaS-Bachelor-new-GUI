@@ -14,6 +14,7 @@ yarn install    #install the nodejs dependencies
 yarn format     #format .ts[x] and .js[x] files with prettier.
 yarn syntax     #perform linting and static analysis
 yarn build      #build the react app into build/ directory
+yarn relay      #generate graphql relay files - run after modifying graphql schema or queries
 yarn develop    #start the development server without building. Great for live edits.
 
 
@@ -29,7 +30,7 @@ yarn clean      #clean the directory of temporary files
 
 ## Custom configuration
 
-It is required to have a `env.js` in the root directory of `build` during runtime. This file is used to configure the endpoints of the application. See the [build instructions](../docs/CLIENT.md) for an example.
+It is required to have a `env.js` in the root directory of `build` during runtime. This file is used to configure the endpoints of the application. See the [build instructions](/docs/admin/client/CLIENT.md) for an example.
 
 ### Multiple configurations
 

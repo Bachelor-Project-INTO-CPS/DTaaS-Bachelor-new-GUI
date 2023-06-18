@@ -19,6 +19,8 @@ To host DTaaS client website on your server, follow these steps:
       REACT_APP_WORKBENCHLINK_JUPYTERLAB: "Endpoint for the Jupyter Lab link",
       REACT_APP_WORKBENCHLINK_JUPYTERNOTEBOOK:
         "Endpoint for the Jupyter Notebook link",
+      REACT_APP_BACKEND_URL_GITLAB: "URL for the GitLab API",
+      REACT_APP_BACKEND_GITLAB_GROUP: "GitLab group name",
     };
 
     // Example values with no base URL. Trailing and ending slashes are optional.
@@ -33,6 +35,8 @@ To host DTaaS client website on your server, follow these steps:
       REACT_APP_WORKBENCHLINK_VSCODE: '/tools/vscode/',
       REACT_APP_WORKBENCHLINK_JUPYTERLAB: '/lab',
       REACT_APP_WORKBENCHLINK_JUPYTERNOTEBOOK: '',
+      REACT_APP_BACKEND_URL_GITLAB: 'https://gitlab.com/api/graphql',
+      REACT_APP_BACKEND_GITLAB_GROUP: 'dtaas1',
     };
     ```
 
