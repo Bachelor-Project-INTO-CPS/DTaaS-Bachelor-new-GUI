@@ -13,7 +13,7 @@ test.describe('Tests on Authentication Flow', () => {
     //    await page.goto(config.baseURL);
     await expect(page).toHaveTitle('The Digital Twin as a Service');
 
-    await page.getByRole('button').filter({ hasText: 'Sign In' }).click();
+    await page.getByRole('button', { name: 'Sign In' }).click();
 
     await expect(page).toHaveURL(/.*library/);
   });
@@ -26,7 +26,7 @@ test.describe('Tests on Authentication Flow', () => {
   });
 
   test('Account Button Contents and Links', async ({ page, baseURL }) => {
-    await page.getByRole('button').filter({ hasText: 'Sign In' }).click();
+    await page.getByRole('button', { name: 'Sign In' }).click();
     await expect(page).toHaveURL(/.*library/);
 
     await page.getByLabel('Open settings').click();
@@ -46,9 +46,7 @@ test.describe('Tests on Authentication Flow', () => {
       await previousPromise;
       await page.goto(link.url);
       await expect(page).toHaveURL(baseURL?.replace(/\/$/, '') ?? './');
-      await expect(
-        page.getByRole('button').filter({ hasText: 'Sign In' })
-      ).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
     }, Promise.resolve());
   });
 });
