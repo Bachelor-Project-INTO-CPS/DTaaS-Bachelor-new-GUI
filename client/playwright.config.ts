@@ -18,7 +18,7 @@ const config = {
   ],
   use: {
     baseURL: 'http://localhost:4000/dtaas/',
-    trace: 'retain-on-failure',
+    trace: 'on',
   },
   projects: [
     {
