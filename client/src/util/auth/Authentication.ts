@@ -1,6 +1,5 @@
 import { User } from 'oidc-client-ts';
-import { useDispatch } from 'react-redux';
-import { setUserName } from 'store/auth.slice';
+import useUserData from 'store/UserAccess';
 import { useAuth } from 'react-oidc-context';
 import { getLogoutRedirectURI } from '../envUtil';
 
@@ -11,12 +10,12 @@ export interface CustomAuthContext {
 }
 
 export function getAndSetUsername(auth: CustomAuthContext) {
-  const dispatch = useDispatch();
+  const { actions } = useUserData();
   if (auth.user !== null && auth.user !== undefined) {
     const profileUrl = auth.user.profile.profile ?? '';
     const username = profileUrl.split('/').filter(Boolean).pop() ?? '';
     sessionStorage.setItem('username', username ?? '');
-    dispatch(setUserName(username));
+    actions.setUsername(username);
   }
 }
 
