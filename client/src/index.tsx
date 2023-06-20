@@ -6,6 +6,7 @@ import WorkBench from 'route/workbench/Workbench';
 import AppProvider from 'AppProvider';
 import { getURLbasename } from 'util/envUtil';
 import LayoutPublic from 'page/LayoutPublic';
+import { AuthProvider } from 'components/AuthContext';
 import Library from './route/library/Library';
 import DigitalTwins from './route/digitaltwins/DigitalTwins';
 import SignIn from './route/auth/Signin';
@@ -56,7 +57,6 @@ const router = createBrowserRouter(
       ),
     },
   ],
-
   {
     basename: `/${getURLbasename()}`,
   }
@@ -68,7 +68,9 @@ if (root) {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <AppProvider>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </AppProvider>
     </React.StrictMode>
   );

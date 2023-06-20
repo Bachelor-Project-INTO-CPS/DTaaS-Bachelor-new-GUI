@@ -1,7 +1,6 @@
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
 import RelayEnvironment from 'RelayEnvironment';
-import { AuthProvider } from 'components/AuthContext';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { RelayEnvironmentProvider } from 'react-relay';
@@ -21,10 +20,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       <RelayEnvironmentProvider environment={RelayEnvironment}>
         <React.Suspense fallback={<div>Loading...</div>}>
           <ThemeProvider theme={mdTheme}>
-            <AuthProvider>
-              <CssBaseline />
-              {children}
-            </AuthProvider>
+            <CssBaseline />
+            {children}
           </ThemeProvider>
         </React.Suspense>
       </RelayEnvironmentProvider>
