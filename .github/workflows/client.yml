@@ -35,7 +35,7 @@ jobs:
           cd client/	
           ./script/install.bash 
           yarn build
-          yarn configapp dev
+          yarn configapp ci
       - name: Run client unit and integration tests
         run: |
           cd client/	
