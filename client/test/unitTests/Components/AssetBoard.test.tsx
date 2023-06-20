@@ -5,8 +5,15 @@ import { mockAssets } from '../__mocks__/util_mocks';
 
 jest.unmock('components/asset/AssetBoard');
 describe('AssetBoard', () => {
-  it('renders AssetCard components for each asset', () => {
+  beforeEach(() => {
     render(<AssetBoard pathToAssets="test-path" />);
+  });
+
+  it('renders AssetBoard component', () => {
+    expect(AssetBoard);
+  });
+
+  it('renders AssetCard components for each asset', () => {
     const cards = screen.getAllByRole('card');
     expect(cards).toHaveLength(mockAssets.length);
   });

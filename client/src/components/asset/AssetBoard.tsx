@@ -17,7 +17,7 @@ const outerGridContainerProps = {
 /**
  * Displays a board with navigational properties to locate and select assets for DT configuration.
  * @param props Takes relative path to Assets. E.g `Library` for Library assets. OR maybe the full path using `useURLforLIB`?
- * @returns
+ * @returns Returns AssetCards in a responsive grid view.
  */
 function AssetBoard(props: { pathToAssets?: string; privateRepo?: boolean }) {
   if (!props.pathToAssets) {
