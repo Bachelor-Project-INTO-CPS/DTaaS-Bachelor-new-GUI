@@ -42,7 +42,7 @@ jobs:
           yarn install
           yarn test
       - name: 'Upload Artifact'
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: E2E-error-trace
