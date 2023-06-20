@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e8595738a44a2f8349370a8ef4c319ce>>
+ * @generated SignedSource<<85b8a42b9b69cfadba1678b7c64d150b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -47,98 +47,82 @@ v1 = {
 },
 v2 = [
   {
-    "kind": "Variable",
-    "name": "fullPath",
-    "variableName": "groupAndProject"
-  }
-],
-v3 = [
-  {
-    "kind": "Variable",
-    "name": "path",
-    "variableName": "path"
-  },
-  {
-    "kind": "Literal",
-    "name": "recursive",
-    "value": false
-  }
-],
-v4 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "name",
-  "storageKey": null
-},
-v5 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "path",
-  "storageKey": null
-};
-return {
-  "fragment": {
-    "argumentDefinitions": [
-      (v0/*: any*/),
-      (v1/*: any*/)
+    "alias": null,
+    "args": [
+      {
+        "kind": "Variable",
+        "name": "fullPath",
+        "variableName": "groupAndProject"
+      }
     ],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "gitLabDirectoryListQuery",
+    "concreteType": "Project",
+    "kind": "LinkedField",
+    "name": "project",
+    "plural": false,
     "selections": [
       {
         "alias": null,
-        "args": (v2/*: any*/),
-        "concreteType": "Project",
+        "args": null,
+        "concreteType": "Repository",
         "kind": "LinkedField",
-        "name": "project",
+        "name": "repository",
         "plural": false,
         "selections": [
           {
             "alias": null,
-            "args": null,
-            "concreteType": "Repository",
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "path",
+                "variableName": "path"
+              },
+              {
+                "kind": "Literal",
+                "name": "recursive",
+                "value": false
+              }
+            ],
+            "concreteType": "TreeConnection",
             "kind": "LinkedField",
-            "name": "repository",
+            "name": "paginatedTree",
             "plural": false,
             "selections": [
               {
                 "alias": null,
-                "args": (v3/*: any*/),
-                "concreteType": "TreeConnection",
+                "args": null,
+                "concreteType": "Tree",
                 "kind": "LinkedField",
-                "name": "paginatedTree",
-                "plural": false,
+                "name": "nodes",
+                "plural": true,
                 "selections": [
                   {
                     "alias": null,
                     "args": null,
-                    "concreteType": "Tree",
+                    "concreteType": "TreeEntryConnection",
                     "kind": "LinkedField",
-                    "name": "nodes",
-                    "plural": true,
+                    "name": "trees",
+                    "plural": false,
                     "selections": [
                       {
                         "alias": null,
                         "args": null,
-                        "concreteType": "TreeEntryConnection",
+                        "concreteType": "TreeEntry",
                         "kind": "LinkedField",
-                        "name": "trees",
-                        "plural": false,
+                        "name": "nodes",
+                        "plural": true,
                         "selections": [
                           {
                             "alias": null,
                             "args": null,
-                            "concreteType": "TreeEntry",
-                            "kind": "LinkedField",
-                            "name": "nodes",
-                            "plural": true,
-                            "selections": [
-                              (v4/*: any*/),
-                              (v5/*: any*/)
-                            ],
+                            "kind": "ScalarField",
+                            "name": "name",
+                            "storageKey": null
+                          },
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "path",
                             "storageKey": null
                           }
                         ],
@@ -157,6 +141,19 @@ return {
         "storageKey": null
       }
     ],
+    "storageKey": null
+  }
+];
+return {
+  "fragment": {
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "gitLabDirectoryListQuery",
+    "selections": (v2/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -168,91 +165,15 @@ return {
     ],
     "kind": "Operation",
     "name": "gitLabDirectoryListQuery",
-    "selections": [
-      {
-        "alias": null,
-        "args": (v2/*: any*/),
-        "concreteType": "Project",
-        "kind": "LinkedField",
-        "name": "project",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Repository",
-            "kind": "LinkedField",
-            "name": "repository",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": (v3/*: any*/),
-                "concreteType": "TreeConnection",
-                "kind": "LinkedField",
-                "name": "paginatedTree",
-                "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "Tree",
-                    "kind": "LinkedField",
-                    "name": "nodes",
-                    "plural": true,
-                    "selections": [
-                      {
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "TreeEntryConnection",
-                        "kind": "LinkedField",
-                        "name": "trees",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "alias": null,
-                            "args": null,
-                            "concreteType": "TreeEntry",
-                            "kind": "LinkedField",
-                            "name": "nodes",
-                            "plural": true,
-                            "selections": [
-                              (v4/*: any*/),
-                              (v5/*: any*/),
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "id",
-                                "storageKey": null
-                              }
-                            ],
-                            "storageKey": null
-                          }
-                        ],
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
+    "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "273b083d22aa66c76b1a24f4b6f6c337",
+    "cacheID": "6a0a0481647caf243d36569f4b1f53d0",
     "id": null,
     "metadata": {},
     "name": "gitLabDirectoryListQuery",
     "operationKind": "query",
-    "text": "query gitLabDirectoryListQuery(\n  $path: String!\n  $groupAndProject: ID!\n) {\n  project(fullPath: $groupAndProject) {\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          trees {\n            nodes {\n              name\n              path\n              id\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query gitLabDirectoryListQuery(\n  $path: String!\n  $groupAndProject: ID!\n) {\n  project(fullPath: $groupAndProject) {\n    repository {\n      paginatedTree(path: $path, recursive: false) {\n        nodes {\n          trees {\n            nodes {\n              name\n              path\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();

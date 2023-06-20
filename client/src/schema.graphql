@@ -62,7 +62,7 @@ type TreeEntryConnection {
 "Represents a directory in a repository. Directories contain blobs and other directories."
 type TreeEntry {
   flatPath: String!
-  id: ID!
+  # id: ID! # For some reason, the id might not be unique. Seems to be a bug in GitLab.
   name: String!
   path: String!
   webPath: String
