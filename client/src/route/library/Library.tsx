@@ -3,7 +3,7 @@ import Layout from 'page/Layout';
 import TabComponent from 'components/tab/TabComponent';
 import { TabData } from 'components/tab/subcomponents/TabRender';
 import { Paper, Typography } from '@mui/material';
-import AssetBoard from 'components/AssetBoard';
+import AssetBoard from 'components/asset/AssetBoard';
 import ShoppingCart from 'components/cart/ShoppingCart';
 import tabs from './LibraryTabData';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import AssetCard from 'components/AssetBoard/AssetCard';
+import AssetCard from 'components/asset/AssetCard';
 
 jest.deepUnmock('components/AssetBoard/AssetCard');
 

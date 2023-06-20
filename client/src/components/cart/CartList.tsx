@@ -1,4 +1,4 @@
-import { Asset } from 'models/Asset';
+import { Asset } from 'components/asset/Asset';
 import React from 'react';
 import useCart from 'store/CartAccess';
 
