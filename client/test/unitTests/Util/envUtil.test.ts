@@ -28,7 +28,7 @@ describe('envUtil', () => {
   ];
   const testUsername = 'username';
 
-  window.env = {
+  process.env = {
     REACT_APP_ENVIRONMENT: 'test',
     REACT_APP_URL: testAppURL,
     REACT_APP_URL_BASENAME: testBasename,
@@ -120,7 +120,7 @@ describe('envUtil', () => {
   });
 
   test('still handles if basename is set to empty string', () => {
-    window.env.REACT_APP_URL_BASENAME = '';
+    process.env.REACT_APP_URL_BASENAME = '';
     const { result: resLIB } = renderHook(() => useURLforLIB(), {
       wrapper: renderWithUsername,
     });
