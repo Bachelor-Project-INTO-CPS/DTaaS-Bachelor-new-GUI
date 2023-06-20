@@ -22,27 +22,27 @@ const useUserLink = (baseURL: string, endpoint: string): string => {
 };
 
 export function useURLforDT(): string {
-  return useUserLink(getAppURL(), window.env.REACT_APP_URL_DTLINK);
+  return useUserLink(getAppURL(), process.env.REACT_APP_URL_DTLINK);
 }
 
 export function getURLbasename(): string {
-  return cleanURL(window.env.REACT_APP_URL_BASENAME);
+  return cleanURL(process.env.REACT_APP_URL_BASENAME);
 }
 
 export function useURLforLIB(): string {
-  return useUserLink(getAppURL(), window.env.REACT_APP_URL_LIBLINK);
+  return useUserLink(getAppURL(), process.env.REACT_APP_URL_LIBLINK);
 }
 
 function getAppURL(): string {
-  return `${cleanURL(window.env.REACT_APP_URL)}/${getURLbasename()}`;
+  return `${cleanURL(process.env.REACT_APP_URL)}/${getURLbasename()}`;
 }
 
 export function getGitlabURL(): string {
-  return cleanURL(window.env.REACT_APP_BACKEND_URL_GITLAB);
+  return cleanURL(process.env.REACT_APP_BACKEND_URL_GITLAB);
 }
 
 export function getGitlabGroup(): string {
-  return cleanURL(window.env.REACT_APP_BACKEND_GITLAB_GROUP);
+  return cleanURL(process.env.REACT_APP_BACKEND_GITLAB_GROUP);
 }
 
 export interface KeyLinkPair {
@@ -64,10 +64,10 @@ export function useWorkbenchLinkValues(): KeyLinkPair[] {
   const workbenchLinkValues: KeyLinkPair[] = [];
   const appUrl = getAppURL();
 
-  Object.keys(window.env)
+  Object.keys(process.env)
     .filter((key) => key.startsWith(prefix))
     .forEach((key) => {
-      const value = window.env[key];
+      const value = process.env[key];
       if (value !== undefined) {
         const keyWithoutPrefix = key.slice(prefix.length);
         workbenchLinkValues.push({

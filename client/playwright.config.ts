@@ -3,6 +3,15 @@
 // src: https://playwright.dev/docs/api/class-testconfig
 
 import { devices } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '.env' });
+
+const baseURL = process.env.REACT_APP_URL_BASENAME
+  ? `${process.env.REACT_APP_URL.replace(/\/$/g, '')}/${
+      process.env.REACT_APP_URL_BASENAME
+    }/`
+  : process.env.REACT_APP_URL;
 
 const config = {
   workers: 4,
@@ -17,7 +26,7 @@ const config = {
     ['json', { outputFile: 'playwright-report/results.json' }],
   ],
   use: {
-    baseURL: 'http://localhost:4000/dtaas/',
+    baseURL,
     trace: 'retain-on-failure',
   },
   projects: [
