@@ -1,6 +1,6 @@
 window.env = {
   REACT_APP_ENVIRONMENT: 'dev',
-  REACT_APP_URL: 'https://example.com/',
+  REACT_APP_URL: 'foo.com',
   REACT_APP_URL_BASENAME: 'dtaas',
   REACT_APP_URL_DTLINK: '/lab',
   REACT_APP_URL_LIBLINK: '',
@@ -9,6 +9,6 @@ window.env = {
   REACT_APP_WORKBENCHLINK_VSCODE: '/tools/vscode/',
   REACT_APP_WORKBENCHLINK_JUPYTERLAB: '/lab',
   REACT_APP_WORKBENCHLINK_JUPYTERNOTEBOOK: '',
-  REACT_APP_BACKEND_URL_GITLAB: 'https://gitlab.com/api/graphql',
+  REACT_APP_BACKEND_URL_GITLAB: 'gitlab.foo.com',
   REACT_APP_BACKEND_GITLAB_GROUP: 'dtaas1',
 };
